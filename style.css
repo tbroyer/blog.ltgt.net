@@ -1,0 +1,46 @@
+html, body {
+  font-family: "Source Sans Pro", Roboto, "Droid Sans", Ubuntu, Helvetica, Arial, sans-serif;
+  line-height: 1.8em;
+  color: #444;
+  background-color: white;
+}
+
+body {
+  max-width: 80ex;
+  margin: 60px auto 0;
+  padding: 0 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1em;
+  color: #222;
+}
+
+abbr {
+  font-variant: small-caps;
+  font-weight: 600;
+  letter-spacing: .1em;
+}
+
+header, nav {
+  text-align: center;
+}
+
+small {
+  font-size: smaller;
+  line-height: normal;
+}
+
+h1 > a, h2 > a {
+  text-decoration: none;
+  color: #222;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
