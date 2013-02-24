@@ -1,0 +1,48 @@
+---
+layout: post
+title: GWT 2.1 Places
+published: true
+---
+<p><strong>Translation available in:</strong> <a href="http://blog.atolcd.com/?p=665" title="GWT 2.1 Places">French</a>.</p>
+<p><strong>Updated 2010-10-16:</strong> updated to GWT 2.1.0.</p>
+<p>Ray Ryan made the buzz last year at Google I/O 2009 with his <a href="http://code.google.com/events/io/2009/sessions/GoogleWebToolkitBestPractices.html">Google Web Toolkit Architecture: Best Practices For Architecting Your GWT App</a> session, but what made the buzz the most was probably less what was said than what was only briefly mentionned: the Place Service. Since then, many developers (me included) took a stab at it, but Google made it part of GWT proper in GWT 2.1.</p>
+<h2>What is a Place?</h2>
+<p>In any application, particularly web applications, which only rarely use the concept of window (and if you ask me, web app developers should try hard to turn this "rarely" into a "never"), you generally describe what you see as a <em>place</em>: "where am I?", "going to&hellip;", etc. (you'll also "find your bearings", "find your way", or "navigate").</p>
+<p>Examples of places include: your mail inbox, the search results for "GWT places", the user profile for "t.broyer", the expense with id "abcdefgh", etc.</p>
+<p>So the idea is to use that notion of <em>place</em>&nbsp;to manage navigation within the application, by firing <em>place change events</em>.</p>
+<p>The PlaceService here serves as a bridge between those events and the browser's history management (it would deserve a dedicated article, but let's just say it's about make the "previous page" and "next page" browser buttons work, while keeping the application as a single web page). The PlaceService therefore is, and should remain, the only component in the application to manage the browser's history and react to its changes.</p>
+<h2>Debunking misconceptions</h2>
+<p>Before going into the details, let's make a few things clear first: places have nothing to do with MVP, and nothing to do with the notion of an application-wide event bus (which one is also orthogonal to MVP). You can use each one independently, without any one of the others. It's becoming a best practice to use them all at the same time, but they each address different needs. This also means you don't have to understand any of the other concepts Ray Ryan talked about in his session (MVP, event bus, command pattern for RPCs, etc.) to understand places.</p>
+<h2>So what does it look like in GWT 2.1?</h2>
+<p>GWT 2.1 materializes the PlaceService as two layers (places and activities), and optional integration with other GWT features (History for now, and RequestFactory to come in a future release); they live in the <code>com.google.gwt.place.Place</code> and <code>com.google.gwt.activity.Activity</code> modules respectively.</p>
+<p>The core of GWT 2.1 places is the PlaceController, which you'll use to navigate from places to places, but let's start by examining what a Place looks like in GWT 2.1 and what it represents.</p>
+<h2>What is a GWT 2.1 Place?</h2>
+<p>In GWT 2.1, places are lightweight objects extending <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/Place.html">the <code>Place</code> abstract class</a>. They're generally throwable and immutable, even though this is not required and there are some good reasons to use non-throwable places, as we'll see later (I can't see any compelling reason for using mutable places though).</p>
+<p>You can define as many <code>Place</code> subclasses as you need, with or without associated "data" (the id of a record, the query of a search, etc.), and you'll instantiate a new place each time you'll navigate within your application. The Place class doesn't define any method, but subclasses are expected to correctly implement <code>Object.equals(Object)</code> and <code>Object.hashCode()</code>.</p>
+<p><strong>Introducing the PlaceController</strong></p>
+<p>The <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceController.html"><code>PlaceController</code></a> is an object that manages the current place (where you are) and navigation between places. Because of that, you should not have more than one PlaceController instance per application.</p>
+<p>To allow you application to react to place changes (to actually update the UI and application state so it reflects the new place), the PlaceControler fires events on an <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/event/shared/EventBus.html">event bus</a>. You don't need to really understand the notion of event bus to continue reading; let's just say that instead of registering your event handlers on the PlaceController itself, you'll add them to another object (the event bus, of which there should also be a single instance at most throughout your application), and you'll initialize the PlaceController so that it fires events on this bus.</p>
+<p>Your application's entry-point will therefore generally contain this kind of code:</p>
+<div class="CodeRay">
+  <div class="code"><pre>  EventBus eventBus = new SimpleEventBus();
+  PlaceController placeController = new PlaceController(eventBus);</pre></div>
+</div>
+
+<p>By default, the PlaceController initializes with the current place set to <code>Place.NOWHERE</code> (that is, <code>placeController.getWhere()</code> will return <code>Place.NOWHERE</code>). To navigate to another place, you'll pass a Place instance to the PlaceController's goTo method:</p>
+<div class="CodeRay">
+  <div class="code"><pre>  placeController.goTo(new MyPlace());</pre></div>
+</div>
+
+<p>This will have the effect of changing the current place and then firing a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.html"><code>PlaceChangeEvent</code></a> on the event bus, which your components will listen to by registering a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.Handler.html"><code>PlaceChangeEvent.Handler</code></a>:</p>
+<div class="CodeRay">
+  <div class="code"><pre>  eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
+    public void onPlaceChange(PlaceChangeEvent event) {
+      Place newPlace = event.getNewPlace();
+      …
+    }
+  });</pre></div>
+</div>
+
+<h2>Where to go now?</h2>
+<p>This was only an overview of the core of GWT 2.1 places, so you can grasp the underlying concepts.</p>
+<p>I'll cover navigation's user-confirmation, integration with the browser's history (which also means bookmarkable places), and activities (a higher-level API which, among other things, helps in doing MVP) in <a href="{% post_url 2010-08-28-gwt-21-places-part-ii %}" title="GWT 2.1 Places &ndash; Part II">companion</a> <a href="{% post_url 2010-09-05-gwt-21-activities %}" title="GWT 2.1 Activities">articles</a>.</p>

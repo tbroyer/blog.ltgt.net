@@ -1,0 +1,16 @@
+---
+layout: post
+title: GWT 2.1 Places & Activities – What changed between M3 and RC1
+published: true
+---
+<p>If you've started using <a href="{% post_url 2010-08-28-gwt-21-places-part-ii %}" title="GWT 2.1 Places &ndash; Part II">GWT 2.1 Places</a> and <a href="{% post_url 2010-09-05-gwt-21-activities %}" title="GWT 2.1 Activities">Activities</a> with the Milestone 3, then here's what changed in the Release Candidate 1. I'll update my previous articles in the coming days to reflect those changes.</p>
+<ul>
+<li>The <code>com.google.gwt.app.place</code> package has been split into the <code>com.google.gwt.place</code> and <code>com.google.gwt.activity</code>.</li>
+<li><code>Activity.Display</code> now is <code>com.google.gwt.user.client.ui.AcceptsOneWidget</code>, which is implemented by <code>SimplePanel</code> (<code>showActivityWidget</code> is thus renamed as <code>setWidget</code>).</li>
+<li><code>IsWidget</code> has been moved to com.google.gwt.user.client.ui and is now implemented by <code>Widget</code> (which returns itself); this means that if your view classes <code>extends Widget</code> (most views extend it through <code>Composite</code>) you no longer have to implement the <code>asWidget</code> method.</li>
+<li>In addition, all widgets now accept <code>IsWidget</code> as argument where they already accepted <code>Widget</code>.</li>
+<li><code>HandlerManager</code> is <code>@Deprecated</code> and no longer implements <code>EventBus</code>; you'll now use a <code>SimpleEventBus</code> for your application-wide event bus.</li>
+<li><code>PlaceHistoryHandler</code> has been split into a concrete <code>PlaceHistoryHandler</code> and the <code>PlaceHistoryMapper</code> interface, which you're free to implement yourself or use as before, giving your sub-interface to <code>GWT.create()</code> so that it generates the implementation from the <code>@WithTokenizers</code> annotation (and/or factory if you're using <code>PlaceHistoryMapperWithFactory</code>); this approach is similar to the <code>ActivityManager</code> vs. <code>ActivityMapper</code>, with the added generator for the mapper based on <code>PlaceTokenizer</code>s and <code>@Prefix</code>.</li>
+<li>The <code>ProxyPlace</code>, <code>ProxyListPlace</code> and associated classes (and abstract activities) have been moved to the Expenses sample (which doesn't use them yet).</li>
+</ul>
+<p>And this list is only about the Places and Activities part: <code>RequestFactory</code>'s API has been deeply refactored, and a new <code>Editor</code> module is born!</p>

@@ -1,0 +1,25 @@
+---
+layout: post
+title: Announcing gwt-maven-archetypes project
+published: true
+---
+<p><em>Crossposted to <a href="https://groups.google.com/d/topic/codehaus-mojo-gwt-maven-plugin-users/vrLAcqp5oAg/discussion">codehaus-mojo-gwt-maven-plugin-users</a></em></p>
+<p>&nbsp;</p>
+<p>I started using Maven 2 years ago for a project at work, and I soon started to believe that &ldquo;the Maven way&rdquo; of doing a GWT project is to separate client (GWT-compiled) and server (servlets, javac'd) code into separate projects.</p>
+<p>I undoubtedly was influenced by the Flexmojos, talked about in <a href="http://www.sonatype.com/books/mvnref-book/reference/flex-dev.html">Sonatype's &ldquo;Maven: The Complete Reference&rdquo; book</a>, but on the other hand, who knows better than Sonatype how to layout/structure your Maven projects?</p>
+<p>&nbsp;</p>
+<p>In our project, I thus soon put that belief in action by creating (among many others: we have nearly 20 modules in the project) 4 modules: client, server, shared and webapp. You'd deploy your server code and then run GWT's DevMode in -noserver mode.</p>
+<p>The separation between server and webapp was only so that server depends on our "api" modules only, while webapp depends on their specific implementations (for example, server would depend JAX-RS and webapp would use RestEasy as the implementation). I'm not sure it's worth it in many projects, but it helps segregating your dependencies if that's something you want to do.</p>
+<p>Two years later, the project is going into production, and overall that project structure was a success (it should be noted that due to our project architecture &ndash;JNDI, extensive use of Jetty's XML configuration&ndash;, we couldn't use DevMode's embedded server; and we only use the gwt-maven-plugin for its <code>gwt:compile</code> goal: launching our customize Jetty server was done using a shell script, and the GWT DevMode was only ever launched from within Eclipse).</p>
+<p>&nbsp;</p>
+<p>In the last few days (being on vacations), I spent some time making a Maven archetype for that setup, with working <code>mvn jetty:run</code> and <code>mvn gwt:run</code> goals (well, I have to admit: not fully tested yet): <a href="https://github.com/tbroyer/gwt-maven-archetypes">https://github.com/tbroyer/gwt-maven-archetypes</a></p>
+<p>I intend to add at least another archetype for projects using RequestFactory instead of GWT-RPC, and there's currently absolutely no documentation (the browser tab next to the one I'm typing this in is the &ldquo;Site Generation&rdquo; chapter from the &ldquo;Maven: The Complete Reference&rdquo; book).</p>
+<p>&nbsp;</p>
+<p>Here's how it goes (after you <code>install</code> it in your local repo):</p>
+<ol>
+<li><code>mvn archetype:generate -DarchetypeGroupId=net.ltgt.gwt -DarchetypeArtifactId=gwt-maven-archetypes-modular-webapp -DarchetypeVersion=1.0-SNAPSHOT</code></li>
+<li><code>mvn package -Pdraft</code></li>
+<li>In one terminal window: <code>cd server; mvn jetty:start -Pdev</code></li>
+<li>In another (or you could use -Djetty.daemon in the previous step): <code>cd client; mvn gwt:run -Ddev</code></li>
+</ol>
+<p>Feedback, including issues and pull requests, is more than welcome!</p>

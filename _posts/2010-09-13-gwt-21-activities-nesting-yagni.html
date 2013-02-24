@@ -1,0 +1,74 @@
+---
+layout: post
+title: ! 'GWT 2.1 Activities – nesting? YAGNI! '
+published: true
+---
+<p><strong>Updated 2010-10-16:</strong> updated to GWT 2.1.0.</p>
+<p>I'm not going to beat around the bush, <a href="{% post_url 2010-09-05-gwt-21-activities %}">GWT 2.1 Activities</a> have <a href="https://jira.springsource.org/browse/ROO-1309#action_57327" title="Creating ActivityManager &quot;on-demand&quot; is impractical">no support for nesting</a>. Let's see when you might think you need it, and how you could do without.</p>
+<h2>The scenario</h2>
+<p>So let's say you identified those four layouts in your app (this is based on a real example, the only difference is I only needed a single master-detail layout):</p>
+<p style="text-align: center;"><img src="/image/2010/09/layouts.png"></p>
+<p>You might be tempted to build it as nested layouts, i.e. build the first one, and when needed put in the "main content" display region a master-detail or main-aside sub-layout, nesting two new display regions.</p>
+<h2>No nesting? Really?</h2>
+<p>Now, here's how you could do it without nesting, just showing hiding display regions when needed (and resizing the others to always fill the same dimensions):</p>
+<p style="text-align: center;"><img src="/image/2010/09/final_layout.png"></p>
+<p>Note that I chose the "detail" region to also serve as the "main content", but you could have decided otherwise, any region could have made it.</p>
+<h2>Mapping this layout to GWT 2.1 Activities</h2>
+<p>Each region is a <em>display region</em>, with its own <code>ActivityManager</code> and <code>ActivityMapper</code>.</p>
+<div class="CodeRay">
+  <div class="code"><pre>    ActivityManager vertMasterActivityManager = new ActivityManager(vertMasterActivityMapper, eventBus);
+    vertMasterActivityManager.setDisplay(vertMasterDisplay);
+    
+    ActivityManager horizMasterActivityManager = new ActivityManager(horizMasterActivityMapper, eventBus);
+    horizMasterActivityManager.setDisplay(horizMasterDisplay);
+    
+    ActivityManager mainActivityManager = new ActivityManager(mainActivityMapper, eventBus);
+    mainActivityManager.setDisplay(mainDisplay);
+    
+    ActivityManager asideActivityManager = new ActivityManager(asideActivityMapper, eventBus);
+    asideActivityManager.setDisplay(asideDisplay);</pre></div>
+</div>
+
+<p>When a region is not needed, the dedicated <code>ActivityMapper</code> just returns <code>null</code>, which the <code>ActivityManager</code> will relay to the display region. And you'll code your display regions so that a <code>null</code> activity widget hides it (in addition to emptying it).</p>
+<div class="CodeRay">
+  <div class="code"><pre>    // Assumes a LayoutPanel is used for the layout, with a SimplePanel for each display region
+    AcceptsOneWidget asideDisplay = new AcceptsOneWidget() {
+       public void setWidget(IsWidget activityWidget) {
+          Widget widget = Widget.asWidgetOrNull(activityWidget);
+          layoutPanel.setWidgetVisible(asidePanel, widget != null);
+          asidePanel.setWidget(widget);
+       }
+    };</pre></div>
+</div>
+
+<h2>Pros and Cons</h2>
+<p>On the pros side:</p>
+<ul>
+<li>no matter how many "screens" share the same layout, they all share the same dimensions (leading to a consistent layout) without duplicate coding or code sharing (or even reuse, there's a single code path to manage the panels sizes);</li>
+<li>using a <code>LayoutPanel</code> you can easily animate the transitions between layouts, with a single line of code!</li>
+</ul>
+<p>On the cons side:</p>
+<ul>
+<li>
+<p>you'll have to dispatch between all the activities for a given "sub-region" in a single <code>ActivityMapper</code>; the no-nesting rule also applies here, but only in appearance: you'll just nest/split your dispatching code at another level.</p>
+<p>I'd suggest using a base <code>Place</code>, or a marker interface, to discriminate different groups of places/activities (a simple rule could be "those places with the vertical master-detail layout" vs. "those places with the main-aside layout" vs. etc., or a more complex, or more business-oriented one); and you can delegate each group to a more specific method, or even its own <code>ActivityMapper</code> (and this is not limited to this use-case of complex layouts):</p>
+<div class="CodeRay">
+  <div class="code"><pre>    public Activity getActivity(Place place) {
+       if (place instanceof MailPlace) {
+          return mailActivityMapper.getActivity(place);
+       }
+       if (place instanceof ContactsPlace) {
+          return contactsActivityMapper.getActivity(place);
+       }
+       if (place instanceof SettingsPlace) {
+          return settingsActivityMapper.getActivity(place);
+       }
+       return null;
+    }</pre></div>
+</div>
+
+</li>
+</ul>
+<p>All in all, there are more advantages than drawbacks! As always, it's just a different way to approach the problem.</p>
+<h2>Conclusion</h2>
+<p>As the title said, you ain't gonna need nesting. But if you can come up with a use case that couldn't be addressed as explained above, I'd really like to hear about it! (and I believe <a href="https://jira.springsource.org/browse/ROO-1309#action_57327" title="Creating ActivityManager &quot;on-demand&quot; is impractical">the GWT team too</a>)</p>
