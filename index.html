@@ -6,7 +6,7 @@ title: tbroyer's pages
 <main class=posts>
 {% for post in paginator.posts %}
   <div>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string }}</time>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
     <a href="{{ post.url }}">{{ post.title }}</a></div>
   </div>
 {% endfor %}

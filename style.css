@@ -52,17 +52,26 @@ img {
   max-width: 100%;
 }
 
-main.posts time {
-  color: #999;
-  display: inline-block;
-  width: 50%;
-  text-align: right;
+main.posts {
+  display: table;
+  border-spacing: 1em .8em;
+  line-height: normal;
 }
-
 main.posts div {
+  display: table-row;
+}
+main.posts time {
+  display: table-cell;
+  color: #999;
+  font-size: smaller;
+  text-align: right;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+main.posts a {
+  display: table-cell;
 }
 
 /*
