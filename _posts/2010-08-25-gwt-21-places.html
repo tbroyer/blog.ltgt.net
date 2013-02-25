@@ -23,25 +23,25 @@ published: true
 <p>The <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceController.html"><code>PlaceController</code></a> is an object that manages the current place (where you are) and navigation between places. Because of that, you should not have more than one PlaceController instance per application.</p>
 <p>To allow you application to react to place changes (to actually update the UI and application state so it reflects the new place), the PlaceControler fires events on an <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/event/shared/EventBus.html">event bus</a>. You don't need to really understand the notion of event bus to continue reading; let's just say that instead of registering your event handlers on the PlaceController itself, you'll add them to another object (the event bus, of which there should also be a single instance at most throughout your application), and you'll initialize the PlaceController so that it fires events on this bus.</p>
 <p>Your application's entry-point will therefore generally contain this kind of code:</p>
-<div class="CodeRay">
-  <div class="code"><pre>  EventBus eventBus = new SimpleEventBus();
-  PlaceController placeController = new PlaceController(eventBus);</pre></div>
-</div>
+{% highlight java %}
+EventBus eventBus = new SimpleEventBus();
+PlaceController placeController = new PlaceController(eventBus);
+{% endhighlight %}
 
 <p>By default, the PlaceController initializes with the current place set to <code>Place.NOWHERE</code> (that is, <code>placeController.getWhere()</code> will return <code>Place.NOWHERE</code>). To navigate to another place, you'll pass a Place instance to the PlaceController's goTo method:</p>
-<div class="CodeRay">
-  <div class="code"><pre>  placeController.goTo(new MyPlace());</pre></div>
-</div>
+{% highlight java %}
+placeController.goTo(new MyPlace());
+{% endhighlight %}
 
 <p>This will have the effect of changing the current place and then firing a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.html"><code>PlaceChangeEvent</code></a> on the event bus, which your components will listen to by registering a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.Handler.html"><code>PlaceChangeEvent.Handler</code></a>:</p>
-<div class="CodeRay">
-  <div class="code"><pre>  eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
-    public void onPlaceChange(PlaceChangeEvent event) {
-      Place newPlace = event.getNewPlace();
-      …
-    }
-  });</pre></div>
-</div>
+{% highlight java %}
+eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
+  public void onPlaceChange(PlaceChangeEvent event) {
+    Place newPlace = event.getNewPlace();
+    …
+  }
+});
+{% endhighlight %}
 
 <h2>Where to go now?</h2>
 <p>This was only an overview of the core of GWT 2.1 places, so you can grasp the underlying concepts.</p>

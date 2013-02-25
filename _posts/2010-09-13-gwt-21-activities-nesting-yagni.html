@@ -15,31 +15,31 @@ published: true
 <p>Note that I chose the "detail" region to also serve as the "main content", but you could have decided otherwise, any region could have made it.</p>
 <h2>Mapping this layout to GWT 2.1 Activities</h2>
 <p>Each region is a <em>display region</em>, with its own <code>ActivityManager</code> and <code>ActivityMapper</code>.</p>
-<div class="CodeRay">
-  <div class="code"><pre>    ActivityManager vertMasterActivityManager = new ActivityManager(vertMasterActivityMapper, eventBus);
-    vertMasterActivityManager.setDisplay(vertMasterDisplay);
-    
-    ActivityManager horizMasterActivityManager = new ActivityManager(horizMasterActivityMapper, eventBus);
-    horizMasterActivityManager.setDisplay(horizMasterDisplay);
-    
-    ActivityManager mainActivityManager = new ActivityManager(mainActivityMapper, eventBus);
-    mainActivityManager.setDisplay(mainDisplay);
-    
-    ActivityManager asideActivityManager = new ActivityManager(asideActivityMapper, eventBus);
-    asideActivityManager.setDisplay(asideDisplay);</pre></div>
-</div>
+{% highlight java %}
+ActivityManager vertMasterActivityManager = new ActivityManager(vertMasterActivityMapper, eventBus);
+vertMasterActivityManager.setDisplay(vertMasterDisplay);
+
+ActivityManager horizMasterActivityManager = new ActivityManager(horizMasterActivityMapper, eventBus);
+horizMasterActivityManager.setDisplay(horizMasterDisplay);
+
+ActivityManager mainActivityManager = new ActivityManager(mainActivityMapper, eventBus);
+mainActivityManager.setDisplay(mainDisplay);
+
+ActivityManager asideActivityManager = new ActivityManager(asideActivityMapper, eventBus);
+asideActivityManager.setDisplay(asideDisplay);
+{% endhighlight %}
 
 <p>When a region is not needed, the dedicated <code>ActivityMapper</code> just returns <code>null</code>, which the <code>ActivityManager</code> will relay to the display region. And you'll code your display regions so that a <code>null</code> activity widget hides it (in addition to emptying it).</p>
-<div class="CodeRay">
-  <div class="code"><pre>    // Assumes a LayoutPanel is used for the layout, with a SimplePanel for each display region
-    AcceptsOneWidget asideDisplay = new AcceptsOneWidget() {
-       public void setWidget(IsWidget activityWidget) {
-          Widget widget = Widget.asWidgetOrNull(activityWidget);
-          layoutPanel.setWidgetVisible(asidePanel, widget != null);
-          asidePanel.setWidget(widget);
-       }
-    };</pre></div>
-</div>
+{% highlight java %}
+// Assumes a LayoutPanel is used for the layout, with a SimplePanel for each display region
+AcceptsOneWidget asideDisplay = new AcceptsOneWidget() {
+   public void setWidget(IsWidget activityWidget) {
+      Widget widget = Widget.asWidgetOrNull(activityWidget);
+      layoutPanel.setWidgetVisible(asidePanel, widget != null);
+      asidePanel.setWidget(widget);
+   }
+};
+{% endhighlight %}
 
 <h2>Pros and Cons</h2>
 <p>On the pros side:</p>
@@ -52,20 +52,20 @@ published: true
 <li>
 <p>you'll have to dispatch between all the activities for a given "sub-region" in a single <code>ActivityMapper</code>; the no-nesting rule also applies here, but only in appearance: you'll just nest/split your dispatching code at another level.</p>
 <p>I'd suggest using a base <code>Place</code>, or a marker interface, to discriminate different groups of places/activities (a simple rule could be "those places with the vertical master-detail layout" vs. "those places with the main-aside layout" vs. etc., or a more complex, or more business-oriented one); and you can delegate each group to a more specific method, or even its own <code>ActivityMapper</code> (and this is not limited to this use-case of complex layouts):</p>
-<div class="CodeRay">
-  <div class="code"><pre>    public Activity getActivity(Place place) {
-       if (place instanceof MailPlace) {
-          return mailActivityMapper.getActivity(place);
-       }
-       if (place instanceof ContactsPlace) {
-          return contactsActivityMapper.getActivity(place);
-       }
-       if (place instanceof SettingsPlace) {
-          return settingsActivityMapper.getActivity(place);
-       }
-       return null;
-    }</pre></div>
-</div>
+{% highlight java %}
+public Activity getActivity(Place place) {
+   if (place instanceof MailPlace) {
+      return mailActivityMapper.getActivity(place);
+   }
+   if (place instanceof ContactsPlace) {
+      return contactsActivityMapper.getActivity(place);
+   }
+   if (place instanceof SettingsPlace) {
+      return settingsActivityMapper.getActivity(place);
+   }
+   return null;
+}
+{% endhighlight %}
 
 </li>
 </ul>
