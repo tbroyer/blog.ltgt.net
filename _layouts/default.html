@@ -12,6 +12,9 @@
 
 {{ content }}
 
+{% if page.discuss_url %}
+<p class=discuss>Discuss: <a href="{{ page.discuss_url }}"><img src="//ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border:0;width:16px;height:16px;vertical-align:middle"></a></p>
+{% endif %}
 <footer><small>
 Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://plus.google.com/113945685385052458154?rel=author">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
 </small></footer>
