@@ -2,6 +2,7 @@
 layout: post
 title: Ninja, JAX-RS and Servlets
 published: true
+discuss_url: https://plus.google.com/113945685385052458154/posts/UneFVuF3myS
 ---
 A couple weeks ago I discovered the [Ninja web framework](http://www.ninjaframework.org)
 _via_ a link on Twitter. It's presented as a Java web framework largely inspired from
