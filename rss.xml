@@ -22,7 +22,7 @@ Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ pag
 {% for post in site.posts limit:10 %}
 <entry>
   <title type="html">{{ post.title | xml_escape }}</title>
-  <link rel="{{ post.url }}" />
+  <link href="{{ post.url }}" />
   <published>{{ post.date | date_to_xmlschema }}</published>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
   <id>{{ page.baseurl }}{{ post.url }}</id>
