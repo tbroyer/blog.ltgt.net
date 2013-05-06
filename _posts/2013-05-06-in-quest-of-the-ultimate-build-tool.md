@@ -2,6 +2,7 @@
 layout: post
 title: In quest of the ultimate build tool
 published: true
+discuss_url: https://plus.google.com/113945685385052458154/posts/fkks9Uu48jo
 ---
 It all began last December when [Lex Spoon] published [Recursive Maven considered
 harmful]. Using Maven for a few years without any real issue (though with some frustration), that piqued my curiosity.
