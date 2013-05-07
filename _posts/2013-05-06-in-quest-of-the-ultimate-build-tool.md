@@ -145,14 +145,19 @@ Internals
 ---------
 
 What strikes me is that Buck performs well even though it does a whole lot of stuff.
-The very first thing Buck does is [scan the whole source tree] looking for `BUCK` files. It then [parses them by executing them as Python scripts], where each function call [generates a bit of JSON] that is then parsed by the Buck main program to build the DAG. Finally, for each rule, it scans all its sources and [computes a SHA1 hash] to
+The very first thing Buck does is [scan the whole source tree] looking for `BUCK`
+files. It then [parses them by executing them as Python scripts][parse] (**update:**
+[Buck now uses Jython] for better perfs and system independence), where each function
+call [generates a bit of JSON] that is then parsed by the Buck main program to build
+the DAG. Finally, for each rule, it scans all its sources and [computes a SHA1 hash] to
 determine whether the task has to be run; [the results] are stored in a file used for
 later incremental builds. Clearly the filesystem's own optimizations really help here;
 Buck doesn't even optimizes to compute the SHA1 once per file; it'll probably compute
 it twice for each source file.
 
 [scan the whole source tree]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/model/BuildFileTree.java#L110-129
-[parses them by executing them as Python scripts]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/json/BuildFileToJsonParser.java#L161-192
+[parse]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/json/BuildFileToJsonParser.java#L161-192
+[Buck now uses Jython]: https://github.com/facebook/buck/commit/575931561c61e82e477eecb2f0ffe8400bf2fc39
 [generates a bit of JSON]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/parser/buck.py#L44-48
 [computes a SHA1 hash]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/rules/RuleKey.java#L192-193
 [the results]: https://github.com/facebook/buck/blob/ef014b357fa3c9adf3d517fcbcfe0ef5b18ab3c0/src/com/facebook/buck/rules/OutputKey.java#L43-44
