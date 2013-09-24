@@ -16,6 +16,7 @@ discuss_url: https://profiles.google.com/113945685385052458154/buzz/471GGi9Jmkb
 <p>Note that I chose the "detail" region to also serve as the "main content", but you could have decided otherwise, any region could have made it.</p>
 <h2>Mapping this layout to GWT 2.1 Activities</h2>
 <p>Each region is a <em>display region</em>, with its own <code>ActivityManager</code> and <code>ActivityMapper</code>.</p>
+
 {% highlight java %}
 ActivityManager vertMasterActivityManager = new ActivityManager(vertMasterActivityMapper, eventBus);
 vertMasterActivityManager.setDisplay(vertMasterDisplay);
