@@ -2,6 +2,7 @@
 layout: post
 title: Maven is broken by design
 published: true
+discuss_url: https://plus.google.com/113945685385052458154/posts/7LHoGXQdkri
 ---
 
 The other day, [someone asked] about the status of the GWT Mavenization, saying he loves
