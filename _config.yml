@@ -2,3 +2,7 @@ markdown: redcarpet
 paginate: 50
 permalink: /:categories/:title
 pygments: true
+redcarpet:
+  extensions:
+    - strikethrough
+    - fenced_code_blocks

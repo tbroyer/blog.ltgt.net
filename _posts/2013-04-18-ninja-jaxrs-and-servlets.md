@@ -124,11 +124,14 @@ talk about Play! as I haven't yet spent much time on it (I focused on SBT for no
 I must say I really don't like) nor that _experiment_ (running in production for a couple
 years though) from Tim Boudreau:
 
-<blockquote class="twitter-tweet"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/latest/read">timboudreau.com/blog/latest/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
+<blockquote class="twitter-tweet"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/Acteur/read">timboudreau.com/blog/Acteur/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+document.write("<p><em>Note: the URL above should be <a href='http://timboudreau.com/blog/Acteur/read'>http://timboudreau.com/blog/Acteur/read</a> but Twitter's widget doesn't allow fixing it (for obvious reasons).</em></p>");
+</script>
 
 I've always tried to favor _standard APIs_ anyway, by principle and to avoid lock-in, so
 I'd rather stick to JAX-RS and Servlets (and JAX-RS can be implemented on top of Servlets
 to be deployed everywhere servlets can, including e.g. Google AppEngine), but those other
-frameworks bring interesting things. I'll have to learn Play! (v2) at work anyway, let's
-see how it goes…
+frameworks bring interesting things. ~~I'll have to learn Play! (v2) at work anyway, let's
+see how it goes…~~
