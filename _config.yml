@@ -6,3 +6,4 @@ redcarpet:
   extensions:
     - strikethrough
     - fenced_code_blocks
+exclude: ['Gemfile','Gemfile.lock','serve.sh']
