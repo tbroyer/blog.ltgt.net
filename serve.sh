@@ -1,2 +1,2 @@
-bundle exec jekyll server --watch
+bundle exec jekyll server --watch --drafts
 

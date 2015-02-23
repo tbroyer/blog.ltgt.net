@@ -1,7 +1,7 @@
 markdown: redcarpet
 paginate: 50
 permalink: /:categories/:title
-pygments: true
+highlighter: pygments
 redcarpet:
   extensions:
     - strikethrough
