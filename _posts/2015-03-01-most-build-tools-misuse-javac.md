@@ -247,11 +247,17 @@ or
 assert JavaVersion.current() == JavaVersion.VERSION_1_8
 ```
 
+And [there's a plugin] for animal sniffer.
+
+[there's a plugin]: https://bitbucket.org/lievendoclo/animalsniffer-gradle-plugin
+
 Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
 and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).
 
-No `-⁠encoding` by default, but easy to configure.
+No `-⁠encoding` by default, but [easy to configure].
+
+[easy to configure]: http://gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.CompileOptions.html#org.gradle.api.tasks.compile.CompileOptions:encoding
 
 ### What does Buck do wrong?
 
