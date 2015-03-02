@@ -39,7 +39,7 @@ footer {
   text-align: center;
 }
 
-code, pre {
+code {
   font-family: 'DejaVu Sans Mono', 'Source Code Pro', 'Droid Sans Mono', 'Ubuntu Mono', monospace;
   font-size: .8125em;
 }
