@@ -30,8 +30,8 @@ of class files to run annotation processors on.
 
  * The _class path_ is also similar to the one used when running Java
    programs. It's where `javac` will look for compiled classes referenced by
-   input source or files (i.e. dependencies). It defaults to the current
-   directory if not set.
+   input source files (i.e. dependencies). It defaults to the current directory
+   if not set.
 
  * The _source path_ is where `javac` will look for source files for classes
    referenced by the input source files. Those might end up being implicitly
@@ -42,9 +42,9 @@ of class files to run annotation processors on.
    it will too default to the _class path_ if not set.
 
  * The _extension dirs_ contains JARs that are automatically added to the class
-   path. Each JRE comes its own _extension dir_ prepopulated with a few JARs:
-   PKCS#11, locale data, Nashorn (Java 8), etc. When cross-compiling, you should
-   pass the _extension dirs_ for the target JRE.
+   path. Each JRE comes with its own _extension dir_ prepopulated with a few
+   JARs: PKCS#11, locale data, Nashorn (Java 8), etc. When cross-compiling, you
+   should pass the _extension dirs_ for the target JRE.
 
 Let's ignore annotation processing and cross-compilation for now.
 
@@ -54,9 +54,9 @@ at a few of them:
  * `-⁠encoding` tells `javac` how source files (both the _input source files_ and
    the ones found in the _source path_) are encoded, defaulting to the platform
    default if not set. Nowadays [you should use UTF-8] so you should always be
-   passing `-encoding UTF-8`.
+   passing `-⁠encoding UTF-8`.
 
- * `-⁠d` indicates where class files will be output. If not set, they're output
+ * `-⁠d` indicates where class files will be written. If not set, they're output
    next to the corresponding source file. I don't think anybody uses that
    behavior anymore, so you'll likely use that option.
 
@@ -70,10 +70,10 @@ at a few of them:
  * `-⁠Xprefer:newer` and `-⁠Xprefer:source` control when `javac` will implicitly
    compile files from the _source path._ See below for more.
 
- * `-Xpkginfo:always`, `-Xpkginfo:legacy`, and `-Xpkginfo:nonempty` tell `javac`
-   when when to generate a `package-info.class` for a given `package-info.java`
+ * `-⁠Xpkginfo:always`, `-⁠Xpkginfo:legacy`, and `-⁠Xpkginfo:nonempty` tell `javac`
+   when to generate a `package-⁠info.class` for a given `package-⁠info.java`
    source file. This option is only available starting with JDK 7. As the
-   documentation points out, `-Xpkginfo:always` will help incremental builds
+   documentation points out, `-⁠Xpkginfo:always` will help incremental builds
    when they check the output for each input (rather than the set of inputs vs.
    the set of outputs as a whole.)
    
@@ -85,7 +85,7 @@ compile other source files, looked up in the _source path._ And even less
 intuitive is that `javac` will look for both a compiled class (in the class
 path) and source file (in the source path) for each type, and will by default
 prefer the newer when both are found. You can control this behavior using the
-`-⁠Xprefer:source` and `-Xprefer:newer` options. Note that there's no
+`-⁠Xprefer:source` and `-⁠Xprefer:newer` options. Note that there's no
 `-⁠Xprefer:class`, and this is where many build tools start to get things wrong.
 Finally, when such types are implicitly compiled, class files are generated
 by default; you can control that with the `-⁠implicit:class` and `-⁠implicit:none`
@@ -110,7 +110,7 @@ phases actually: tests are compiled separately). You can however, with a bit mor
 work, partition source files using globs in _includes_ and _excludes_ patterns.
 And of course each project declares its external dependencies, with different
 _scopes_ depending on where they'll be used (compile-time, runtime, tests, etc.)
-The resulf of the compilation goes to a specific directory: Maven uses the same
+The result of the compilation goes to a specific directory: Maven uses the same
 output directory as the one it also copies resources, whereas Gradle uses a
 specific output directory for each task (which greatly helps for incremental
 builds, but that's not today's subject.)
@@ -132,29 +132,29 @@ first let's define how we'd expect those tools to work with `javac`.
 How do I expect build tools to use `javac`?
 -------------------------------------------
 
-Let's get the easy things first: dependencies go in the `-classpath`, the output
+Let's get the easy things first: dependencies go in the _class path_, the output
 directory is passed as `-d`, and input source files are passed each one as an
 argument.
 
-As seen above, the `-encoding` should also always be explicit (and I suggest
+As seen above, the `-⁠encoding` should also always be explicit (and I suggest
 using `UTF-8` by default).
 
 If you only do that though, you risk compiling source files implicitly loaded
 from the classpath. [It has happened before][gwt issue 3439] (and remember
-that there's no `-Xprefer:class`, and no way to prevent `javac` from implicitly
-loading source files). So you need to pass an explicit `-sourcepath`.
+that there's no `-⁠Xprefer:class`, and no way to prevent `javac` from implicitly
+loading source files). So you need to pass an explicit _source path_.
 
 [gwt issue 3439]: https://code.google.com/p/google-web-toolkit/issues/detail?id=3439
 
-What should be put in `-sourcepath`? If you use your _source roots_, then you'll
+What should be put in _source path_? If you use your _source roots_, then you'll
 risk you includes/excludes patterns to not be respected. [It has happened before].
-I propose that `-sourcepath` be empty (it's as easy as using `-sourcepath :` or
-`-sourcepath ""`.)
+I propose that _source path_ be empty (it's as easy as using `-⁠sourcepath :` or
+`-⁠sourcepath ""`.)
 
 [It has happened before]: https://jira.codehaus.org/browse/MCOMPILER-26
 [generates a warning]: https://jira.codehaus.org/browse/MCOMPILER-180
 
-As seen above, `-target` (and `-source`, which controls `-target`) should never
+As seen above, `-⁠target` (and `-⁠source`, which controls `-⁠target`) should never
 be used without setting the _boot class path_ and _extension dirs_. Even a tool
 like [animal sniffer], [doesn't guarantee] your code will run [without issues].
 What build tools should do is let you easily require a minimum JDK version for
@@ -178,8 +178,8 @@ How do build tools misuse `javac` then?
 
 I'll start with Maven.
 
-The maven-compiler-plugin has default values for `-source`
-and `-target`, with very _oldish_ defaults (`1.5` in the latest version released
+The maven-compiler-plugin has default values for `-⁠source`
+and `-⁠target`, with very _oldish_ defaults (`1.5` in the latest version released
 two years ago, but it was `1.4` not so long ago). This more or less forces you
 to redefine the values in every project. You can enforce a JDK version using the
 maven-enforcer-plugin's [`requireJavaVersion` rule], and using profiles you could
@@ -218,7 +218,7 @@ change an API that's used by other, untouched, classes), but it apparently
 still tries to somehow match `.java` and `.class` files to each others, which
 [won't work for `package-info.java`][MCOMPILER-205] classes, that don't always
 generate a `package-info.class` by default. maven-compiler-plugin should use
-`-Xpkginfo:always`, but it only works starting with Java 7, and Maven has
+`-⁠Xpkginfo:always`, but it only works starting with Java 7, and Maven has
 committed to support very old JDKs…
 
 [causes issues]: https://cwiki.apache.org/confluence/display/MAVEN/Incremental+Builds
@@ -226,7 +226,7 @@ committed to support very old JDKs…
 
 ### What does Gradle do wrong?
 
-Gradle doesn't pass a `-source` and `-target` by default, which is good, but it
+Gradle doesn't pass a `-⁠source` and `-⁠target` by default, which is good, but it
 lets you easily set them. It however lets you easily set the _boot class path_
 and _extension dirs_ too, so it's not so bad. Gradle is gaining support for
 _toolchains_ similar to Maven, but it's not usable yet. It'll likely be more
@@ -247,15 +247,15 @@ or
 assert JavaVersion.current() == JavaVersion.VERSION_1_8
 ```
 
-Gradle doesn't pass a `-sourcepath`, which we've seen is wrong. Here's a small
+Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
 and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).
 
-No `-encoding` by default, but easy to configure.
+No `-⁠encoding` by default, but easy to configure.
 
 ### What does Buck do wrong?
 
-Buck always passes a `-source` and `-target` (defaults to `1.7` though). It
+Buck always passes a `-⁠source` and `-⁠target` (defaults to `1.7` though). It
 lets you define the _boot class path_ (even though it's undocumented) but not
 _extension dirs._ You can however do that easily thanks to `extra_arguments`.
 Note that this configuration is global to your project. There's no way to plug
@@ -265,11 +265,11 @@ run with Java 7 despite the default `target_level=7` configuration.) I suppose
 you could do something using a `gen_rule`, though that'd be a hack if you ask
 me.
 
-Like Gradle, Buck doesn't pass a `-sourcepath`. Here's a small repro case:
+Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
 <https://gist.github.com/tbroyer/512941cd798e1ccba4b4> and I've [reported the
 issue](https://github.com/facebook/buck/issues/244).
 
-No `-encoding` either, Buck assumes your environment is already UTF-8 (which
+No `-⁠encoding` either, Buck assumes your environment is already UTF-8 (which
 is a not-so-wrong assumption), but it can be passed using `extra_arguments` if
 you prefer being explicit.
 
