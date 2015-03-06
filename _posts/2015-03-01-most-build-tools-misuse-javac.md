@@ -14,6 +14,12 @@ investigating further. But first, let's see how `javac` works.
 
 [ultimate build tool]: /in-quest-of-the-ultimate-build-tool
 
+**EDIT(2015-03-06):** Buck has been [fixed][buck-fix] and the proposed change
+was accepted by Gradle, currently [under review][gradle-pull-request].
+
+[buck-fix]: https://github.com/facebook/buck/commit/c75bb91f7d8eec8ea8ed86b598fb2ef3bb67a3bf
+[gradle-pull-request]: https://github.com/gradle/gradle/pull/414
+
 How does `javac` work?
 ----------------------
 
@@ -76,7 +82,7 @@ at a few of them:
    documentation points out, `-⁠Xpkginfo:always` will help incremental builds
    when they check the output for each input (rather than the set of inputs vs.
    the set of outputs as a whole.)
-   
+
 [you should use UTF-8]: http://www.utf8everywhere.org/
 
 What's interesting, and counter-intuitive, is that `javac`, when looking for
@@ -254,12 +260,14 @@ And [there's a plugin] for animal sniffer.
 Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
 and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).
+**Edit:** the issue has been accepted and I've sent a [pull-request][gradle-pull-request];
+the fix should be in Gradle 2.5, hopefully even 2.4.
 
 No `-⁠encoding` by default, but [easy to configure].
 
 [easy to configure]: http://gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.CompileOptions.html#org.gradle.api.tasks.compile.CompileOptions:encoding
 
-### What does Buck do wrong?
+### What ~~does~~ did Buck do wrong?
 
 Buck always passes a `-⁠source` and `-⁠target` (defaults to `1.7` though). It
 lets you define the _boot class path_ (even though it's undocumented) but not
@@ -271,9 +279,10 @@ run with Java 7 despite the default `target_level=7` configuration.) I suppose
 you could do something using a `gen_rule`, though that'd be a hack if you ask
 me.
 
-Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
+~~Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
 <https://gist.github.com/tbroyer/512941cd798e1ccba4b4> and I've [reported the
-issue](https://github.com/facebook/buck/issues/244).
+issue](https://github.com/facebook/buck/issues/244).~~
+**Edit:** Buck has been [fixed][buck-fix].
 
 No `-⁠encoding` either, Buck assumes your environment is already UTF-8 (which
 is a not-so-wrong assumption), but it can be passed using `extra_arguments` if
@@ -310,4 +319,3 @@ JMake, and possibly the custom Twitter Compiler, to bring their incremental
 compilation to `javac`, and get annotation processing working at the same time.)
 
 [custom Maven lifecycle]: http://takari.io/book/40-lifecycle.html
-
