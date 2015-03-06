@@ -14,8 +14,9 @@ investigating further. But first, let's see how `javac` works.
 
 [ultimate build tool]: /in-quest-of-the-ultimate-build-tool
 
-**EDIT(2015-03-06):** Buck has been [fixed][buck-fix] and the proposed change
-was accepted by Gradle, currently [under review][gradle-pull-request].
+**EDIT(2015-03-06):** the _source path_ issue in Buck has been [fixed][buck-fix]
+and the proposed change was accepted for Gradle, currently
+[under review][gradle-pull-request].
 
 [buck-fix]: https://github.com/facebook/buck/commit/c75bb91f7d8eec8ea8ed86b598fb2ef3bb67a3bf
 [gradle-pull-request]: https://github.com/gradle/gradle/pull/414
