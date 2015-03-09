@@ -14,9 +14,8 @@ investigating further. But first, let's see how `javac` works.
 
 [ultimate build tool]: /in-quest-of-the-ultimate-build-tool
 
-**EDIT(2015-03-06):** the _source path_ issue in Buck has been [fixed][buck-fix]
-and the proposed change was accepted for Gradle, currently
-[under review][gradle-pull-request].
+**EDIT(2015-03-08):** the _source path_ issue has been fixed in [Buck][buck-fix]
+and [Gradle][gradle-pull-request].
 
 [buck-fix]: https://github.com/facebook/buck/commit/c75bb91f7d8eec8ea8ed86b598fb2ef3bb67a3bf
 [gradle-pull-request]: https://github.com/gradle/gradle/pull/414
@@ -258,17 +257,17 @@ And [there's a plugin] for animal sniffer.
 
 [there's a plugin]: https://bitbucket.org/lievendoclo/animalsniffer-gradle-plugin
 
-Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
+~~Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
-and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).
-**Edit:** the issue has been accepted and I've sent a [pull-request][gradle-pull-request];
-the fix should be in Gradle 2.5, hopefully even 2.4.
+and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).~~
+**Edit(2015-03-08):** Gradle has been [fixed][gradle-pull-request]; the fix
+should be in Gradle 2.5, hopefully even 2.4.
 
 No `-⁠encoding` by default, but [easy to configure].
 
 [easy to configure]: http://gradle.org/docs/current/dsl/org.gradle.api.tasks.compile.CompileOptions.html#org.gradle.api.tasks.compile.CompileOptions:encoding
 
-### What ~~does~~ did Buck do wrong?
+### What does Buck do wrong?
 
 Buck always passes a `-⁠source` and `-⁠target` (defaults to `1.7` though). It
 lets you define the _boot class path_ (even though it's undocumented) but not
@@ -283,7 +282,7 @@ me.
 ~~Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
 <https://gist.github.com/tbroyer/512941cd798e1ccba4b4> and I've [reported the
 issue](https://github.com/facebook/buck/issues/244).~~
-**Edit:** Buck has been [fixed][buck-fix].
+**Edit(2015-03-06):** Buck has been [fixed][buck-fix].
 
 No `-⁠encoding` either, Buck assumes your environment is already UTF-8 (which
 is a not-so-wrong assumption), but it can be passed using `extra_arguments` if
