@@ -15,10 +15,10 @@ investigating further. But first, let's see how `javac` works.
 [ultimate build tool]: /in-quest-of-the-ultimate-build-tool
 
 **EDIT(2015-03-08):** the _source path_ issue has been fixed in [Buck][buck-fix]
-and [Gradle][gradle-pull-request].
+and [Gradle][gradle-release-notes].
 
 [buck-fix]: https://github.com/facebook/buck/commit/c75bb91f7d8eec8ea8ed86b598fb2ef3bb67a3bf
-[gradle-pull-request]: https://github.com/gradle/gradle/pull/414
+[gradle-release-notes]: https://gradle.org/docs/2.4/release-notes#changes-to-default-value-for-java-compilation-sourcepath
 
 How does `javac` work?
 ----------------------
@@ -260,8 +260,8 @@ And [there's a plugin] for animal sniffer.
 ~~Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
 and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).~~
-**Edit(2015-03-08):** Gradle has been [fixed][gradle-pull-request]; the fix
-should be in Gradle 2.5, hopefully even 2.4.
+**Edit(2015-03-08,2015-05-14):** Gradle has been [fixed][gradle-release-notes]; the fix
+shipped in 2.4.
 
 No `-⁠encoding` by default, but [easy to configure].
 
