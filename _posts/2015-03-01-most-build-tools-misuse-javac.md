@@ -146,19 +146,19 @@ As seen above, the `-⁠encoding` should also always be explicit (and I suggest
 using `UTF-8` by default).
 
 If you only do that though, you risk compiling source files implicitly loaded
-from the classpath. [It has happened before][gwt issue 3439] (and remember
+from the classpath. [It has happened before][gwt issue 3444] (and remember
 that there's no `-⁠Xprefer:class`, and no way to prevent `javac` from implicitly
 loading source files). So you need to pass an explicit _source path_.
 
-[gwt issue 3439]: https://code.google.com/p/google-web-toolkit/issues/detail?id=3439
+[gwt issue 3444]: https://github.com/gwtproject/gwt/issues/3444
 
 What should be put in _source path_? If you use your _source roots_, then you'll
 risk you includes/excludes patterns to not be respected. [It has happened before].
 I propose that _source path_ be empty (it's as easy as using `-⁠sourcepath :` or
 `-⁠sourcepath ""`.)
 
-[It has happened before]: https://jira.codehaus.org/browse/MCOMPILER-26
-[generates a warning]: https://jira.codehaus.org/browse/MCOMPILER-180
+[It has happened before]: https://issues.apache.org/jira/browse/MCOMPILER-26
+[generates a warning]: https://issues.apache.org/jira/browse/MCOMPILER-180
 
 As seen above, `-⁠target` (and `-⁠source`, which controls `-⁠target`) should never
 be used without setting the _boot class path_ and _extension dirs_. Even a tool
@@ -169,7 +169,7 @@ cross-compilation by also setting the _boot class path_ and _extension dirs_),
 and use animal sniffer to make sure you at least don't call APIs from a newer
 Java version.
 
-[animal sniffer]: http://mojo.codehaus.org/animal-sniffer/
+[animal sniffer]: http://www.mojohaus.org/animal-sniffer/
 [doesn't guarantee]: http://developer-blog.cloudbees.com/2014/12/beware-siren-target-call.html
 [without issues]: http://www.draconianoverlord.com/2014/04/01/jdk-compatibility.html
 
@@ -206,16 +206,16 @@ includes/excludes patterns. Strangely, that was fixed [long ago], but was then
 again] as a bug since then. I made a repro case if you want to try it:
 <https://gist.github.com/tbroyer/d3ddd1851beeff5868cc>
 
-[long ago]: https://jira.codehaus.org/browse/MCOMPILER-26
-[MCOMPILER-98]: https://jira.codehaus.org/browse/MCOMPILER-98
-[reported again]: https://jira.codehaus.org/browse/MCOMPILER-174
+[long ago]: https://issues.apache.org/jira/browse/MCOMPILER-26
+[MCOMPILER-98]: https://issues.apache.org/jira/browse/MCOMPILER-98
+[reported again]: https://issues.apache.org/jira/browse/MCOMPILER-174
 
 Beware too that the maven-compiler-plugin 3.2 also has an issue when used with
 annotation processing: it adds the _generated sources output directory_ to the
 _source path_ (more accurately to its _source roots_, which it uses as the
 _source path_), [causing compilation errors].
 
-[causing compilation errors]: https://jira.codehaus.org/browse/MCOMPILER-235
+[causing compilation errors]: https://issues.apache.org/jira/browse/MCOMPILER-235
 
 Finally, maven-compiler-plugin 3.x uses a new approach to incremental builds
 that recompiles all source files as soon as it detects one changed file (it
@@ -228,7 +228,7 @@ generate a `package-info.class` by default. maven-compiler-plugin should use
 committed to support very old JDKs…
 
 [causes issues]: https://cwiki.apache.org/confluence/display/MAVEN/Incremental+Builds
-[MCOMPILER-205]: https://jira.codehaus.org/browse/MCOMPILER-205
+[MCOMPILER-205]: https://issues.apache.org/jira/browse/MCOMPILER-205
 
 ### What does Gradle do wrong?
 
