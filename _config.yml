@@ -1,9 +1,9 @@
 markdown: redcarpet
 paginate: 50
 permalink: /:categories/:title
+exclude: ['serve.sh']
 highlighter: pygments
 redcarpet:
   extensions:
     - strikethrough
     - fenced_code_blocks
-exclude: ['Gemfile','Gemfile.lock','serve.sh']
