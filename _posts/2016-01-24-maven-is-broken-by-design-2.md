@@ -34,6 +34,7 @@ There are 6 such dependency scopes only, and in Maven 3 you cannot define custom
 [_scopes_]: https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope
 
 Maven then bakes rules around those scopes:
+
  * when compiling "main" classes, the classpath will include the `compile`, `provided`, and `system` dependencies
  * when compiling test classes, the classpath will include all the above and the `test` dependencies
  * when running tests (through the Surefire plugins), the classpath will include all the above and the `runtime` dependencies
@@ -94,6 +95,7 @@ This is because the _dependency_ is hidden inside the Maven Compiler Plugin
 and Maven doesn't know about it when building the reactor's execution graph.
 
 Not to mention that:
+
  * those _dependencies_ aren't subject to `dependencyManagement`
    or anything equivalent
  * the Maven Compiler Plugin will have to implement exclusion of transitive dependencies by itself (it currently does not)
