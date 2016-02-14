@@ -258,7 +258,7 @@ in your local network to serve as a proxy and never ever configure any repositor
 your POMs. This is nothing more than a workaround though, almost looking like they're
 apologizing for their broken tool (hey, but you get some nice features out of that new 
 tool!). For reference, Ivy recommends such a setup for enterprises, but for
-[completely different reasons] (that are also solved by a Maven repository manager
+[completely different reasons] \(that are also solved by a Maven repository manager
 BTW). An Ivy enterprise repository is also an entirely different beast than a Maven
 repository manager: it's not a new piece of software, it can be a network filesystem, a
 WebDAV server (or simply an HTTP server if it should be read-only), or a remote
