@@ -1,9 +1,8 @@
-markdown: redcarpet
 paginate: 50
 permalink: /:categories/:title
 exclude: ['serve.sh']
-highlighter: pygments
-redcarpet:
-  extensions:
-    - strikethrough
-    - fenced_code_blocks
+kramdown:
+  input: GFM
+  hard_wrap: false
+gems:
+  - jekyll-paginate

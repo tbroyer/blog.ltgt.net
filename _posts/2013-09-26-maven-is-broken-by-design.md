@@ -183,7 +183,7 @@ In any case, you're asking Maven to do too much work. Combined with Maven's tend
 to already do too much work (see incremental builds above), this is a real productivity
 killer.
 
-<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a>
+<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a></p>
 
 AFAICT, Maven didn't initially have multi-module support, and this was first
 contributed as a plugin before being builtin. That would explain why reactors and the

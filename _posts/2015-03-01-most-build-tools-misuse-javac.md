@@ -257,9 +257,9 @@ And [there's a plugin] for animal sniffer.
 
 [there's a plugin]: https://bitbucket.org/lievendoclo/animalsniffer-gradle-plugin
 
-~~Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
+<del>Gradle doesn't pass a _source path_, which we've seen is wrong. Here's a small
 repro case if you want: <https://gist.github.com/tbroyer/d8174f5eb99bdb7f291b>
-and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).~~
+and I've [reported the issue](http://forums.gradle.org/gradle/topics/gradle-should-pass-sourcepath-to-javac-by-default-to-avoid-false-positives).</del>
 **Edit(2015-03-08,2015-05-14):** Gradle has been [fixed][gradle-release-notes]; the fix
 shipped in 2.4.
 
@@ -279,9 +279,9 @@ run with Java 7 despite the default `target_level=7` configuration.) I suppose
 you could do something using a `gen_rule`, though that'd be a hack if you ask
 me.
 
-~~Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
+<del>Like Gradle, Buck doesn't pass a _source path_. Here's a small repro case:
 <https://gist.github.com/tbroyer/512941cd798e1ccba4b4> and I've [reported the
-issue](https://github.com/facebook/buck/issues/244).~~
+issue](https://github.com/facebook/buck/issues/244).</del>
 **Edit(2015-03-06):** Buck has been [fixed][buck-fix].
 
 No `-⁠encoding` either, Buck assumes your environment is already UTF-8 (which

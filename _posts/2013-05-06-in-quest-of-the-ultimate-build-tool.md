@@ -104,7 +104,7 @@ sys     0m38.648s
 
 **DISCLAIMER:** This is by no mean a benchmark; I ran those builds with several
 other processes running (including Chrome and Jekyll where I write this post).
-<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a>
+<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a></p>
 
 Is Buck faster? Well yes, and it gets slightly better for incremental / non-clean
 builds (the following one is a no-op; the Maven build includes calls to Ant that
@@ -190,7 +190,7 @@ Actually, Buck looks a lot like Make, and could very well generate a Make file,
 except it uses SHA1 hashes rather than timestamps. The `java_library` rule in Buck
 (I deliberately reuse the Maven scheme for organizing source files):
 
-```
+```python
 java_library(
   name = 'my-library',
   srcs = glob(['src/main/java/**/*.java']),
@@ -207,10 +207,10 @@ is more or less equivalent to the following Make snippet:
 MY_LIBRARY_SRCS := $(shell find src/main/java -type f -name '*.java')
 MY_LIBRARY_RESOURCES := $(shell find src/main/resources -type f)
 my-library.jar: $(MY_LIBRARY_SRCS) $(MY_LIBRARY_RESOURCES) third-party/guava.jar
-    rm my-library.jar
-    mkdir -p my-library_tmp
-    javac -classpath third-party/guava.jar -d my-library_tmp $(MY_LIBRARY_SRCS)
-    jar cf my-library.jar -C my-library_tmp . -C src/main/resources .
+	rm my-library.jar
+	mkdir -p my-library_tmp
+	javac -classpath third-party/guava.jar -d my-library_tmp $(MY_LIBRARY_SRCS)
+	jar cf my-library.jar -C my-library_tmp . -C src/main/resources .
 ```
 
 Most other tools work with a finer level of granularity: Ant, Maven, SBT, Gradle, and
@@ -226,6 +226,7 @@ The ultimate build tool
 -----------------------
 
 I think Bob Vawter sums it up [in a comment on Google+]:
+
 > The Right Way seems to involve systems that are declarative at a high level, to
 > express relationships between components in a manner amenable to tooling, and then
 > imperative at the low-level, to take care of all the ugly stuff that really just
@@ -270,7 +271,7 @@ compatibility (by moving those classes into another package), you'll end up usin
 `glob()`s, and if you get them wrong you'll put one class into several JARs, which is
 generally not a good thing. Maven makes it harder to get things wrong, and that's a
 good thing (but it does so at the expense of also making it harder to get things right).
-<p style="text-align:center"><a href="http://xkcd.com/927/"><img alt="" src="http://imgs.xkcd.com/comics/standards.png" style="width: 500px; height: 283px"></a>
+<p style="text-align:center"><a href="http://xkcd.com/927/"><img alt="" src="http://imgs.xkcd.com/comics/standards.png" style="width: 500px; height: 283px"></a></p>
 
 As to whether the build tool should also manage third-party dependencies, help with the
 release process, publish artifacts to some shared repository and/or provide means to

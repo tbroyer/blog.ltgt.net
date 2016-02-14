@@ -36,10 +36,10 @@ placeController.goTo(new MyPlace());
 <p>This will have the effect of changing the current place and then firing a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.html"><code>PlaceChangeEvent</code></a> on the event bus, which your components will listen to by registering a <a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/place/shared/PlaceChangeEvent.Handler.html"><code>PlaceChangeEvent.Handler</code></a>:</p>
 {% highlight java %}
 eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
-  public void onPlaceChange(PlaceChangeEvent event) {
-    Place newPlace = event.getNewPlace();
-    …
-  }
+  public void onPlaceChange(PlaceChangeEvent event) {
+    Place newPlace = event.getNewPlace();
+    …
+  }
 });
 {% endhighlight %}
 
