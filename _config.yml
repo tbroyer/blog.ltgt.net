@@ -1,5 +1,5 @@
 paginate: 50
-permalink: /:categories/:title
+permalink: /:categories/:title/
 exclude: ['serve.sh']
 kramdown:
   input: GFM
