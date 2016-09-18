@@ -1,2 +1,1 @@
-docker run --rm -it -v "$PWD":/usr/src/app -p "4000:4000" starefossen/github-pages
-
+docker run --rm -v "$PWD":/srv/jekyll -p "4000:4000" -e DRAFTS=true jekyll/jekyll:pages
