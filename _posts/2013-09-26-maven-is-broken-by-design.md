@@ -26,13 +26,13 @@ Maven's model is mutable
 A few weeks ago, in reaction to Tesla Polyglot bringing a Scala DSL instead of XML to
 describe your project, Arnaud Héritier tweeted:
 
-<blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> <a href="https://twitter.com/lescastcodeurs">@lescastcodeurs</a> :-) I&#39;m not against a simplest /less verbose config file (json for example), but I&#39;m against a dev language</p>&mdash; Arnaud Héritier (@aheritier) <a href="https://twitter.com/aheritier/statuses/374810577866346496">September 3, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center" data-conversation="none"><p><a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> <a href="https://twitter.com/lescastcodeurs">@lescastcodeurs</a> :-) I&#39;m not against a simplest /less verbose config file (json for example), but I&#39;m against a dev language</p>&mdash; Arnaud Héritier (@aheritier) <a href="https://twitter.com/aheritier/statuses/374810577866346496">September 3, 2013</a></blockquote>
 
 To which I replied:
 
-<blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/aheritier">@aheritier</a> <a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> I initially was too (after looking at Rake, Buildr, Gradle and SBT), but Buck made me change my mind.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/374820078643982336">September 3, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center" data-conversation="none"><p><a href="https://twitter.com/aheritier">@aheritier</a> <a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> I initially was too (after looking at Rake, Buildr, Gradle and SBT), but Buck made me change my mind.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/374820078643982336">September 3, 2013</a></blockquote>
 
-<blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/aheritier">@aheritier</a> <a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> …particularly when considering how Maven&#39;s supposedly declarative approach is actually so imperative…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/374820456055857152">September 3, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center" data-conversation="none"><p><a href="https://twitter.com/aheritier">@aheritier</a> <a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a> …particularly when considering how Maven&#39;s supposedly declarative approach is actually so imperative…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/374820456055857152">September 3, 2013</a></blockquote>
 
 Think about this not-uncommon scenario: a pom.xml can only list a single source folder.
 If you have more than one (for whichever reason), you have to use the `build-helper-maven-plugin`
@@ -108,12 +108,12 @@ As far as the `maven-compiler-plugin` is concerned, JDK 8 introduces a new tool,
 
 [`jdeps`]: http://mail.openjdk.java.net/pipermail/core-libs-dev/2012-November/012485.html
 
-<blockquote class="twitter-tweet" align="center"><p>Could be used to make a true incremental Java build tool (except maybe when annotation processors come in the play)&#10;<a href="https://t.co/3QB6Nxf85v">https://t.co/3QB6Nxf85v</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/377365329040531456">September 10, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Could be used to make a true incremental Java build tool (except maybe when annotation processors come in the play)&#10;<a href="https://t.co/3QB6Nxf85v">https://t.co/3QB6Nxf85v</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/377365329040531456">September 10, 2013</a></blockquote>
 
 The `maven-compiler-plugin` could then build a graph of the dependencies and rebuild
 B whenever A changed.
 
-<blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/tbroyer">@tbroyer</a> Now the question is: would it be worth it? I&#39;d bet no. This is not what&#39;s slowing our builds.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/377366759025557505">September 10, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center" data-conversation="none"><p><a href="https://twitter.com/tbroyer">@tbroyer</a> Now the question is: would it be worth it? I&#39;d bet no. This is not what&#39;s slowing our builds.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/377366759025557505">September 10, 2013</a></blockquote>
 
 Is it really worth keeping track of all those things and try to only recompile the
 few things that have changed (and the things that depend on it, transitively) when

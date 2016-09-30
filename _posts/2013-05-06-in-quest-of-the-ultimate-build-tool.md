@@ -39,7 +39,7 @@ the distributed build nature of Blaze: [Buck].
 [buck-issue-7]: https://github.com/facebook/buck/issues/7
 [Buck]: http://facebook.github.io/buck/
 
-<blockquote class="twitter-tweet" align="center"><p>@<a href="https://twitter.com/tbroyer">tbroyer</a> Interesting. I like that aspect. I mostly take issue with them not solving any of the existing hard problems around Android builds.</p>&mdash; Jake Wharton (@JakeWharton) <a href="https://twitter.com/JakeWharton/status/325002919034363907">April 18, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>@<a href="https://twitter.com/tbroyer">tbroyer</a> Interesting. I like that aspect. I mostly take issue with them not solving any of the existing hard problems around Android builds.</p>&mdash; Jake Wharton (@JakeWharton) <a href="https://twitter.com/JakeWharton/status/325002919034363907">April 18, 2013</a></blockquote>
 
 [Contrary to many _modern_ build tools], Buck is **only** a build tool: it doesn't
 manage dependencies, releases, or publishing produced artifacts to some repository,
@@ -51,7 +51,7 @@ Eclipse according to some code comments and commit logs).
 
 [Contrary to many _modern_ build tools]: https://plus.google.com/114156500057804356924/posts/Muoq6gy3cCM
 
-<blockquote class="twitter-tweet" align="center"><p>Solving an actual Hard Problem™ for Dart's build system. <a href="http://t.co/HaUcrx1ajB" title="http://news.dartlang.org/2013/04/pubs-new-constraint-solver.html">news.dartlang.org/2013/04/pubs-n…</a> Don't tell Facebook that this is what real build systems do.</p>&mdash; Jake Wharton (@JakeWharton) <a href="https://twitter.com/JakeWharton/status/325342363427954689">April 19, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Solving an actual Hard Problem™ for Dart's build system. <a href="http://t.co/HaUcrx1ajB" title="http://news.dartlang.org/2013/04/pubs-new-constraint-solver.html">news.dartlang.org/2013/04/pubs-n…</a> Don't tell Facebook that this is what real build systems do.</p>&mdash; Jake Wharton (@JakeWharton) <a href="https://twitter.com/JakeWharton/status/325342363427954689">April 19, 2013</a></blockquote>
 
 If you want managed dependencies, you'll have to use [Ivy] or build a small tool around
 Ivy or [Aether] that could download artifacts and generate the appropriate `BUCK` file.

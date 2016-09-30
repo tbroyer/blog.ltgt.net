@@ -15,7 +15,7 @@ manipulation to override the semantics of `static` fields (replacing them with a
 `ThreadLocal`). This is probably the one thing that I dislike the most in Play!: it's no
 longer Java.
 
-<blockquote class="twitter-tweet"><p>Ninja web framework: Play! framework done right?<br>Looks a lot like JAX-RS though; I think I'll stick with that one.<br><br><a href="http://t.co/TrCzBqTo9a" title="http://www.ninjaframework.org/introduction.html">ninjaframework.org/introduction.h…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/320153069285412864">April 5, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Ninja web framework: Play! framework done right?<br>Looks a lot like JAX-RS though; I think I'll stick with that one.<br><br><a href="http://t.co/TrCzBqTo9a" title="http://www.ninjaframework.org/introduction.html">ninjaframework.org/introduction.h…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/320153069285412864">April 5, 2013</a></blockquote>
 
 I like Ninja's _minimalism_ but I think it can do better (and I'm not even talking about
 the rather limit set of features compared to Play!). For example, Play! is advertized as
@@ -36,9 +36,9 @@ is very open and very reactive, so overall working on Ninja was a pleasure.
 
 But there was still something that bugged me, and I couln't put words on it at the time.
 
-<blockquote class="twitter-tweet"><p>The more I look at frameworks like Play or Ninja, the more I want to go “no framework”. Will have to experiment with that…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/320997765129854976">April 7, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>The more I look at frameworks like Play or Ninja, the more I want to go “no framework”. Will have to experiment with that…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/320997765129854976">April 7, 2013</a></blockquote>
 
-<blockquote class="twitter-tweet"><p>Don't get me wrong: I'm not saying Play or Ninja are bad; just that, 1 or 2 days in, I really can't say I'm in love.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321020175291920384">April 7, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Don't get me wrong: I'm not saying Play or Ninja are bad; just that, 1 or 2 days in, I really can't say I'm in love.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321020175291920384">April 7, 2013</a></blockquote>
 
 Overall, I think it boils done to the fact that I don't like frameworks. I largely prefer
 libraries. Play! is a _full-stack_ framework, and Ninja borrows from it by providing the
@@ -94,7 +94,7 @@ support for NIO (already implemented in Grizzly 3.0-SNAPSHOT, among others), but
 advanced routing (with extraction of path-parameters from the URL, and construction of links from
 a URL-Template/pattern) and I don't know of any such thing as a standalone library.
 
-<blockquote class="twitter-tweet"><p>Lightweight web “framework” (toolkit?): Servlet 3.1 + some router + DI container + template engine. The problem is to find a router…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321223833065508864">April 8, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Lightweight web “framework” (toolkit?): Servlet 3.1 + some router + DI container + template engine. The problem is to find a router…</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321223833065508864">April 8, 2013</a></blockquote>
 
 I unfortunately haven't had the time yet to do the experiment. I'm not even sure a full-blown
 _router_ component is really needed after all (it really depends how you want your URLs
@@ -125,7 +125,7 @@ talk about Play! as I haven't yet spent much time on it (I focused on SBT for no
 I must say I really don't like) nor that _experiment_ (running in production for a couple
 years though) from Tim Boudreau:
 
-<blockquote class="twitter-tweet"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/Acteur/read">timboudreau.com/blog/Acteur/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
+<blockquote class="twitter-tweet" data-align="center"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/Acteur/read">timboudreau.com/blog/Acteur/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
 <script>
 document.write("<p><em>Note: the URL above should be <a href='http://timboudreau.com/blog/Acteur/read'>http://timboudreau.com/blog/Acteur/read</a> but Twitter's widget doesn't allow fixing it (for obvious reasons).</em></p>");
 </script>
