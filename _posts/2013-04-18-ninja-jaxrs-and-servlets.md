@@ -127,7 +127,11 @@ years though) from Tim Boudreau:
 
 <blockquote class="twitter-tweet" data-align="center"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/Acteur/read">timboudreau.com/blog/Acteur/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
 <script>
-document.write("<p><em>Note: the URL above should be <a href='http://timboudreau.com/blog/Acteur/read'>http://timboudreau.com/blog/Acteur/read</a> but Twitter's widget doesn't allow fixing it (for obvious reasons).</em></p>");
+var scripts = document.getElementsByTagName('script');
+var script = scripts[scripts.length - 1];
+var p = document.createElement('p');
+p.innerHTML = "<em>Note: the URL above should be <a href='http://timboudreau.com/blog/Acteur/read'>http://timboudreau.com/blog/Acteur/read</a> but Twitter's widget doesn't allow fixing it (for obvious reasons).</em>";
+script.parentNode.insertBefore(p, script);
 </script>
 
 I've always tried to favor _standard APIs_ anyway, by principle and to avoid lock-in, so
