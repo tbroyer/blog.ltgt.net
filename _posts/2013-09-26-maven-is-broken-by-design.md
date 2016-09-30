@@ -3,6 +3,7 @@ layout: post
 title: Maven is broken by design
 published: true
 discuss_url: https://plus.google.com/113945685385052458154/posts/7LHoGXQdkri
+has_embedded_tweets: true
 ---
 
 The other day, [someone asked] about the status of the GWT Mavenization, saying he loves
@@ -113,7 +114,6 @@ The `maven-compiler-plugin` could then build a graph of the dependencies and reb
 B whenever A changed.
 
 <blockquote class="twitter-tweet" align="center" data-conversation="none"><p><a href="https://twitter.com/tbroyer">@tbroyer</a> Now the question is: would it be worth it? I&#39;d bet no. This is not what&#39;s slowing our builds.</p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/statuses/377366759025557505">September 10, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Is it really worth keeping track of all those things and try to only recompile the
 few things that have changed (and the things that depend on it, transitively) when

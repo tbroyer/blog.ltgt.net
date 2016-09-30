@@ -3,6 +3,7 @@ layout: post
 title: In quest of the ultimate build tool
 published: true
 discuss_url: https://plus.google.com/113945685385052458154/posts/fkks9Uu48jo
+has_embedded_tweets: true
 ---
 It all began last December when [Lex Spoon] published [Recursive Maven considered
 harmful]. Using Maven for a few years without any real issue (though with some frustration), that piqued my curiosity.
@@ -51,7 +52,6 @@ Eclipse according to some code comments and commit logs).
 [Contrary to many _modern_ build tools]: https://plus.google.com/114156500057804356924/posts/Muoq6gy3cCM
 
 <blockquote class="twitter-tweet" align="center"><p>Solving an actual Hard Problem™ for Dart's build system. <a href="http://t.co/HaUcrx1ajB" title="http://news.dartlang.org/2013/04/pubs-new-constraint-solver.html">news.dartlang.org/2013/04/pubs-n…</a> Don't tell Facebook that this is what real build systems do.</p>&mdash; Jake Wharton (@JakeWharton) <a href="https://twitter.com/JakeWharton/status/325342363427954689">April 19, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 If you want managed dependencies, you'll have to use [Ivy] or build a small tool around
 Ivy or [Aether] that could download artifacts and generate the appropriate `BUCK` file.

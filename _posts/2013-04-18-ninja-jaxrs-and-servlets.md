@@ -3,6 +3,7 @@ layout: post
 title: Ninja, JAX-RS and Servlets
 published: true
 discuss_url: https://plus.google.com/113945685385052458154/posts/UneFVuF3myS
+has_embedded_tweets: true
 ---
 A couple weeks ago I discovered the [Ninja web framework](http://www.ninjaframework.org)
 _via_ a link on Twitter. It's presented as a Java web framework largely inspired from
@@ -125,7 +126,6 @@ I must say I really don't like) nor that _experiment_ (running in production for
 years though) from Tim Boudreau:
 
 <blockquote class="twitter-tweet"><p>Interesting new Java web framework by @<a href="https://twitter.com/kablosna">kablosna</a>; actor pattern, based on Netty and Guice.<a href="http://t.co/TIrgSBgQRK" title="http://timboudreau.com/blog/Acteur/read">timboudreau.com/blog/Acteur/re…</a></p>&mdash; Thomas Broyer (@tbroyer) <a href="https://twitter.com/tbroyer/status/321243058886815745">April 8, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
 document.write("<p><em>Note: the URL above should be <a href='http://timboudreau.com/blog/Acteur/read'>http://timboudreau.com/blog/Acteur/read</a> but Twitter's widget doesn't allow fixing it (for obvious reasons).</em></p>");
 </script>
