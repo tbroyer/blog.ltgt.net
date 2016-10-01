@@ -57,6 +57,11 @@ img {
   max-width: 100%;
 }
 
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 main.posts {
   display: table;
   border-spacing: 1em .8em;
