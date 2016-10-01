@@ -10,7 +10,7 @@ published: true
 <ul>
 <li>Java uses a builder approach: each message class has a corresponding builder class; the builder instance can only be used once, to initialize a single message instance; only the builder is mutable, a message instance is always immutable.</li>
 <li>In Python, a message instance is always mutable.</li>
-<li>C++ follows the same approach as Python but takes advantage of the <code>const</code> keyword to eventually <a href="http://en.wikipedia.org/wiki/Const-correctness"><em>freeze</em> an object</a>, so if a field's type is a message (or string), you have to explicitly ask for a mutable <span style="text-decoration: underline;">or</span> immutable instance.</li>
+<li>C++ follows the same approach as Python but takes advantage of the <code>const</code> keyword to eventually <a href="http://en.wikipedia.org/wiki/Const-correctness"><em>freeze</em> an object</a>, so if a field's type is a message (or string), you have to explicitly ask for a mutable <u>or</u> immutable instance.</li>
 </ul>
 <p>These differences are guided by each language's features: C++ can contextually make an object immutable, Java cannot but a builder can easily be given access to the message internals, and finally Python is all about <em>unlocked</em> access to objects, even their internals (while this has changed a bit in recent versions).</p>
 <p>Closure Library, because JavaScript has similar features as Python, uses the same approach of always mutable message instances.</p>

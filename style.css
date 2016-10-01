@@ -39,6 +39,10 @@ footer {
   text-align: center;
 }
 
+.discuss img {
+  vertical-align: middle;
+}
+
 code {
   font-family: 'DejaVu Sans Mono', 'Source Code Pro', 'Droid Sans Mono', 'Ubuntu Mono', monospace;
   font-size: .8125em;
@@ -54,12 +58,17 @@ pre {
 }
 
 img {
+  border: 0;
   max-width: 100%;
 }
 
 figure {
+  text-align: center;
   margin-left: 0;
   margin-right: 0;
+}
+figure.highlight {
+  text-align: initial;
 }
 
 main.posts {

@@ -4,6 +4,8 @@ title: In quest of the ultimate build tool
 published: true
 discuss_url: https://plus.google.com/113945685385052458154/posts/fkks9Uu48jo
 has_embedded_tweets: true
+additional_csp:
+  img_src: imgs.xkcd.com
 ---
 It all began last December when [Lex Spoon] published [Recursive Maven considered
 harmful]. Using Maven for a few years without any real issue (though with some frustration), that piqued my curiosity.
@@ -104,7 +106,7 @@ sys     0m38.648s
 
 **DISCLAIMER:** This is by no mean a benchmark; I ran those builds with several
 other processes running (including Chrome and Jekyll where I write this post).
-<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a></p>
+<figure><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" width="413" height="360"></a></figure>
 
 Is Buck faster? Well yes, and it gets slightly better for incremental / non-clean
 builds (the following one is a no-op; the Maven build includes calls to Ant that
@@ -271,7 +273,7 @@ compatibility (by moving those classes into another package), you'll end up usin
 `glob()`s, and if you get them wrong you'll put one class into several JARs, which is
 generally not a good thing. Maven makes it harder to get things wrong, and that's a
 good thing (but it does so at the expense of also making it harder to get things right).
-<p style="text-align:center"><a href="http://xkcd.com/927/"><img alt="" src="http://imgs.xkcd.com/comics/standards.png" style="width: 500px; height: 283px"></a></p>
+<figure><a href="http://xkcd.com/927/"><img alt="" src="http://imgs.xkcd.com/comics/standards.png" width="500" height="283"></a></figure>
 
 As to whether the build tool should also manage third-party dependencies, help with the
 release process, publish artifacts to some shared repository and/or provide means to

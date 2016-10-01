@@ -4,6 +4,8 @@ title: Maven is broken by design
 published: true
 discuss_url: https://plus.google.com/113945685385052458154/posts/7LHoGXQdkri
 has_embedded_tweets: true
+additional_csp:
+  img_src: imgs.xkcd.com
 ---
 
 The other day, [someone asked] about the status of the GWT Mavenization, saying he loves
@@ -183,7 +185,7 @@ In any case, you're asking Maven to do too much work. Combined with Maven's tend
 to already do too much work (see incremental builds above), this is a real productivity
 killer.
 
-<p style="text-align: center"><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" style="width: 413px; height: 360px"></a></p>
+<figure><a href="http://xkcd.com/303/"><img alt="" src="http://imgs.xkcd.com/comics/compiling.png" width="413" height="360"></a></figure>
 
 AFAICT, Maven didn't initially have multi-module support, and this was first
 contributed as a plugin before being builtin. That would explain why reactors and the

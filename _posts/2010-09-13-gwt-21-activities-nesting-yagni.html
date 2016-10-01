@@ -8,11 +8,11 @@ discuss_url: https://profiles.google.com/113945685385052458154/buzz/471GGi9Jmkb
 <p>I'm not going to beat around the bush, <a href="{% post_url 2010-09-05-gwt-21-activities %}">GWT 2.1 Activities</a> have <a href="https://jira.springsource.org/browse/ROO-1309#action_57327" title="Creating ActivityManager &quot;on-demand&quot; is impractical">no support for nesting</a>. Let's see when you might think you need it, and how you could do without.</p>
 <h2>The scenario</h2>
 <p>So let's say you identified those four layouts in your app (this is based on a real example, the only difference is I only needed a single master-detail layout):</p>
-<p style="text-align: center;"><img src="/image/2010/09/layouts.png"></p>
+<figure><img src="/image/2010/09/layouts.png"></figure>
 <p>You might be tempted to build it as nested layouts, i.e. build the first one, and when needed put in the "main content" display region a master-detail or main-aside sub-layout, nesting two new display regions.</p>
 <h2>No nesting? Really?</h2>
 <p>Now, here's how you could do it without nesting, just showing hiding display regions when needed (and resizing the others to always fill the same dimensions):</p>
-<p style="text-align: center;"><img src="/image/2010/09/final_layout.png"></p>
+<figure><img src="/image/2010/09/final_layout.png"></figure>
 <p>Note that I chose the "detail" region to also serve as the "main content", but you could have decided otherwise, any region could have made it.</p>
 <h2>Mapping this layout to GWT 2.1 Activities</h2>
 <p>Each region is a <em>display region</em>, with its own <code>ActivityManager</code> and <code>ActivityMapper</code>.</p>
