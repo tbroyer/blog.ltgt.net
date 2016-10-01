@@ -8,15 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta rel=canonical href="{{ page.url }}">
 <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
+    default-src 'none';
     img-src 'self' data: {% if page.discuss_url %}https://ssl.gstatic.com{% endif %} {% if page.has_embedded_tweets %}*.twitter.com *.twimg.com{% endif %} {{ page.additional_csp.img_src }};
     {% if page.has_embedded_tweets or page.additional_csp.script_src %}
     script-src {% if page.has_embedded_tweets %}https://*.twitter.com https://*.twimg.com{% endif %} {{ page.additional_csp.script_src }};
     {% endif %}
     {% if page.has_embedded_tweets %}
     child-src https://*.twitter.com;
-    style-src 'self' *.twitter.com;
     {% endif %}
+    style-src 'self' {% if page.has_embedded_tweets %}*.twitter.com{% endif %};
 ">
 {% if page.has_embedded_tweets %}
 <meta name="twitter:widgets:csp" content="on">
