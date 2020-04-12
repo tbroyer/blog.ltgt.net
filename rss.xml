@@ -16,7 +16,7 @@ baseurl: http://blog.ltgt.net
 <link rel="license" type="application/rdf+xml"
       href="http://creativecommons.org/licenses/by/3.0/rdf" />
 <rights type="html"><![CDATA[
-Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://plus.google.com/113945685385052458154?rel=author">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
 ]]></rights>
 
 {% for post in site.posts limit:10 %}
