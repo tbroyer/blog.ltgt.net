@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Reverse-engineering J2CL–Bazel integration
+discuss_url: https://dev.to/tbroyer/reverse-engineering-j2cl-bazel-integration-1o1f/comments
 ---
 
 J2CL is a tool by Google that transpiles Java code to Closure-compatible JavaScript.
