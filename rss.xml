@@ -29,6 +29,9 @@ Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ pag
   {% for category in post.categories %}
     <category term="{{ category }}" />
   {% endfor %}
+  {% if post.discuss_url %}
+    <link rel="replies" href="{{ post.discuss_url }}" />
+  {% endif %}
   <content type="html" xml:base="{{ post.url }}"><![CDATA[
     {{ post.content }}
   ]]></content>

@@ -2,7 +2,7 @@
 layout: post
 title: Most build tools misuse javac
 published: true
-discuss_url: https://plus.google.com/113945685385052458154/posts/HsAxSiwynqK
+old_discuss_url: https://plus.google.com/113945685385052458154/posts/HsAxSiwynqK
 ---
 
 Over the past couple years, I've been looking more closely to the build tools

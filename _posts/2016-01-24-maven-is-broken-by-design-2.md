@@ -2,7 +2,7 @@
 layout: post
 title: "Maven is broken by design — Take 2: annotation processors"
 published: true
-discuss_url: https://plus.google.com/+ThomasBroyer/posts/2diBF3qhh36
+old_discuss_url: https://plus.google.com/+ThomasBroyer/posts/2diBF3qhh36
 ---
 
 More than 2 years ago, I wrote about why [Maven is broken by design],

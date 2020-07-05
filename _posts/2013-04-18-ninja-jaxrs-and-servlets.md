@@ -2,7 +2,7 @@
 layout: post
 title: Ninja, JAX-RS and Servlets
 published: true
-discuss_url: https://plus.google.com/113945685385052458154/posts/UneFVuF3myS
+old_discuss_url: https://plus.google.com/113945685385052458154/posts/UneFVuF3myS
 has_embedded_tweets: true
 additional_csp:
   script_src: "'unsafe-inline'"

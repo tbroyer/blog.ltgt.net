@@ -2,7 +2,7 @@
 layout: post
 title: Maven is broken by design
 published: true
-discuss_url: https://plus.google.com/113945685385052458154/posts/7LHoGXQdkri
+old_discuss_url: https://plus.google.com/113945685385052458154/posts/7LHoGXQdkri
 has_embedded_tweets: true
 additional_csp:
   img_src: imgs.xkcd.com

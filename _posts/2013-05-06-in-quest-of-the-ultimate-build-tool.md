@@ -2,7 +2,7 @@
 layout: post
 title: In quest of the ultimate build tool
 published: true
-discuss_url: https://plus.google.com/113945685385052458154/posts/fkks9Uu48jo
+old_discuss_url: https://plus.google.com/113945685385052458154/posts/fkks9Uu48jo
 has_embedded_tweets: true
 additional_csp:
   img_src: imgs.xkcd.com
@@ -279,4 +279,3 @@ As to whether the build tool should also manage third-party dependencies, help w
 release process, publish artifacts to some shared repository and/or provide means to
 run the project, or leave some or all of these tasks to external tools, I'll leave
 that to another post.
-
