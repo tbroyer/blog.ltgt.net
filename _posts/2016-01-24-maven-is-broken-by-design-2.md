@@ -22,6 +22,9 @@ and before that let's have a look at how things work in Maven-land.
 
 [MCOMPILER-235]: https://issues.apache.org/jira/browse/MCOMPILER-235
 
+**EDIT(2020-07-10):** Gradle, including the Android Gradle Plugin, 
+have had built-in support for annotation processor for a while now.
+
 Maven dependency management 101
 -------------------------------
 
@@ -126,12 +129,23 @@ just like what everyone does currently with Maven.
 
 [Pants]: https://pantsbuild.github.io/build_dictionary.html#bdict_annotation_processor
 
-Gradle doesn't have [built-in support][gradle pull 456] for `-processorpath`
+~~Gradle doesn't have [built-in support][gradle pull 456] for `-processorpath`
 but that can easily be added to any build script, or built as a plugin.
 I wrote [such a plugin][gradle-apt-plugin],
 and there's [another one][android-apt] dedicated to Android projects.
-You get separate dependency mediation and a proper execution graph.
+You get separate dependency mediation and a proper execution graph.~~
+Gradle gained a dedicated `annotationProcessorPath` option to its `JavaCompile` tasks [in 3.4][JavaCompile.options.annotationProcessorPath],
+and a dedicated configuration to declare your annotation processor dependencies [in 4.6][SourceSet.annotationProcessor].
+It also places generated sources in a separate directory by default (through `javac`'s `-s`) [since 5.2][annotationProcessorGeneratedSourcesDirectory],
+and even built some Gradle-specific support for incremental annotation processing [since 4.7][incap]
+(with major improvements since that first release).
+The Android Gradle Plugin has had built-in support [since 2.2.0][agp-annotationProcessor].
 
 [gradle pull 456]: https://github.com/gradle/gradle/pull/456
 [gradle-apt-plugin]: https://plugins.gradle.org/plugin/net.ltgt.apt
 [android-apt]: https://bitbucket.org/hvisser/android-apt
+[JavaCompile.options.annotationProcessorPath]: https://docs.gradle.org/3.4/release-notes.html#compile-avoidance-in-the-presence-of-annotation-processors
+[SourceSet.annotationProcessor]: https://docs.gradle.org/4.6/release-notes.html#convenient-declaration-of-annotation-processor-dependencies
+[annotationProcessorGeneratedSourcesDirectory]: https://docs.gradle.org/5.2/release-notes.html#annotation-processor-improvements
+[incap]: https://docs.gradle.org/4.7/release-notes.html
+[agp-annotationProcessor]: https://developer.android.com/studio/releases/gradle-plugin#2-2-0
