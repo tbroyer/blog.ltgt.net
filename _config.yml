@@ -1,3 +1,9 @@
 paginate: 50
 permalink: /:categories/:title/
 exclude: ['serve.sh']
+# Same as GFM, but without the tagfilter extension to allow <script>
+# https://github.com/github/pages-gem/blob/509fad9b10941461225dacd3d1ec38042f7986c6/lib/github-pages/configuration.rb#L141
+markdown: CommonMarkGhPages
+commonmark:
+  extension: ["table", "strikethrough", "autolink"]
+  options: ["footnotes"]
