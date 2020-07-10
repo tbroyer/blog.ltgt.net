@@ -1,8 +1,3 @@
 paginate: 50
 permalink: /:categories/:title/
 exclude: ['serve.sh']
-kramdown:
-  input: GFM
-  hard_wrap: false
-gems:
-  - jekyll-paginate
