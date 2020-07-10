@@ -22,6 +22,8 @@ Maven.
 _Disclaimer: I'm writing this while on sick leave, taken by dizziness and other
 niceties._
 
+**EDIT(2020-07-10):** Maven soon to have a build POM separate from the deployed POM!
+
 Maven's model is mutable
 ------------------------
 
@@ -211,6 +213,12 @@ this can be seen as a limitation of the [“one artifact per module” rule] too
 
 Do we really need to share in Central the recipes we used to build our artifacts? Who
 benefits from it? Compare that to how much it weighs.
+
+**EDIT(2020-07-07):** Maven will actually (in version 3.7) [distinguish between the *build POM* and the so-called *consumer POM*][build-vs-consumer-poms].
+Not much differences in practice in this first run,
+but still, POMs will no longer have two uses.
+
+[build-vs-consumer-poms]: https://lists.apache.org/thread.html/r1dc1da015ab400d5e35c91af90ce3f6bbd923de8ca40ca6fb27ed186%40%3Cusers.maven.apache.org%3E
 
 I'll succumb to the siren call of version ranges and add that artifact metadata in
 repositories should be updatable in some ways: what if you could update your old
