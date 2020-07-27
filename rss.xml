@@ -1,18 +1,17 @@
 ---
 layout: null
 title: tbroyer's pages
-baseurl: http://blog.ltgt.net
 ---
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ page.baseurl }}">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ site.github.url }}">
 <title type="html">{{ page.title | xml_escape }}</title>
 <link href="/" />
-<link rel="self" href="{{ page.baseurl }}/rss.xml" />
+<link rel="self" href="{{ site.github.url }}/rss.xml" />
 <updated>{{ site.time | date_to_xmlschema }}</updated>
 <author>
   <name>Thomas Broyer</name>
   <uri>https://plus.google.com/113945685385052458154?rel=author</uri>
 </author>
-<id>{{ page.baseurl }}/rss.xml</id>
+<id>{{ site.github.url }}/rss.xml</id>
 <link rel="license" type="application/rdf+xml"
       href="http://creativecommons.org/licenses/by/3.0/rdf" />
 <rights type="html"><![CDATA[
@@ -25,7 +24,7 @@ Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ pag
   <link href="{{ post.url }}" />
   <published>{{ post.date | date_to_xmlschema }}</published>
   <updated>{{ post.date | date_to_xmlschema }}</updated>
-  <id>{{ page.baseurl }}{{ post.url }}</id>
+  <id>{{ site.github.url }}{{ post.url }}</id>
   {% for category in post.categories %}
     <category term="{{ category }}" />
   {% endfor %}
@@ -38,4 +37,3 @@ Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ pag
 </entry>
 {% endfor %}
 </feed>
-
