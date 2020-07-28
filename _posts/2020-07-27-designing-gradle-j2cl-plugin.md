@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Designing a Gradle plugin for J2CL
+discuss_url: https://dev.to/tbroyer/designing-a-gradle-plugin-for-j2cl-c7k/comments
 ---
 
 In the [previous post][reverse-engineering-j2cl-bazel-integration],
