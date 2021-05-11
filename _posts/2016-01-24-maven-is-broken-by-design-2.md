@@ -22,6 +22,13 @@ and before that let's have a look at how things work in Maven-land.
 
 [MCOMPILER-235]: https://issues.apache.org/jira/browse/MCOMPILER-235
 
+<ins datetime="2021-05-11">**EDIT(2021-05-11):** I've just been made aware that this new feature is actually [utterly broken][MCOMPILER-272],
+wrt processor path dependency resolution.
+This was reported a few months after the release,
+and is still unfixed almost 5 years later. 🤷</ins>
+
+[MCOMPILER-272]: https://issues.apache.org/jira/browse/MCOMPILER-272
+
 <ins datetime="2020-07-20">**EDIT(2020-07-10):** Gradle, including the Android Gradle Plugin, 
 have had built-in support for annotation processor for a while now.</ins>
 
