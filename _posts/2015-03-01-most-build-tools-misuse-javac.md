@@ -14,8 +14,8 @@ investigating further. But first, let's see how `javac` works.
 
 [ultimate build tool]: /in-quest-of-the-ultimate-build-tool
 
-**EDIT(2015-03-08):** the _source path_ issue has been fixed in [Buck][buck-fix]
-and [Gradle][gradle-release-notes].
+<ins datetime="2015-03-08">**EDIT(2015-03-08):** the _source path_ issue has been fixed in [Buck][buck-fix]
+and [Gradle][gradle-release-notes].</ins>
 
 [buck-fix]: https://github.com/facebook/buck/commit/c75bb91f7d8eec8ea8ed86b598fb2ef3bb67a3bf
 [gradle-release-notes]: https://gradle.org/docs/2.4/release-notes#changes-to-default-value-for-java-compilation-sourcepath

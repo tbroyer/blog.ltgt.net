@@ -139,5 +139,5 @@ script.parentNode.insertBefore(p, script);
 I've always tried to favor _standard APIs_ anyway, by principle and to avoid lock-in, so
 I'd rather stick to JAX-RS and Servlets (and JAX-RS can be implemented on top of Servlets
 to be deployed everywhere servlets can, including e.g. Google AppEngine), but those other
-frameworks bring interesting things. ~~I'll have to learn Play! (v2) at work anyway, let's
-see how it goes…~~
+frameworks bring interesting things.
+<del datetime="2013-10-21">I'll have to learn Play! (v2) at work anyway, let's see how it goes…</del>

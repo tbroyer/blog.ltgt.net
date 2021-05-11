@@ -22,8 +22,8 @@ and before that let's have a look at how things work in Maven-land.
 
 [MCOMPILER-235]: https://issues.apache.org/jira/browse/MCOMPILER-235
 
-**EDIT(2020-07-10):** Gradle, including the Android Gradle Plugin, 
-have had built-in support for annotation processor for a while now.
+<ins datetime="2020-07-20">**EDIT(2020-07-10):** Gradle, including the Android Gradle Plugin, 
+have had built-in support for annotation processor for a while now.</ins>
 
 Maven dependency management 101
 -------------------------------
@@ -129,11 +129,11 @@ just like what everyone does currently with Maven.
 
 [Pants]: https://pantsbuild.github.io/build_dictionary.html#bdict_annotation_processor
 
-~~Gradle doesn't have [built-in support][gradle pull 456] for `-processorpath`
+<del datetime="2020-07-20">Gradle doesn't have [built-in support][gradle pull 456] for `-processorpath`
 but that can easily be added to any build script, or built as a plugin.
 I wrote [such a plugin][gradle-apt-plugin],
 and there's [another one][android-apt] dedicated to Android projects.
-You get separate dependency mediation and a proper execution graph.~~
+You get separate dependency mediation and a proper execution graph.</del>
 Gradle gained a dedicated `annotationProcessorPath` option to its `JavaCompile` tasks [in 3.4][JavaCompile.options.annotationProcessorPath],
 and a dedicated configuration to declare your annotation processor dependencies [in 4.6][SourceSet.annotationProcessor].
 It also places generated sources in a separate directory by default (through `javac`'s `-s`) [since 5.2][annotationProcessorGeneratedSourcesDirectory],
