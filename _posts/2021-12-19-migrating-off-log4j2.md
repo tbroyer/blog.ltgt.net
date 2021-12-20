@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Migrating off of Log4j 2.x
+discuss_url: https://dev.to/tbroyer/migrating-off-of-log4j-2x-1o64/comments
 ---
 
 There's been three versions of Log4j in one week to address security flaws,
