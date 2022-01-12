@@ -6,7 +6,7 @@ old_discuss_url: https://plus.google.com/113945685385052458154/posts/HsAxSiwynqK
 ---
 
 Over the past couple years, I've been looking more closely to the build tools
-I use and trying to imaging what the _[ultimate build tool]_ would look like.
+I use and trying to imagine what the _[ultimate build tool]_ would look like.
 Doing that, I regularly stumble on mistakes in one tool that seem to be copied
 over most (if not all) of them like _cargo cult_. Recently, I've had gripes
 with `javac`, or more accurately how it's used by build tools, and started
@@ -186,14 +186,14 @@ I'll start with Maven.
 
 The maven-compiler-plugin has default values for `-⁠source`
 and `-⁠target`, with very _oldish_ defaults (`1.5` in the latest version released
-two years ago, but it was `1.4` not so long ago). This more or less forces you
+two years ago, but it was `1.4` not so long ago ; <ins datetime="2022-01-12">**EDIT(2022-01-12):** was bumped to `1.6` in 2018, and just updated to `1.7` in early 2022</ins>). This more or less forces you
 to redefine the values in every project. You can enforce a JDK version using the
 maven-enforcer-plugin's [`requireJavaVersion` rule], and using profiles you could
 easily have different things for development and releases; and animal sniffer is
 designed with Maven as the first consumer. Maven also supports _toolchains_ for
 quite a while, which let's you use a specific JDK version different from the one
-you run Maven with. It's rather limited and incomplete though (the toolchain
-applies to the whole lifecycle, not just to one plugin, for example; and
+you run Maven with. It's rather limited and incomplete though (<del datetime="2022-01-12">the toolchain
+applies to the whole lifecycle, not just to one plugin, for example; and</del>
 developers have to create the appropriate toolchain definitions on their machine
 to be able to build a project making use of them.)
 
