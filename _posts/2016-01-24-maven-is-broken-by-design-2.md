@@ -25,7 +25,8 @@ and before that let's have a look at how things work in Maven-land.
 <ins datetime="2021-05-11">**EDIT(2021-05-11):** I've just been made aware that this new feature is actually [utterly broken][MCOMPILER-272],
 wrt processor path dependency resolution.
 This was reported a few months after the release,
-and is still unfixed almost 5 years later. 🤷</ins>
+and is still unfixed almost 5 years later. 🤷</ins>  
+<ins datetime="2022-01-12">**EDIT(2022-01-12):** this has been fixed in version 3.9.0.</del>
 
 [MCOMPILER-272]: https://issues.apache.org/jira/browse/MCOMPILER-272
 
@@ -118,7 +119,7 @@ It happens that maintainer of the Maven Compiler Plugin who added the above-ment
 never stumbled on it because he always does clean builds with Maven
 (leaving his IDE handle incremental compilation).
 In other words, incremental builds in Maven are so broken that even core contributors don't use them.  
-I'm ready to bet that everyone else simply use an old version of the Maven Compiler Plugin that doesn't exhibit the issue.
+I'm ready to bet that everyone else simply uses an old version of the Maven Compiler Plugin that doesn't exhibit the issue.
 
 And before bringing that post to a close, let's quickly see how Maven compares to other build tools. We'll see that most of them don't have the issues discussed above.
 
