@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- playground-fold -->
+    <style>
+        :root { font-family: sans-serif; }
+    </style>
+    <!-- playground-fold-end -->
+
+    <script type="module" src="./wordle-tile.js"></script>
+</head>
+<body>
+    <div>
+        <wordle-tile state=correct>W</wordle-tile>
+        <wordle-tile state=present>O</wordle-tile>
+        <wordle-tile state=absent>R</wordle-tile>
+        <wordle-tile>D</wordle-tile>
+        <wordle-tile state=current></wordle-tile>
+        <wordle-tile></wordle-tile>
+    </div>
+    <!-- playground-fold -->
+    <style>
+        th { text-align: center; }
+        td { text-align: center; }
+        th:first-child { text-align: start; }
+    </style>
+    <table>
+        <tr>
+            <td colspan="3"><wordle-tile id="tile"></wordle-tile></td>
+        </tr>
+        <tr>
+            <td></td>
+            <th>Actual</th>
+            <th>Computed</th>
+        </tr>
+        <tr>
+            <th>
+                <label for="letter">Letter</label>
+            </th>
+            <td>
+                <input id="letter" size="1">
+            </td>
+            <td>
+                <output for="tile" id="computed-letter"></output>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="state">State</label>
+            </th>
+            <td>
+                <input id="state" type="text" list="states" size="7">
+                <datalist id="states">
+                    <option>current</option>
+                    <option>correct</option>
+                    <option>present</option>
+                    <option>absent</option>
+                    <option>invalid</option>
+                </datalist>
+            </td>
+            <td>
+                <output for="tile" id="computed-state"></output>
+            </td>
+        </tr>
+    </table>
+    <script>
+        const [ tile, letter, computedLetter, state, computedState ] =
+            [ "#tile", "#letter", "#computed-letter", "#state", "#computed-state" ]
+            .map(selector => document.querySelector(selector));
+        letter.addEventListener("input", () => {
+            tile.letter = letter.value;
+            computedLetter.value = tile.letter;
+        });
+        state.addEventListener("input", () => {
+            tile.state = state.value;
+            computedState.value = tile.state;
+        });
+    </script>
+    <!-- playground-fold-end -->
+
+</body>
+</html>
