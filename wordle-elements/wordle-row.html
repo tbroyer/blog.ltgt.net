@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- playground-fold -->
+    <script type="module" src="https://unpkg.com/construct-style-sheets-polyfill"></script>
+    <style>
+        :root { font-family: sans-serif; }
+    </style>
+    <!-- playground-fold-end -->
+
+    <script type="module" src="wordle-row.js"></script>
+</head>
+<body>
+    <wordle-row length="6"
+                evaluations="correct present absent correct present absent">
+        wordle
+    </wordle-row>
+    <!-- playground-fold -->
+    <style>
+        th { text-align: center; }
+        td { text-align: center; }
+        th:first-child { text-align: start; }
+    </style>
+    <table>
+        <tr>
+            <td></td>
+            <th>Actual</th>
+            <th>Computed</th>
+        </tr>
+        <tr>
+            <th>
+                <label for="length">Length</label>
+            </th>
+            <td>
+                <input id="length" size="1">
+            </td>
+            <td>
+                <output for="row" id="computed-length"></output>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="current">Current</label>
+            </th>
+            <td>
+                <input id="current" type="checkbox">
+            </td>
+            <td>
+                <input id="computed-current" type="checkbox" disabled>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="guess">Guess</label>
+            </th>
+            <td>
+                <input id="guess" size="5">
+            </td>
+            <td>
+                <output for="row" id="computed-guess"></output>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="evaluations">Evaluations</label>
+            </th>
+            <td colspan="2">
+                <input id="evaluations" type="text" list="evaluations-suggestions">
+                <datalist id="evaluations-suggestions">
+                    <option>correct present absent correct present</option>
+                    <option>invalid correct present absent correct</option>
+                    <option>correct</option>
+                </datalist>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Computed evaluations
+            </th>
+            <td colspan="2">
+                <output for="row" id="computed-evaluations"></output>
+            </td>
+        </tr>
+    </table>
+    <script>
+        const [ row, length, computedLength, current, computedCurrent, guess, computedGuess, evaluations, computedEvaluations ] =
+            [ "wordle-row", "#length", "#computed-length", "#current", "#computed-current", "#guess", "#computed-guess", "#evaluations", "#computed-evaluations" ]
+            .map(selector => document.querySelector(selector));
+        length.addEventListener("input", () => {
+            row.length = length.value;
+            computedLength.value = row.length;
+            guess.size = row.length;
+            evaluations.size = row.length * 8;
+        });
+        current.addEventListener("input", () => {
+            row.current = current.checked;
+            computedCurrent.checked = row.current;
+        });
+        guess.addEventListener("input", () => {
+            row.guess = guess.value;
+            computedGuess.value = row.guess;
+        });
+        evaluations.addEventListener("input", () => {
+            row.evaluations = evaluations.value;
+            computedEvaluations.value = row.evaluations.join(' ');
+        });
+
+        customElements.whenDefined("wordle-row").then(() => {
+            length.value = computedLength.value = row.length;
+            current.checked = computedCurrent.checked = row.current;
+            guess.value = computedGuess.value = row.guess;
+            evaluations.value = computedEvaluations.value = row.evaluations.join(' ');
+            guess.size = row.length;
+            evaluations.size = row.length * 8;
+        });
+    </script>
+    <!-- playground-fold-end -->
+
+</body>
+</html>

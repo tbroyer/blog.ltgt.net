@@ -1,0 +1,9 @@
+{
+    "files": {
+        "wordle-row.js": {},
+        "wordle-row.html": {},
+        "wordle-tile.js": {
+            "hidden": true
+        }
+    }
+}
