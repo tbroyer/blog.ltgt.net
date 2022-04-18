@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The Javax → Jakarta mess, and a Gradle solution
+discuss_url: https://dev.to/tbroyer/the-javax-jakarta-mess-and-a-gradle-solution-3c44
 ---
 
 Nearly five years ago, Oracle was preparing the release of Java EE 8
