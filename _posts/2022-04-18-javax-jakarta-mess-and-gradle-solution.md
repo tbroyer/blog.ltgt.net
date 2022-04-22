@@ -4,6 +4,8 @@ title: The Javax → Jakarta mess, and a Gradle solution
 discuss_url: https://dev.to/tbroyer/the-javax-jakarta-mess-and-a-gradle-solution-3c44
 ---
 
+**EDIT(2022-04-22):** this called for a [follow-up]({% post_url 2022-04-22-javax-jakarta-mess-even-worse %} "The Javax → Jakarta mess, it's even worse than I thought").
+
 Nearly five years ago, Oracle was preparing the release of Java EE 8
 and [announced](https://blogs.oracle.com/theaquarium/post/opening-up-java-ee "Opening Up Java EE, on Oracle The Aquarium Blob") that it would move it to an open source foundation.
 Less a month later, they [announced](https://blogs.oracle.com/theaquarium/post/opening-up-java-ee-an-update "Opening Up Java EE - An Update, on Oracle The Aquarium Blob") they selected the Eclipse Foundation for that work.
