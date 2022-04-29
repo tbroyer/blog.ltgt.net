@@ -14,6 +14,8 @@ I'm ready to bet that in many (most?) cases, it'd actually be quite easy,
 so let's explore how to do it, using [Logback](https://logback.qos.ch/) as the target
 (there aren't that many alternatives actually).
 
+<ins cite="https://dev.to/pgharron/comment/1o2ai" datetime="2022-04-30">**EDIT(2022-04-30):** fixed `logback.xml` sample for logging to a file: reordered appenders (thanks to Phil Harron for [reporting it](https://dev.to/pgharron/comment/1o2ai)).</ins>
+
 Prerequisites
 -------------
 
@@ -142,9 +144,6 @@ this Log4j 2 configuration file:
 ```xml
 <Configuration>
   <Appenders>
-    <Async name="AsyncLogFile">
-      <AppenderRef ref="LogFile" />
-    </Async>
     <RollingFile name="LogFile"
       fileName="/var/log/myapp/myapp.log"
       filePattern="/var/log/myapp/myapp-%d{yyyy-MM-dd}.log.gz">
@@ -155,6 +154,9 @@ this Log4j 2 configuration file:
         <TimeBasedTriggeringPolicy />
       </Policies>
     </RollingFile>
+    <Async name="AsyncLogFile">
+      <AppenderRef ref="LogFile" />
+    </Async>
   </Appenders>
   <Loggers>
     <Root level="info">
@@ -169,9 +171,6 @@ will become for Logback:
 ```xml
 <configuration>
   <shutdownHook/>
-  <appender name="AsyncLogFile" class="ch.qos.logback.classic.AsyncAppender">
-    <appender-ref ref="LogFile" />
-  </appender>
   <appender name="LogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>/var/log/myapp/myapp.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -181,6 +180,9 @@ will become for Logback:
     <encoder>
       <pattern>%d %p %c{1} [%t] %m%n</pattern>
     </encoder>
+  </appender>
+  <appender name="AsyncLogFile" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="LogFile" />
   </appender>
   <root level="info">
     <appender-ref ref="AsyncLogFile" />
