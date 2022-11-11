@@ -6,7 +6,7 @@
 <link rel=stylesheet href=/style.css>
 <link rel=alternate href=https://feeds.feedburner.com/BlogLtgtNet type=application/atom+xml>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta rel=canonical href="{{ page.url }}">
+<link rel=canonical href="{{ site.github.url | replace_first: "http://", "https://" }}{{ page.url }}">
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'none';
     img-src 'self' data: {% if page.discuss_url %}https://d2fltix0v2e0sb.cloudfront.net{% endif %} {% if page.has_embedded_tweets %}*.twitter.com *.twimg.com{% endif %} {{ page.additional_csp.img_src }};
