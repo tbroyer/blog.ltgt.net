@@ -2,10 +2,10 @@
 layout: null
 title: tbroyer's pages
 ---
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ site.github.url }}">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ site.github.url | replace_first: "http://", "https://" }}">
 <title type="html">{{ page.title | xml_escape }}</title>
 <link href="/" />
-<link rel="self" href="{{ site.github.url }}/rss.xml" />
+<link rel="self" href="{{ site.github.url | replace_first: "http://", "https://" }}/rss.xml" />
 <updated>{{ site.time | date_to_xmlschema }}</updated>
 <author>
   <name>Thomas Broyer</name>
