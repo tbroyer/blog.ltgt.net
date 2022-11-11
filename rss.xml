@@ -9,7 +9,7 @@ title: tbroyer's pages
 <updated>{{ site.time | date_to_xmlschema }}</updated>
 <author>
   <name>Thomas Broyer</name>
-  <uri>https://plus.google.com/113945685385052458154?rel=author</uri>
+  <uri>https://github.com/tbroyer</uri>
 </author>
 <id>{{ site.github.url }}/rss.xml</id>
 <link rel="license" type="application/rdf+xml"
