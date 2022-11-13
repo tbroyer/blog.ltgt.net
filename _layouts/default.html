@@ -13,34 +13,34 @@
 <link rel="me" href="https://github.com/tbroyer">
 <meta http-equiv="Content-Security-Policy" content="
     default-src 'none';
-    img-src 'self' data: {% if page.discuss_url %}https://d2fltix0v2e0sb.cloudfront.net{% endif %} {% if page.has_embedded_tweets %}*.twitter.com *.twimg.com{% endif %} {{ page.additional_csp.img_src }};
-    {% if page.has_playground_elements or page.has_embedded_tweets or page.additional_csp.script_src %}
-    script-src {% if page.has_playground_elements %}'self'{% endif %} {% if page.has_embedded_tweets %}https://*.twitter.com https://*.twimg.com{% endif %} {{ page.additional_csp.script_src }};
-    {% endif %}
-    {% if page.has_playground_elements or page.has_embedded_tweets or page.additional_csp.script_src %}
-    child-src {% if page.has_playground_elements %}https://unpkg.com{% endif %} {% if page.has_embedded_tweets %}https://*.twitter.com{% endif %} {{ page.additional_csp.child_src }};
-    {% endif %}
-    style-src 'self' {% if page.has_embedded_tweets %}*.twitter.com{% endif %} {% if page.has_playground_elements %}'unsafe-inline'{% endif %};
-    {% if page.has_playground_elements %}
+    img-src 'self' data:{% if page.discuss_url %} https://d2fltix0v2e0sb.cloudfront.net{% endif %}{% if page.has_embedded_tweets %} *.twitter.com *.twimg.com{% endif %}{{ page.additional_csp.img_src | prepend: " " }};
+    {%- if page.has_playground_elements or page.has_embedded_tweets or page.additional_csp.script_src %}
+    script-src{% if page.has_playground_elements %} 'self'{% endif %}{% if page.has_embedded_tweets %} https://*.twitter.com https://*.twimg.com{% endif %}{{ page.additional_csp.script_src | prepend: " " }};
+    {%- endif %}
+    {%- if page.has_playground_elements or page.has_embedded_tweets or page.additional_csp.script_src %}
+    child-src{% if page.has_playground_elements %} https://unpkg.com{% endif %}{% if page.has_embedded_tweets %} https://*.twitter.com{% endif %}{{ page.additional_csp.child_src | prepend: " " }};
+    {%- endif %}
+    style-src 'self'{% if page.has_embedded_tweets %} *.twitter.com{% endif %}{% if page.has_playground_elements %} 'unsafe-inline'{% endif %};
+    {%- if page.has_playground_elements %}
     connect-src 'self';
     worker-src 'self';
-    {% endif %}
+    {%- endif %}
 ">
-{% if page.has_playground_elements %}
+{%- if page.has_playground_elements %}
 <script type=module src=/js/playground-elements.js></script>
-{% endif %}
-{% if page.has_embedded_tweets %}
+{%- endif %}
+{%- if page.has_embedded_tweets %}
 <meta name="twitter:widgets:csp" content="on">
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-{% endif %}
+{%- endif %}
 </head>
 <body>
 
 {{ content }}
 
-{% if page.discuss_url %}
+{% if page.discuss_url -%}
 <p class=discuss>Discuss: <a href="{{ page.discuss_url }}"><img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Dev.to" width=30 height=30></a></p>
-{% endif %}
+{% endif -%}
 <footer><small>
 Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
 </small></footer>
