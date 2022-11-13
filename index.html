@@ -11,6 +11,7 @@ title: tbroyer's pages
   </div>
 {%- endfor %}
 </main>
+{% if paginator.total_pages > 1 -%}
 <nav>
 {%- if paginator.next_page %}
   <a href="/page{{ paginator.next_page }}/">← Older posts</a>
@@ -26,3 +27,4 @@ title: tbroyer's pages
   <a href="/page{{ paginator.previous_page }}/">Newer posts →</a>
 {% endif -%}
 </nav>
+{%- endif -%}
