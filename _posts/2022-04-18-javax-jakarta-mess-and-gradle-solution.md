@@ -4,7 +4,10 @@ title: The Javax → Jakarta mess, and a Gradle solution
 discuss_url: https://dev.to/tbroyer/the-javax-jakarta-mess-and-a-gradle-solution-3c44
 ---
 
-**EDIT(2022-04-22):** this called for a [follow-up]({% post_url 2022-04-22-javax-jakarta-mess-even-worse %} "The Javax → Jakarta mess, it's even worse than I thought").
+<ins datetime="2022-04-22">**EDIT(2022-04-22):** this called for a [follow-up]({% post_url 2022-04-22-javax-jakarta-mess-even-worse %} "The Javax → Jakarta mess, it's even worse than I thought").</ins>
+
+<ins datetime="2022-11-18">**EDIT(2022-11-18):** There's a new Gradle plugin to help us. Continue reading for details.</ins>
+
 
 Nearly five years ago, Oracle was preparing the release of Java EE 8
 and [announced](https://blogs.oracle.com/theaquarium/post/opening-up-java-ee "Opening Up Java EE, on Oracle The Aquarium Blob") that it would move it to an open source foundation.
@@ -74,6 +77,8 @@ or they should have used version ranges to exclude the next major version
 
 Yes, this is where Gradle really shines compared to many other dependency managers:
 it lets you hook into the dependency resolution process and _fix_ many things.
+
+<ins datetime="2022-11-18">**UPDATE(2022-11-18):** there's [a new plugin](https://github.com/gradlex-org/java-ecosystem-capabilities) in town that applies **some** of the solutions mentionned below (see [this comment](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/6#issuecomment-1311312175) for the limitations; specifically it won't downgrade Jakarta EE 8 to Java EE 8, so Jakarta EE 9 dependencies might upgrade them and break things at runtime)</ins>
 
 With Maven for instance, you could use the [Maven Enforcer Plugin](https://maven.apache.org/enforcer/maven-enforcer-plugin/) with [Mojohaus "ban duplicate classes" rule](https://www.mojohaus.org/extra-enforcer-rules/banDuplicateClasses.html, '"Ban duplicate classes" rule, in Mojohaus Extra Enforcer Rules') to detect the Java EE vs Jakarta EE 8 issue,
 or the [built-in "dependency convergence" rule](https://maven.apache.org/enforcer/enforcer-rules/dependencyConvergence.html '"Dependency convergence" rule, in Maven Enforcer Plugin built-in rules')

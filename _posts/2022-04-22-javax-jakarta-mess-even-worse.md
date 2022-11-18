@@ -6,6 +6,8 @@ discuss_url: https://dev.to/tbroyer/the-javax-to-jakarta-mess-its-even-worse-tha
 
 In the [previous post]({% post_url 2022-04-18-javax-jakarta-mess-and-gradle-solution %} "The Javax → Jakarta mess, and a Gradle solution"), I described how the Javax to Jakarta migration was a mess, but doing more research on the subject I discovered that it's actually way worse than that.
 
+<ins datetime="2022-11-18">**EDIT(2022-11-18):** There's a new/updated Gradle plugin to help us, and Spring 6 uses Jakarta EE 9 as a baseline. Continue reading for details.</ins>
+
 ## Wait, how could it be worse‽
 
 Until now, I focused on APIs, but what I forgot about were implementations. I didn't really forgot about them, as they were partly what led me to do the research to begin with, but I forgot about how you may want to have implementations for both Java EE and Jakarta EE 9+ at the same time.
@@ -60,9 +62,13 @@ Note that this rewriting wouldn't magically solve all your problems: you'd still
 
 Honestly, I'm fed up.
 
-Maybe I'll try to make a plugin with all these rules (or contribute them to Jendrik Johannes' [Java Ecosystem Capabilities Gradle Plugin](https://github.com/jjohannes/java-ecosystem-capabilities)) so at least I can verify that I don't have issues. If anyone would like to help create a list of all the conflicts (including the vendor libraries), get in touch (but I don't promise anything).
+<del datetime="2022-11-18">Maybe I'll try to make a plugin with all these rules (or contribute them to Jendrik Johannes' [Java Ecosystem Capabilities Gradle Plugin](https://github.com/jjohannes/java-ecosystem-capabilities)) so at least I can verify that I don't have issues. If anyone would like to help create a list of all the conflicts (including the vendor libraries), get in touch (but I don't promise anything).</del>
+
+<ins datetime="2022-11-18">**UPDATE(2022-11-18):** the [GradleX plugin](https://github.com/gradlex-org/java-ecosystem-capabilities) now has most of those rules, at least for the official Java EE/Jakarta EE artifacts, i.e. not the Jetty, Tomcat or Glassfish flavors. See also [this comment](https://github.com/gradlex-org/java-ecosystem-capabilities/issues/6#issuecomment-1311312175) for current limitations; specifically it won't downgrade Jakarta EE 8 to Java EE 8, so Jakarta EE 9 dependencies might upgrade them and break things at runtime.</ins>
 
 But for the rest, the best thing to do is probably to poke at project maintainers so they do the upgrade and/or provide parallel flavors (possibly helped by the Eclipse Transformer, and by yourself: please don't be assholes with open source maintainers, lend them a hand or sponsor them).
+
+<ins datetime="2022-11-18">**UPDATE(2022-11-18):** Spring Framework 6 has been released that uses Jakarta EE 9 as a baseline. This will undoubtedly drive adoption of the `jakarta.*` namespace, but not all projects have an interest in such combination (e.g. Guice [[tracking issue](https://github.com/google/guice/issues/1383)] and Dagger [[tracking issue](https://github.com/google/dagger/issues/2058)] will likely stay with `javax.inject` for a good while, and Guice Servlets with `javax.servlet` [[tracking issue](https://github.com/google/guice/issues/1490)]).</ins>
 
 And maybe in the future I won't use "standard APIs" as often as I used to: I'd rather have libraries that don't know how to talk to each other, and write some glue code, than libraries you cannot even put in the same classpath. So maybe I'll try alternatives to Servlets and/or Jakarta RS, trying to minimize my dependency on them through clear segregation (already what I'm doing mostly, where the Jakarta RS endpoints only _translate_ the HTTP request to a business-oriented service, and translate the result back to an HTTP response), such that rewriting the Web layer/adapter would indeed be costly, but entirely doable. I'm glad I never actually tried to use `javax.json` for instance, similar to how I already ditched `javax.ws.rs.client` for OkHttp a few years ago.
 
