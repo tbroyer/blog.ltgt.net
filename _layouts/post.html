@@ -12,7 +12,7 @@ layout: default
 {%- endif %}
 </nav>
 <h1>{{ page.title }}</h1>
-<time datetime="{{ page.date | date_to_xmlschema }}" pubdate>{{ page.date | date_to_long_string }}</time>
+<time datetime="{{ page.date | date: "%Y-%m-%d" }}" pubdate>{{ page.date | date: "%d %B %Y" }}</time>
 </header>
 <main>
 {{ content }}

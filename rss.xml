@@ -3,10 +3,10 @@ layout: null
 title: tbroyer's pages
 ---
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ site.github.url }}">
-<title type="html">{{ page.title | xml_escape }}</title>
+<title type="html">{{ page.title | escape }}</title>
 <link href="/" />
 <link rel="self" href="{{ site.github.url }}/rss.xml" />
-<updated>{{ site.time | date_to_xmlschema }}</updated>
+<updated>{{ "now" | date: "%Y-%m-%dT%H:%M:%S%z" }}</updated>
 <author>
   <name>Thomas Broyer</name>
   <uri>https://github.com/tbroyer</uri>
@@ -15,15 +15,15 @@ title: tbroyer's pages
 <link rel="license" type="application/rdf+xml"
       href="http://creativecommons.org/licenses/by/3.0/rdf" />
 <rights type="html"><![CDATA[
-Copyright © {{ site.time | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+Copyright © {{ "today" | date: "%Y" }} Thomas Broyer. Except as noted, {{ page.title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
 ]]></rights>
 
 {% for post in site.posts limit:10 %}
 <entry>
-  <title type="html">{{ post.title | xml_escape }}</title>
+  <title type="html">{{ post.title | escape }}</title>
   <link href="{{ post.url }}" />
-  <published>{{ post.date | date_to_xmlschema }}</published>
-  <updated>{{ post.date | date_to_xmlschema }}</updated>
+  <published>{{ post.date | date: "%Y-%m-%dT%H:%M:%S%z" }}</published>
+  <updated>{{ post.date | date: "%Y-%m-%dT%H:%M:%S%z" }}</updated>
   <id>{{ site.github.url | replace_first: "https://", "http://" }}{{ post.url }}</id>
   {% for category in post.categories %}
     <category term="{{ category }}" />
