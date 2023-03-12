@@ -42,6 +42,8 @@ class Row extends HTMLElement {
         this.#row.id = "row";
         this.#mutationObserver.observe(this, { childList: true, characterData: true, subtree: true });
         this.#unshadowProperties(this, "length", "current", "guess", "evaluations", "tileElementName");
+        // Possibly update letters from content (on element uprade)
+        this.#updateGuess();
         // Make sure that, at a minimum, the default length is applied
         this.#requestUpdate();
     }
