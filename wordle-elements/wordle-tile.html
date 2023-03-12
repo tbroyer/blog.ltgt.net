@@ -18,6 +18,37 @@
         <wordle-tile state=current></wordle-tile>
         <wordle-tile></wordle-tile>
     </div>
+    <div style="
+        --tile-fg-correct: orange;
+        --tile-bg-correct: orange;
+        --tile-fg-present: royalblue;
+        --tile-bg-present: royalblue;
+    ">
+        <wordle-tile state=correct>W</wordle-tile>
+        <wordle-tile state=present>O</wordle-tile>
+        <wordle-tile state=absent>R</wordle-tile>
+        <wordle-tile>D</wordle-tile>
+        <wordle-tile state=current></wordle-tile>
+        <wordle-tile></wordle-tile>
+    </div>
+    <div style="
+        background: black;
+        --tile-fg-empty: lightgray;
+        --tile-bg-empty: transparent;
+        --tile-fg-correct: orange;
+        --tile-bg-correct: orange;
+        --tile-fg-present: royalblue;
+        --tile-bg-present: royalblue;
+        --tile-fg-absent: darkgray;
+        --tile-bg-absent: darkgray;
+    ">
+        <wordle-tile state=correct>W</wordle-tile>
+        <wordle-tile state=present>O</wordle-tile>
+        <wordle-tile state=absent>R</wordle-tile>
+        <wordle-tile>D</wordle-tile>
+        <wordle-tile state=current></wordle-tile>
+        <wordle-tile></wordle-tile>
+    </div>
     <!-- playground-fold -->
     <style>
         th { text-align: center; }

@@ -21,6 +21,8 @@ I had done it a couple times a few years ago,
 but I don't think it's ever be documented though,
 so here it is.
 
+<ins datetime="2020-07-28">**EDIT(2020-07-28):** j2cl-maven-plugin [now](https://github.com/Vertispan/j2clmavenplugin/commit/97c5409c6941ec37b58e74ae883294e7885c98fb) serves tests using a web server.</ins>
+
 Starting points
 ---------------
 
@@ -264,10 +266,11 @@ and finally load that page in a browser to actually run the tests.
 To detect that the tests have finished running,
 the plugin will poll the page for specific JS state;
 this is actually the same as the `phantomjs_test` plumbing in `rules_closure`.
-AFAICT, the main difference from `rules_closure` is that
+<del datetime="2020-07-28">AFAICT, the main difference from `rules_closure` is that
 the HTML page is loaded as a `file://` URL in the Maven plugin,
 whereas it's actually served through HTTP in the `rules_closure` test harness,
-and this can actually have real consequences when dealing with cookies, resources, or HTTP requests.
+and this can actually have real consequences when dealing with cookies, resources, or HTTP requests.</del>  
+<ins datetime="2020-07-28">**EDIT(2020-07-28):** the Maven plugin [now](https://github.com/Vertispan/j2clmavenplugin/commit/97c5409c6941ec37b58e74ae883294e7885c98fb) uses an HTTP server.</ins>
 
 Closing thoughts
 ----------------

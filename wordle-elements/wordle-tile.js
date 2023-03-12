@@ -1,4 +1,7 @@
-/* playground-fold */import "https://unpkg.com/construct-style-sheets-polyfill";/* playground-fold-end */
+/* playground-fold */
+import "https://unpkg.com/construct-style-sheets-polyfill";
+import "https://unpkg.com/element-internals-polyfill";
+/* playground-fold-end */
 
 const styles = new CSSStyleSheet();
 styles.replace(/* playground-fold *//*css*/`
@@ -73,13 +76,16 @@ styles.replace(/* playground-fold *//*css*/`
 `/* playground-fold-end */);
 
 class Tile extends HTMLElement {
+    #internals;
     #tile = this.ownerDocument.createElement("div");
     #mutationObserver = new MutationObserver(() => {
-        this.#tile.textContent = this.letter
+        this.#tile.textContent = this.letter;
+        this.#updateState();
     });
 
     constructor() {
         super();
+        this.#internals = this.attachInternals();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.adoptedStyleSheets = [ styles ];
         this.shadowRoot.appendChild(this.#tile);
@@ -87,6 +93,7 @@ class Tile extends HTMLElement {
         this.#mutationObserver.observe(this, { childList: true, characterData: true, subtree: true });
         this.#unshadowProperties("letter", "state");
         this.#tile.textContent = this.letter;
+        this.#updateState();
     }
 
     #unshadowProperties(...props) {/* playground-fold */
@@ -99,6 +106,11 @@ class Tile extends HTMLElement {
             }
         }
     /* playground-fold-end */}
+
+    static get observedAttributes() { return ["state"]; }
+    attributeChangedCallback(name, oldValue, newValue) {
+        this.#updateState();
+    }
 
     get letter() {
         let letter = this.textContent.trim();
@@ -125,6 +137,38 @@ class Tile extends HTMLElement {
     }
     set state(state) {
         state ? this.setAttribute("state", state) : this.removeAttribute("state");
+    }
+
+    #updateState() {
+        this.#internals.states.clear();
+        if (!this.letter) {
+            if (this.state == "current") {
+                this.#internals.states.add("--current");
+            } else {
+                this.#internals.states.add("--placeholder");
+            }
+        } else {
+            switch (this.state) {
+                case "current":
+                    this.#internals.states.add("--current");
+                    // fall-through
+                case "":
+                    this.#internals.states.add("--unevaluated");
+                    break;
+                case "correct":
+                    this.#internals.states.add("--evaluated");
+                    this.#internals.states.add("--correct");
+                    break;
+                case "present":
+                    this.#internals.states.add("--evaluated");
+                    this.#internals.states.add("--present");
+                    break;
+                case "absent":
+                    this.#internals.states.add("--evaluated");
+                    this.#internals.states.add("--absent");
+                    break;
+            }
+        }
     }
 }
 customElements.define("wordle-tile", Tile);

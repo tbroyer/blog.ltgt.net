@@ -91,3 +91,8 @@ What's next?
 ------------
 
 In [followup installments]({% post_url 2022-02-13-deconstructing-and-rebuilding-wordle-2 %}), we'll create other elements, one at a time, to eventually get a working Wordle clone, customizable in many ways so you can build your own clone in different languages (e.g. [French](https://wordle.louan.me), [French](https://www.solitaire-play.com/lemot/), or [Hebrew](https://wordleheb.web.app/)), with different form-factors (e.g. playing [two](https://zaratustra.itch.io/dordle) or [four](https://quordle.com/)), or even different rules with a bit more work (e.g. words of varying length [with a hint](https://sutom.nocle.fr/) or finding [geographical points of interest](https://wordlemonde.fr/), an [adversarial version](https://qntm.org/files/wordle/), etc.)
+
+Japanese: https://plum-chloride.jp/kotonoha-tango/index.html https://aseruneko.github.io/WORDLEja/
+Portuguese: https://term.ooo/
+Spanish: https://wordle.danielfrg.com/
+Naughty: https://www.lewdlegame.com/

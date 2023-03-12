@@ -20,15 +20,18 @@ wordle-tile {
 
 const DEFAULT_LENGTH = 5;
 const DEFAULT_TILE_ELEMENT = "wordle-tile";
+const EVALUATIONS = Object.freeze(new Set("correct", "present", "absent"));
 
 class Row extends HTMLElement {
     #row = this.ownerDocument.createElement("div");
     #mutationObserver = new MutationObserver(() => {
-        this.#requestUpdate();
+        this.#updateGuess();
     });
     #pendingUpdate = false;
 
     #length = DEFAULT_LENGTH;
+    #letters = [];
+    #evaluations = [];
     #tileElementName = DEFAULT_TILE_ELEMENT;
 
     constructor() {
@@ -68,6 +71,26 @@ class Row extends HTMLElement {
                     this.#requestUpdate();
                 }
                 break;
+            case "current":
+                // Only care about adding or removing the attribute
+                if (oldValue == null || newValue == null) {
+                    this.#requestUpdate();
+                }
+                break;
+            case "evaluations":
+                newValue = (newValue || "").trim();
+                let evaluations = newValue === "" ? [] : newValue.toLowerCase().split(/\s+/g);
+                if (!evaluations.every(e => EVALUATIONS.has(e))) {
+                    evaluations = [];
+                }
+                if (!arrayEqual(this.#evaluations, evaluations)) {
+                    this.#evaluations = evaluations;
+                    // Only re-render if evaluations are "long" enough
+                    if (evaluations.length >= this.#length) {
+                        this.#requestUpdate();
+                    }
+                }
+                break;
             case "tile-element":
                 let tileElementName = String(newValue || DEFAULT_TILE_ELEMENT).toLowerCase();
                 // validate the element name by attempting to create one
@@ -83,8 +106,6 @@ class Row extends HTMLElement {
                     this.#requestUpdate();
                 }
                 break;
-            default:
-                this.#requestUpdate();
         }
     }
 
@@ -118,11 +139,15 @@ class Row extends HTMLElement {
         this.toggleAttribute("current", value);
     }
 
-    get #letters() {
-        return [...this.textContent.trim()].slice(0, this.length);
+    #updateGuess() {
+        let letters = [...this.textContent.trim()];
+        if (!arrayEqual(this.#letters, letters)) {
+            this.#letters = letters;
+            this.#requestUpdate();
+        }
     }
     get guess() {
-        return this.#letters.join('');
+        return this.#letters.slice(0, this.length).join('');
     }
     set guess(value) {
         this.textContent = value;
@@ -164,7 +189,8 @@ class Row extends HTMLElement {
     #update() {
         // ensure there's as many tiles as the 'length'
         while (this.#row.childElementCount < this.length) {
-            this.#row.appendChild(this.ownerDocument.createElement(this.tileElementName));
+            let tile = this.#row.appendChild(this.ownerDocument.createElement(this.tileElementName));
+            tile.part.add("tile");
         }
         while (this.#row.childElementCount > this.length) {
             this.#row.lastElementChild.remove();
@@ -197,3 +223,8 @@ class Row extends HTMLElement {
     }
 }
 customElements.define("wordle-row", Row);
+
+function arrayEqual(arr1, arr2) {
+    return arr1.length === arr2.length &&
+        arr1.every((v, i) => arr2[i] === v);
+}

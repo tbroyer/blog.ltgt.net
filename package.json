@@ -2,11 +2,42 @@
   "name": "blog.ltgt.net",
   "private": true,
   "scripts": {
-    "build:eleventy": "npx @11ty/eleventy",
-    "build:playground-elements": "npx rollup -p @rollup/plugin-node-resolve -p rollup-plugin-minify-html-template-literals -p @rollup/plugin-terser -f es -o js/playground-elements.js node_modules/playground-elements/index.js",
-    "build:playground-typescript-worker": "mkdir -p js/ && cp node_modules/playground-elements/playground-typescript-worker.js js/",
-    "build": "npm run build:playground-elements && npm run build:playground-typescript-worker && npm run build:eleventy",
-    "serve": "npx @11ty/eleventy --serve"
+    "build": "wireit",
+    "serve": "wireit"
+  },
+  "wireit": {
+    "build:playground-elements": {
+      "command": "npx rollup -p @rollup/plugin-node-resolve -p rollup-plugin-minify-html-template-literals -p @rollup/plugin-terser -f es -o js/playground-elements.js node_modules/playground-elements/index.js",
+      "files": [],
+      "output": [ "js/playground-elements.js" ]
+    },
+    "build:playground-typescript-worker": {
+      "command": "mkdir -p js/ && cp node_modules/playground-elements/playground-typescript-worker.js js/",
+      "files": [],
+      "output": [ "js/playground-typescript-worker.js" ]
+    },
+    "build": {
+      "command": "npx @11ty/eleventy",
+      "files": [ ".", "!_site" ],
+      "output": [ "_site" ],
+      "env": {
+        "DRAFTS": { "external": true },
+        "PAGES_BASE_URL": { "external": true }
+      },
+      "dependencies": [
+        "build:playground-elements",
+        "build:playground-typescript-worker"
+      ]
+    },
+    "serve": {
+      "command": "npx @11ty/eleventy --serve",
+      "service": true,
+      "files": [ "*" ],
+      "dependencies": [
+        { "script": "build:playground-elements", "cascade": false },
+        { "script": "build:playground-typescript-worker", "cascade": false }
+      ]
+    }
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
@@ -16,7 +47,8 @@
     "@rollup/plugin-terser": "^0.4.0",
     "markdown-it-anchor": "^8.6.7",
     "rollup": "^2.79.1",
-    "rollup-plugin-minify-html-template-literals": "^1.2.0"
+    "rollup-plugin-minify-html-template-literals": "^1.2.0",
+    "wireit": "^0.9.5"
   },
   "dependencies": {
     "playground-elements": "^0.17.0"
