@@ -205,7 +205,7 @@ java_library(
 
 is more or less equivalent to the following Make snippet:
 
-```make
+```makefile
 MY_LIBRARY_SRCS := $(shell find src/main/java -type f -name '*.java')
 MY_LIBRARY_RESOURCES := $(shell find src/main/resources -type f)
 my-library.jar: $(MY_LIBRARY_SRCS) $(MY_LIBRARY_RESOURCES) third-party/guava.jar

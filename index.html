@@ -1,30 +1,35 @@
 ---
-layout: default
-title: tbroyer's pages
+layout: "default.liquid"
+pagination:
+  data: collections.posts
+  size: 50
+permalink: "/{% if pagination.pageNumber > 0 %}page{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
+eleventyComputed:
+  title: "{{ site.title }}"
 ---
-<h1>{{ page.title }}</h1>
+<h1>{{ title }}</h1>
 <main class=posts>
-{%- for post in paginator.posts %}
+{%- for post in pagination.items %}
   <div>
     <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%d %b %Y" }}</time>
-    <a href="{{ post.url }}">{{ post.title }}</a></div>
+    <a href="{{ post.url }}">{{ post.data.title }}</a></div>
   </div>
 {%- endfor %}
 </main>
-{% if paginator.total_pages > 1 -%}
+{% if pagination.href.next || pagination.href.previous -%}
 <nav>
-{%- if paginator.next_page %}
-  <a href="/page{{ paginator.next_page }}/">← Older posts</a>
-  {% if paginator.page != 1 -%}
+{%- if pagination.href.next %}
+  <a href="{{ pagination.href.next }}">← Older posts</a>
+  {% if page.url != pagination.href.first -%}
     •
   {%- endif %}
 {% endif -%}
-{%- if paginator.page != 1 %}
+{%- if page.url != pagination.href.first %}
   <a href="/">Home</a>
 {% endif -%}
-{%- if paginator.previous_page > 1 %}
+{%- if pagination.href.previous %}
   •
-  <a href="/page{{ paginator.previous_page }}/">Newer posts →</a>
+  <a href="{{ pagination.href.previous }}">Newer posts →</a>
 {% endif -%}
 </nav>
 {%- endif -%}

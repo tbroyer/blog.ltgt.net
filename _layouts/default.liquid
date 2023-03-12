@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>{{ title }}</title>
+<link rel=stylesheet href=/style.css>
+<link rel=alternate href=https://feeds.feedburner.com/BlogLtgtNet type=application/atom+xml>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=canonical href="{{ site.github.url }}{{ page.url }}">
+<link rel="me" href="https://piaille.fr/@tbroyer">
+<link rel="me" href="https://mastodon.social/@tbroyer">
+<link rel="me" href="https://twitter.com/@tbroyer">
+<link rel="me" href="https://github.com/tbroyer">
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'none';
+    img-src 'self' data:{% if discuss_url %} https://d2fltix0v2e0sb.cloudfront.net{% endif %}{% if has_embedded_tweets %} *.twitter.com *.twimg.com{% endif %}{{ additional_csp.img_src | prepend: " " }};
+    {%- if eleventy.env.runMode != "build" or has_playground_elements or has_embedded_tweets or additional_csp.script_src %}
+    script-src{% if eleventy.env.runMode != "build" or has_playground_elements %} 'self'{% endif %}{% if has_embedded_tweets %} https://*.twitter.com https://*.twimg.com{% endif %}{{ additional_csp.script_src | prepend: " " }};
+    {%- endif %}
+    {%- if has_playground_elements or has_embedded_tweets or additional_csp.script_src %}
+    child-src{% if has_playground_elements %} https://unpkg.com{% endif %}{% if has_embedded_tweets %} https://*.twitter.com{% endif %}{{ additional_csp.child_src | prepend: " " }};
+    {%- endif %}
+    style-src 'self'{% if has_embedded_tweets %} *.twitter.com{% endif %}{% if has_playground_elements %} 'unsafe-inline'{% endif %};
+    {%- if eleventy.env.runMode != "build" or has_playground_elements %}
+    connect-src 'self';
+    worker-src 'self';
+    {%- endif %}
+">
+{%- if has_playground_elements %}
+<script type=module src=/js/playground-elements.js></script>
+{%- endif %}
+{%- if has_embedded_tweets %}
+<meta name="twitter:widgets:csp" content="on">
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{%- endif %}
+</head>
+<body>
+
+{{ content }}
+
+{% if discuss_url -%}
+<p class=discuss>Discuss: <a href="{{ discuss_url }}"><img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Dev.to" width=30 height=30></a></p>
+{% endif -%}
+<footer><small>
+Copyright © {{ "today" | date: "%Y" }} Thomas Broyer. Except as noted, {{ title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</small></footer>
+</body>
+</html>

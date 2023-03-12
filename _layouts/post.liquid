@@ -1,0 +1,26 @@
+---js
+{
+  layout: "default",
+  eleventyComputed: {
+    permalink: (data) => data.published !== false ? `${data.page.fileSlug}/` : false,
+  },
+}
+---
+<header>
+<nav>
+{% assign olderPost = collections.posts | getNextCollectionItem -%}
+{% assign newerPost = collections.posts | getPreviousCollectionItem -%}
+{% if olderPost -%}
+  <a href="{{ olderPost.url }}" title="Older: {{ olderPost.data.title }}">←</a>
+{%- endif %}
+<a href="/">Home</a>
+{% if newerPost -%}
+  <a href="{{ newerPost.url }}" title="Newer: {{ newerPost.data.title }}">→</a>
+{%- endif %}
+</nav>
+<h1>{{ title }}</h1>
+<time datetime="{{ page.date | date: "%Y-%m-%d" }}" pubdate>{{ page.date | date: "%d %B %Y" }}</time>
+</header>
+<main>
+{{ content }}
+</main>
