@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Migrating from Jekyll to Eleventy
+discuss_url: https://dev.to/tbroyer/migrating-from-jekyll-to-eleventy-1g50
 ---
 
 Yes, this is going to be yet another one of those articles explaining how I migrated this blog from [Jekyll](https://jekyllrb.com/) to [Eleventy](https://11ty.dev/). You've been warned.
