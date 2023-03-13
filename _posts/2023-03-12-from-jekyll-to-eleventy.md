@@ -46,7 +46,7 @@ And indeed it was the case: moving from Jekyll to Eleventy probably couldn't be 
 
 ## How?
 
-I felt my way a bit, so I'll summarize here what I ended up doing, also describing some things I tried along the way.
+I felt my way a bit, so I'll summarize here [what I ended up doing](https://github.com/tbroyer/blog.ltgt.net/commit/1baabc320ebefbbbaae2e37c6beeceed2c2167cf), also describing some things I tried along the way.
 
 ### Getting Started
 
