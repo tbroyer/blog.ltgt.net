@@ -1,6 +1,25 @@
 ---
 permalink: "style.css"
 ---
+/* https://andy-bell.co.uk/a-modern-css-reset/ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+}
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
 html, body {
   font-family: "Source Sans Pro", Roboto, "Droid Sans", Ubuntu, Helvetica, Arial, sans-serif;
   line-height: 1.8em;
@@ -9,7 +28,7 @@ html, body {
 }
 
 body {
-  max-width: 80ex;
+  max-width: 75ch;
   margin: 60px auto 0;
   padding: 0 1.5em;
 }
@@ -17,6 +36,18 @@ body {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1em;
   color: #222;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+main > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+:is(h1, h2, h3, h4, h5, h6, blockquote) {
+  --flow-space: 1.5em;
+}
+:is(h1, h2, h3, h4, h5, h6) + * {
+  --flow-space: 0.5em;
 }
 
 abbr {
