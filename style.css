@@ -126,6 +126,18 @@ q:after {
   content: close-quote;
 }
 
+aside[role~=doc-pullquote] {
+  font-size: 1.3em;
+  font-weight: lighter;
+  font-style: italic;
+  text-align: end;
+  text-wrap: balance;
+  margin-inline-end: -.8ch;
+  border-inline-end: .8ch solid;
+  padding-inline-end: 1ch;
+  padding-block: 1ex;
+}
+
 main.posts {
   display: table;
   border-spacing: 1em .8em;
