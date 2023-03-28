@@ -1,18 +1,21 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItAttrs = require("markdown-it-attrs");
 
 const includeDrafts = process.env.DRAFTS === "true";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(syntaxHighlight)
-  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAnchor, {
-    tabIndex: false,
-    slugify(str) {
-      // mimick CommonMarkGhPages: https://github.com/github/jekyll-commonmark-ghpages/blob/17d4ffe88aa976e82dce5bd686bc85717601a37a/lib/jekyll-commonmark-ghpages.rb#L61-L78
-      return str.replace(/^[^a-zA-Z]+/, "").replaceAll(/[^a-zA-Z0-9 -]/g, "").replaceAll(" ", "-").toLowerCase() || "section";
-    }
-  }));
+  eleventyConfig.amendLibrary("md", mdLib => mdLib
+    .use(markdownItAnchor, {
+      tabIndex: false,
+      slugify(str) {
+        // mimick CommonMarkGhPages: https://github.com/github/jekyll-commonmark-ghpages/blob/17d4ffe88aa976e82dce5bd686bc85717601a37a/lib/jekyll-commonmark-ghpages.rb#L61-L78
+        return str.replace(/^[^a-zA-Z]+/, "").replaceAll(/[^a-zA-Z0-9 -]/g, "").replaceAll(" ", "-").toLowerCase() || "section";
+      }
+    })
+    .use(markdownItAttrs));
   eleventyConfig.addCollection("posts", collectionApi => {
     return collectionApi.getFilteredByGlob([
       "_posts/*",
