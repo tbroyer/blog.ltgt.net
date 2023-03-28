@@ -66,11 +66,13 @@ small {
 
 footer {
   line-height: normal;
+  margin-block-start: 3em;
 }
 
 .discuss {
   color: #999;
   text-align: center;
+  margin-block: 3em;
 }
 
 .discuss img {
