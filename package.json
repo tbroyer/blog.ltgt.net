@@ -30,7 +30,7 @@
       ]
     },
     "serve": {
-      "command": "npx @11ty/eleventy --serve",
+      "command": "npx @11ty/eleventy --serve --incremental",
       "service": true,
       "files": [ "*" ],
       "dependencies": [
