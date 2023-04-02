@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Naming things is hard, SPA edition
+description: |
+    What is a single-page application (SPA) exactly? How does it relate to client-side rendering (CSR)? (spoiler: SPA doesn't necessarily imply CSR.)
 discuss_url: https://dev.to/tbroyer/naming-things-is-hard-spa-edition-3g41
 ---
 
