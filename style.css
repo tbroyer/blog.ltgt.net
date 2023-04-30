@@ -111,8 +111,12 @@ figure {
   margin-left: 0;
   margin-right: 0;
 }
-figure.highlight {
+figure.highlight, figure details {
   text-align: initial;
+}
+figcaption {
+  font-style: italic;
+  text-wrap: balance;
 }
 
 q {
