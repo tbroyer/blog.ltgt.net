@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@jongwooo/prism-theme-github": "^1.7.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
