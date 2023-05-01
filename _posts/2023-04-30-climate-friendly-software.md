@@ -6,6 +6,7 @@ description: |
     Here's backing data for that claim and my opinion on the low-hanging fruits.
 additional_csp:
     img_src: ourworldindata.org
+discuss_url: https://dev.to/tbroyer/climate-friendly-software-dont-fight-the-wrong-battle-19h2
 ---
 
 When talking about software ecodesign, green IT, climate-friendly software, the carbon footprint of software, or however you name it,
@@ -43,7 +44,7 @@ And this implies the impacts of the individual clients need to be much lower tha
 <tr><th scopr=row>Total</th><td>44%</td><td>56%</td><td></td></tr>
 </table>
 </details>
-<figcaption>Greenhouse gas emissions balance (<a href="https://www.greenit.fr/wp-content/uploads/2019/11/GREENIT_EENM_etude_EN_accessible.pdf" title="The environmental footprint of the digital world">source</a>, PDF, 533 KB)
+<figcaption>Greenhouse gas emissions balance (<a href="https://www.greenit.fr/wp-content/uploads/2019/11/GREENIT_EENM_etude_EN_accessible.pdf" title="The environmental footprint of the digital world">source</a>, PDF, 533 KB)</figcaption>
 </figure>
 
 What [life-cycle assessments (LCA)](https://en.wikipedia.org/wiki/Life-cycle_assessment "Wikipedia: Life-cycle assessment") for end-users' devices tell us is that manufacturing, transport and disposal summed up immensely outweight use, ranging from 65% up to nearly 98% of the global warming potential (GWP).
