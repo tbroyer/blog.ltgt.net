@@ -3,7 +3,7 @@ layout: post
 title: Naming things is hard, SPA edition
 description: |
     What is a single-page application (SPA) exactly? How does it relate to client-side rendering (CSR)? (spoiler: SPA doesn't necessarily imply CSR.)
-discuss_url: https://dev.to/tbroyer/naming-things-is-hard-spa-edition-3g41
+discuss_url: https://dev.to/tbroyer/naming-things-is-hard-spa-edition-3g41/comments
 ---
 
 During the past few months, social networks have been shaken by a _single-page_ vs _multi-page applications_ (SPA vs MPA) battle, more specifically related to Next.js and React, following, among other things, [a tweet by Guillermo Rauch](https://mobile.twitter.com/rauchg/status/1619492334961569792) and [a GitHub comment by Dan Abramov](https://github.com/reactjs/reactjs.org/pull/5487#issuecomment-1409720741).

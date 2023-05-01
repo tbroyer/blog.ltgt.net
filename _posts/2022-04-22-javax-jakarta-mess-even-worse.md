@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Javax → Jakarta mess, it's even worse than I thought
-discuss_url: https://dev.to/tbroyer/the-javax-to-jakarta-mess-its-even-worse-than-i-thought-54ag
+discuss_url: https://dev.to/tbroyer/the-javax-to-jakarta-mess-its-even-worse-than-i-thought-54ag/comments
 ---
 
 In the [previous post]({% post_url 2022-04-18-javax-jakarta-mess-and-gradle-solution %} "The Javax → Jakarta mess, and a Gradle solution"), I described how the Javax to Jakarta migration was a mess, but doing more research on the subject I discovered that it's actually way worse than that.

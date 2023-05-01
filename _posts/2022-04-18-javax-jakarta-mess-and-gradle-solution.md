@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Javax → Jakarta mess, and a Gradle solution
-discuss_url: https://dev.to/tbroyer/the-javax-jakarta-mess-and-a-gradle-solution-3c44
+discuss_url: https://dev.to/tbroyer/the-javax-jakarta-mess-and-a-gradle-solution-3c44/comments
 ---
 
 <ins datetime="2022-04-22">**EDIT(2022-04-22):** this called for a [follow-up]({% post_url 2022-04-22-javax-jakarta-mess-even-worse %} "The Javax → Jakarta mess, it's even worse than I thought").</ins>

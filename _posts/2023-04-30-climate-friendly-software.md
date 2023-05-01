@@ -6,7 +6,7 @@ description: |
     Here's backing data for that claim and my opinion on the low-hanging fruits.
 additional_csp:
     img_src: ourworldindata.org
-discuss_url: https://dev.to/tbroyer/climate-friendly-software-dont-fight-the-wrong-battle-19h2
+discuss_url: https://dev.to/tbroyer/climate-friendly-software-dont-fight-the-wrong-battle-19h2/comments
 ---
 
 When talking about software ecodesign, green IT, climate-friendly software, the carbon footprint of software, or however you name it,

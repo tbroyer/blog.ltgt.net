@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The benefits of Web Component Libraries
-discuss_url: https://dev.to/tbroyer/the-benefits-of-web-component-libraries-527h
+discuss_url: https://dev.to/tbroyer/the-benefits-of-web-component-libraries-527h/comments
 ---
 
 Web component browser APIs aren't that many, and not that hard to grasp (if you don't know about them, have a look at Google's [Learn HTML section](https://web.dev/learn/html/template/) and MDN's [Web Components guide](https://developer.mozilla.org/en-US/docs/Web/Web_Components));
