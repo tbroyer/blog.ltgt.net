@@ -26,6 +26,8 @@ before I give you my opinion on the low-hanging fruits.
 
 *Disclaimer: people regarded as experts in green IT trusted me enough to have me contribute to [a book on the subject](https://ecoconceptionweb.com/ "(French) Eco-conception web : les 115 bonnes pratiques") but I'm not myself an expert in the field.*
 
+Note: this post is written for developers and software architects; there are other actions to lower the climate impact of the digital world that won't be covered here.
+
 ## Stepping back
 
 Most software nowadays is client-server: whether web-based or mobile, more and more end-user software talk to servers.
@@ -172,7 +174,7 @@ If you manage your own servers, avoid buying machines to let them sit idle: maxi
 
 For the end-users' devices, it's more complicated, but not out of reach:
 we want users to keep their devices as long as possible so, put differently, we must not be responsible for them to change their devices.
-There will always be people changing devices "for the hype" or on some scheduled basis (or just because the vendor stopped pushing security updates, [some form of planned obsolescence](https://en.wikipedia.org/wiki/Planned_obsolescence#Software_degradation_and_lock-out "Wikipedia: Planned Obsolescence: Software degradation and lock-out")), but there are also many people who keep them as long as possible (because they're eco-conscious or can't afford purchasing a new device, or simply because they don't feel the need for changing something that's still fully functioning.)
+There will always be people changing devices "for the hype" or on some scheduled basis (or just because the vendor stopped pushing security updates, [some form of planned obsolescence](https://en.wikipedia.org/wiki/Planned_obsolescence#Software_degradation_and_lock-out "Wikipedia: Planned Obsolescence: Software degradation and lock-out"), or can't be repaired; two things laws could alleviate), but there are also many people who keep them as long as possible (because they're eco-conscious or can't afford purchasing a new device, or simply because they don't feel the need for changing something that's still fully functioning.)
 For those people, don't be the one to make them change their mind and cross the line.
 
 <aside role="doc-pullquote presentation" aria-hidden=true>Don't be the one that will make your users change their device.</aside>
@@ -201,6 +203,8 @@ For example, instead of developing a mobile app with accounts to identify the us
 And sometimes what you're trying to address with software just isn't worth it, particularly if it involves IoT (remember that we should strive for fewer devices that we keep longer, not more).
 
 <aside role="doc-pullquote">Sometimes, ideas aren't even worth their impacts.</aside>
+
+Conversely, as we'll need to electrify parts of our economy to reduce their carbon footprint, “software is one of the few sectors to start with a head-starts: we get greener at the same rate as the grid without other work needed” (I'm quoting [Alex Russell](https://infrequently.org/about-me/ "About Alex Russell, on his personal website") here, from a private conversation), so please do use software to digitalize and replace more carbon-intensive activities.
 
 ## Other pitfalls
 
