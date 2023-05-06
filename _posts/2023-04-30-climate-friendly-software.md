@@ -47,7 +47,7 @@ And this implies the impacts of the individual clients need to be much lower tha
 <figcaption>Greenhouse gas emissions balance (<a href="https://www.greenit.fr/wp-content/uploads/2019/11/GREENIT_EENM_etude_EN_accessible.pdf" title="The environmental footprint of the digital world">source</a>, PDF, 533 KB)</figcaption>
 </figure>
 
-What [life-cycle assessments (LCA)](https://en.wikipedia.org/wiki/Life-cycle_assessment "Wikipedia: Life-cycle assessment") for end-users' devices tell us is that manufacturing, transport and disposal summed up immensely outweight use, ranging from 65% up to nearly 98% of the global warming potential (GWP).
+What [life-cycle assessments (LCA)](https://en.wikipedia.org/wiki/Life-cycle_assessment "Wikipedia: Life-cycle assessment") for end-users' devices tell us is that manufacturing, transport and disposal summed up immensely outweighs use, ranging from 65% up to nearly 98% of the global warming potential (GWP).
 Of course, this depends where the device was manufactured and where it's being used, with the use location's biggest impact being related to the carbon footprint of the electric system, as the use phase is all about charging or powering our smartphones, laptops and desktops.
 
 <figure>
@@ -151,7 +151,7 @@ Comparatively, my Dell Precision 3520 would fall from 304 kg CO₂e to 261 kg CO
 The laptop to server ratio would thus fall from 25 down to 7.9:1, which makes the laptops' impacts comparatively much bigger than the server compared to other regions.
 
 Note that there are three tiers: end-users, datacenters, and networks.
-Network energy consumption however [doesn't vary proportionally to the amount of data transfered](https://doi.org/10.1016/j.joule.2021.05.007 "Does not compute: Avoiding pitfalls assessing the Internet's energy and carbon impacts"), which means we as users of those networks don't have much levers on their footprint.
+Network energy consumption however [doesn't vary proportionally to the amount of data transferred](https://doi.org/10.1016/j.joule.2021.05.007 "Does not compute: Avoiding pitfalls assessing the Internet's energy and carbon impacts"), which means we as users of those networks don't have much levers on their footprint.
 That being said, data transmission is [among the things that will drain the batteries of mobile devices](https://developer.android.com/training/connectivity/minimize-effect-regular-updates#:~:text=Requests%20that%20your%20app%20makes%20to%20the%20network%20are%20a%20major%20cause%20of%20battery%20drain%20because%20they%20turn%20on%20power%2Dconsuming%20cellular%20or%20Wi%2DFi%20radios. "Android Developers: Requests that your app makes to the network are a major cause of battery drain because they turn on power-consuming cellular or Wi-Fi radios."), so reducing the amount of data you exchange on the network could have a more direct impact on the battery life of end-users' smartphones (even though what will drain the battery the most will more likely be the screen).
 
 ## Taking action
@@ -179,7 +179,7 @@ For those people, don't be the one to make them change their mind and cross the 
 
 This is something we won't ever be able to measure, as it depends on how people perceive the overall experience on their device, but it boils down to perceived performance.
 So by all means, optimize your mobile apps and web frontends, test on old devices and slow networks (even if only emulated), and monitor their real-user performance (e.g. through [Web Vitals](https://web.dev/vitals/)).
-As part of performance testing, have a look on electricity use, as it will both be directly associated with emissions to produce that electricity, and be perceptible by the user (battery drain).
+As part of performance testing, have a look at electricity use, as it will both be directly associated with emissions to produce that electricity, and be perceptible by the user (battery drain).
 And don't forget to account for the app downloads as part of the overall perceived performance: light mobile apps that don't need to be updated every other day, frontend JS and CSS that can be cached and won't update several times a day either (defeating the cache).
 
 <aside role="doc-pullquote">Optimize for the perceived performance and battery life.</aside>
@@ -188,7 +188,7 @@ And don't forget to account for the app downloads as part of the overall perceiv
 
 The above advices were mostly technical, answering the question <q>What can I do as an architect or developer?</q>
 but product managers have their share, and they're actually the ones in power here:
-they can chose which features to build or not build, they can shape the features, they can reduce software complexity by limiting the number of features and of levers and knobs.
+they can choose which features to build or not build, they can shape the features, they can reduce software complexity by limiting the number of features and of levers and knobs.
 This will undoubtedly avoid bloat and help you make things leaner and faster.
 
 Avoid [feature creep](https://en.wikipedia.org/wiki/Feature_creep "Wikipedia: Feature creep") and beware of [Wirth's law](https://en.wikipedia.org/wiki/Wirth%27s_law "Wikipedia: Wirth's law").
@@ -197,7 +197,7 @@ Avoid [feature creep](https://en.wikipedia.org/wiki/Feature_creep "Wikipedia: Fe
 
 Last, but not least, make sure you really need software!
 Sometimes you should embrace [low-tech](https://en.wikipedia.org/wiki/Low_technology "Wikipedia: Low technology").
-For example, instead of developping a mobile app with accounts to identify the user so you can notify them, then maybe you could simply use SMS (assuming you have some out-of-band means of knowing their phone number, and the latency of distribution is acceptable).
+For example, instead of developing a mobile app with accounts to identify the user so you can notify them, then maybe you could simply use SMS (assuming you have some out-of-band means of knowing their phone number, and the latency of distribution is acceptable).
 And sometimes what you're trying to address with software just isn't worth it, particularly if it involves IoT (remember that we should strive for fewer devices that we keep longer, not more).
 
 <aside role="doc-pullquote">Sometimes, ideas aren't even worth their impacts.</aside>
