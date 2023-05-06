@@ -1,6 +1,7 @@
 ---js
 {
   layout: "default",
+  og_type: "article",
   eleventyComputed: {
     permalink: (data) => data.published !== false ? `${data.page.fileSlug}/` : false,
   },

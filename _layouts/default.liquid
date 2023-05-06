@@ -33,9 +33,22 @@
 <meta name="twitter:widgets:csp" content="on">
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 {%- endif %}
+<meta property="og:type" content="{{ og_type | default: "website" }}">
+<meta property="og:locale" content="{{ lang | default: "en" }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:url" content="{{ site.github.url }}{{ page.url }}">
+<meta property="og:title" content="{{ title | escape }}">
 {%- if description %}
 <meta name=description content="{{ description | escape }}">
+<meta property="og:description" content="{{ description | escape }}">
 {%- endif %}
+{%- if cover %}
+<meta property="og:image" content="{{ site.github.url }}{{ cover.url | default: cover }}">
+<meta property="og:image:alt" content="{{ cover.alt | escape }}">
+{%- endif %}
+<meta name="twitter:card" content="{% if cover %}summary_large_image{% else %}summary{% endif %}">
+<meta name="twitter:site" content="@tbroyer">
+<meta name="twitter:creator" content="@tbroyer">
 </head>
 <body>
 
