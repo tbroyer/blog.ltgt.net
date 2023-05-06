@@ -34,7 +34,7 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 {%- endif %}
 {%- if description %}
-<meta name=description content="{{ description }}">
+<meta name=description content="{{ description | escape }}">
 {%- endif %}
 </head>
 <body>

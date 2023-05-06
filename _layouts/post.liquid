@@ -11,11 +11,11 @@
 {% assign olderPost = collections.posts | getNextCollectionItem -%}
 {% assign newerPost = collections.posts | getPreviousCollectionItem -%}
 {% if olderPost -%}
-  <a href="{{ olderPost.url }}" title="Older: {{ olderPost.data.title }}">←</a>
+  <a href="{{ olderPost.url }}" title="Older: {{ olderPost.data.title | escape }}">←</a>
 {%- endif %}
 <a href="/">Home</a>
 {% if newerPost -%}
-  <a href="{{ newerPost.url }}" title="Newer: {{ newerPost.data.title }}">→</a>
+  <a href="{{ newerPost.url }}" title="Newer: {{ newerPost.data.title | escape }}">→</a>
 {%- endif %}
 </nav>
 <h1>{{ title }}</h1>
