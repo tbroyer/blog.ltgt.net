@@ -173,6 +173,8 @@ If you manage your own servers, avoid buying machines to let them sit idle: maxi
 
 <aside role="doc-pullquote presentation" aria-hidden=true>Pick servers in carbon-neutral or low-carbon datacenters first, then optimize your architecture and code.</aside>
 
+For the networks, our actions are probably limited to reducing data usage, <q>not because it reduces immediate emissions (it doesn't), but to avoid the need for rapid expansion of the network infrastructure</q> (I'm quoting [Wim Vanderbauwhede][] here, from a private conversation).
+
 For the end-users' devices, it's more complicated, but not out of reach:
 we want users to keep their devices as long as possible so, put differently, we must not be responsible for them to change their devices.
 There will always be people changing devices "for the hype" or on some scheduled basis (or just because the vendor stopped pushing security updates, [some form of planned obsolescence](https://en.wikipedia.org/wiki/Planned_obsolescence#Software_degradation_and_lock-out "Wikipedia: Planned Obsolescence: Software degradation and lock-out"), or can't be repaired; two things laws could alleviate), but there are also many people who keep them as long as possible (because they're eco-conscious or can't afford purchasing a new device, or simply because they don't feel the need for changing something that's still fully functioning.)
@@ -205,7 +207,7 @@ And sometimes what you're trying to address with software just isn't worth it, p
 
 <aside role="doc-pullquote">Sometimes, ideas aren't even worth their impacts.</aside>
 
-Conversely, as we'll need to electrify parts of our economy to reduce their carbon footprint, “software is one of the few sectors to start with a head-starts: we get greener at the same rate as the grid without other work needed” (I'm quoting [Alex Russell](https://infrequently.org/about-me/ "About Alex Russell, on his personal website") here, from a private conversation), so please do use software to digitalize and replace more carbon-intensive activities.
+Conversely, as we'll need to electrify parts of our economy to reduce their carbon footprint, <q>software is one of the few sectors to start with a head-starts: we get greener at the same rate as the grid without other work needed</q> (I'm quoting [Alex Russell][] here, from a private conversation), so please do use software to digitalize and replace more carbon-intensive activities.
 
 ## Other pitfalls
 
@@ -220,3 +222,9 @@ If you really do want to show how _green_ you are, conduct a life-cycle assessme
 Here are a couple resources if you want to go farther:
 * [Pitfalls to avoid when assessing the environmental footprint of digital technology](https://www.greenit.fr/2023/04/18/quels-pieges-a-eviter-pour-evaluer-lempreinte-environnementale-du-numerique/) (in French)
 * [Learn Green Software](https://learn.greensoftware.foundation/)
+
+
+_Thanks to [Alex Russell][] and [Wim Vanderbauwhede][] for their feedback._
+
+[Alex Russell]: https://infrequently.org/
+[Wim Vanderbauwhede]: https://limited.systems/
