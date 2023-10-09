@@ -189,6 +189,10 @@ And don't forget to account for the app downloads as part of the overall perceiv
 
 <aside role="doc-pullquote">Optimize for the perceived performance and battery life.</aside>
 
+Don't forget about the space taken by your app on the user's device too: users shouldn't have to make a choice between apps due to _no space left on device_, so when possible prefer a website or progressive web app (PWA) to a native application (you can still publish them to application stores if required, through tiny wrapper native apps).
+
+<aside role="doc-pullquote">When possible, prefer a website or PWA to a native application.</aside>
+
 ## A note to product managers
 
 The above advices were mostly technical, answering the question <q>What can I do as an architect or developer?</q>
