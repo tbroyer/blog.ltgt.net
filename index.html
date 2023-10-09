@@ -16,7 +16,7 @@ eleventyComputed:
   </div>
 {%- endfor %}
 </main>
-{% if pagination.href.next || pagination.href.previous -%}
+{% if pagination.href.next or pagination.href.previous -%}
 <nav>
 {%- if pagination.href.next %}
   <a href="{{ pagination.href.next }}">← Older posts</a>
