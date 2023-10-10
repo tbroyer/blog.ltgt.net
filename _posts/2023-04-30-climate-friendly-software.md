@@ -5,7 +5,7 @@ description: |
     What if I told you that most promoted actions about climate-friendly software are misguided?
     Here's backing data for that claim and my opinion on the low-hanging fruits.
 additional_csp:
-    img_src: ourworldindata.org
+    img_src: assets.ourworldindata.org
 discuss_url: https://dev.to/tbroyer/climate-friendly-software-dont-fight-the-wrong-battle-19h2/comments
 cover: /image/2023/04/climate-friendly-software.png
 ---
@@ -102,7 +102,7 @@ I am French, working mainly for French companies with most of their users in Fra
 And yet, that doesn't change the fact that the use phase has a much lower carbon footprint than all three of manufacturing, transport, and disposal as a whole.
 
 <figure>
-<a href="https://ourworldindata.org/grapher/carbon-intensity-electricity" title="Our World in Data: Carbon intensity of electricity, 2022; interactive visualization"><img src=https://ourworldindata.org/grapher/exports/carbon-intensity-electricity.svg width=850 height=600 alt="Map of carbon intensity of electricity in 2022, per country; countries whose electricity consumption emits less than 100 g CO₂e per kWh are mainly in Central, Eastern, and Southern Africa, and in Europe"></a>
+<a href="https://ourworldindata.org/grapher/carbon-intensity-electricity" title="Our World in Data: Carbon intensity of electricity, 2022; interactive visualization"><img src=https://assets.ourworldindata.org/grapher/exports/carbon-intensity-electricity.svg width=850 height=600 alt="Map of carbon intensity of electricity in 2022, per country; countries whose electricity consumption emits less than 100 g CO₂e per kWh are mainly in Central, Eastern, and Southern Africa, and in Europe"></a>
 </figure>
 
 What we can infer from this, is that keeping our devices longer will  increase the share of use in the whole life-cycle impacts.
