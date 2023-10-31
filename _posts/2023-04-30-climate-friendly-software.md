@@ -8,6 +8,10 @@ additional_csp:
     img_src: assets.ourworldindata.org
 discuss_url: https://dev.to/tbroyer/climate-friendly-software-dont-fight-the-wrong-battle-19h2/comments
 cover: /image/2023/04/climate-friendly-software.png
+translations:
+    - lang: fr
+      url: https://blog.atolcd.com/logiciel-respectueux-du-climat-bien-choisir-ses-batailles/
+      title: "Logiciel respectueux du climat : bien choisir ses batailles"
 ---
 
 When talking about software ecodesign, green IT, climate-friendly software, the carbon footprint of software, or however you name it,
