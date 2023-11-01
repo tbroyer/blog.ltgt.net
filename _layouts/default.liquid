@@ -1,3 +1,18 @@
+---js
+{
+  eleventyComputed: {
+    translations: (data) => {
+      if (data.translations) {
+        return data.translations.map(({label, lang, ...rest}) => ({
+          label: label ?? new Intl.DisplayNames("en", { type: "language" }).of(lang),
+          lang,
+          ...rest
+        }));
+      }
+    }
+  }
+}
+---
 <!doctype html>
 <html lang={{ lang | default: "en" }}>
 <head>
@@ -49,6 +64,9 @@
 <meta name="twitter:card" content="{% if cover %}summary_large_image{% else %}summary{% endif %}">
 <meta name="twitter:site" content="@tbroyer">
 <meta name="twitter:creator" content="@tbroyer">
+{%- for translation in translations %}
+<link rel=alternate hreflang="{{ translation.lang }}" href="{{ translation.url }}" title="{{ translation.title }}">
+{%- endfor %}
 </head>
 <body>
 
