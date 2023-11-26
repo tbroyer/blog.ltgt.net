@@ -3,6 +3,7 @@ layout: post
 title: How I teach Git
 additional_csp:
     img_src: git-scm.com marklodato.github.io lurklurk.org
+discuss_url: https://dev.to/tbroyer/how-i-teach-git-3nj3/comments
 ---
 
 I've been using Git for a dozen years.
