@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Beyond the login page
+discuss_url: https://dev.to/tbroyer/beyond-the-login-page-4hjd/comments
 ---
 
 There are many blog posts floating around about “adding authentication to your application”, be it written in Node.js, ASP.NET, Java with Spring Boot, JS in the browser talking to a JSON-based Web API on the server, etc. Most of them handle the login page and password storage, and sometimes logout and a user registration page. But authentication is actually much more than that!
