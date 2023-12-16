@@ -35,7 +35,7 @@
     {%- if has_playground_elements or has_embedded_tweets or additional_csp.script_src %}
     child-src{% if has_playground_elements %} https://unpkg.com{% endif %}{% if has_embedded_tweets %} https://*.twitter.com{% endif %}{{ additional_csp.child_src | prepend: " " }};
     {%- endif %}
-    style-src 'self'{% if has_embedded_tweets %} *.twitter.com{% endif %}{% if has_playground_elements %} 'unsafe-inline'{% endif %};
+    style-src 'self'{% if has_embedded_tweets %} *.twitter.com{% endif %}{% if has_playground_elements %} 'unsafe-inline'{% endif %}{{ additional_csp.style_src | prepend: " " }};
     {%- if eleventy.env.runMode != "build" or has_playground_elements %}
     connect-src 'self';
     worker-src 'self';
