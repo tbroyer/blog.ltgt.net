@@ -4,6 +4,7 @@ title: Improving a web component, one step at a time
 additional_csp:
     script_src: tbroyer.github.io 'unsafe-inline'
     style_src: "'unsafe-inline'"
+discuss_url: https://dev.to/tbroyer/improving-a-web-component-one-step-at-a-time-2673/comments
 ---
 
 Earlier this month, [Stefan Judis](https://www.stefanjudis.com/) published a small [web component that makes your text sparkle](https://www.stefanjudis.com/blog/a-web-component-to-make-your-text-sparkle/ "A web component to make your text sparkle").
