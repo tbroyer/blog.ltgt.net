@@ -1,11 +1,11 @@
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const markdownItAnchor = require("markdown-it-anchor");
-const markdownItAttrs = require("markdown-it-attrs");
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import markdownItAnchor from "markdown-it-anchor";
+import markdownItAttrs from "markdown-it-attrs";
 
 const includeDrafts = process.env.DRAFTS === "true";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-module.exports = (eleventyConfig) => {
+export default (eleventyConfig) => {
   eleventyConfig.addPlugin(syntaxHighlight)
   eleventyConfig.amendLibrary("md", mdLib => mdLib
     .use(markdownItAnchor, {

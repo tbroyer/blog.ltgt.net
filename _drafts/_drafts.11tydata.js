@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   date: "Last Modified",
   layout: "post",
   eleventyComputed: {
