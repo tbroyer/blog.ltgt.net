@@ -167,4 +167,4 @@ main.posts a {
 /*
  * Syntax highlighting
  */
-{% include "./node_modules/@jongwooo/prism-theme-github/themes/prism-github-default-light.min.css" %}
+{% include "./node_modules/a11y-syntax-highlighting/dist/prism/a11y-light.min.css" %}
