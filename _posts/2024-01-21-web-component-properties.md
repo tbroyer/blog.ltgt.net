@@ -2,6 +2,7 @@
 layout: post
 title: Making Web Component properties behave closer to the platform
 discuss_url: https://dev.to/tbroyer/making-web-component-properties-behave-closer-to-the-platform-c1n/comments
+last_modified: 2024-02-05
 ---
 
 Built-in HTML elements' properties all share similar behaviors, that don't come _for free_ when you write your own custom elements. Let's see [what](#what) those behaviors are, [why](#why) you'd want to implement them in your web components, and [how](#how) to do it, including how some web component libraries actually don't allow you to mimic those behaviors.
@@ -28,14 +29,14 @@ Now let's get back to reflected properties: most properties of built-in elements
 
 <aside role="doc-pullquote presentation" aria-hidden=true>Have your properties reflect attributes by default.</aside>
 
-The way reflection is defined is that the source of truth is the attribute value: getting the property will actually parse the attribute value, and setting the property will _stringify_ the value into the attribute (note that this means possibly setting the attribute to an _invalid_ value that will be _corrected_ by the getter; an example of this is setting the `type` property of an `input` element to an unknown value: it will be reflected in the attribute as-is, but the getter will correct it `text`). This is at least how it _theoretically_ works; in practice, the parsed value can be _cached_ to avoid parsing every time the property is read; but note that there can be several properties reflecting the same attribute (the most known one probably being `className` and `classList` both reflecting the `class` attribute). Reflected properties can also have additional options, depending on their type, that will change the behavior of the getter and setter, not unlike WebIDL extended attributes.
+The way reflection is defined is that the source of truth is the attribute value: getting the property will actually parse the attribute value, and setting the property will _stringify_ the value into the attribute. Note that this means possibly setting the attribute to an _invalid_ value that will be _corrected_ by the getter. An example of this is setting the `type` property of an `input` element to an unknown value: it will be reflected in the attribute as-is, but the getter will correct it `text`. Another example where this is required behavior is with dependent attributes like those of `progress` or `meter` elements: without this you'd have to be very careful setting properties in the _right order_ to avoid invalid combinations and having your set value immediately rewritten, but this behavior makes it possible to update properties in any order as the interaction between them are resolved internally and exposed by the getters: you can for example set the `value` to a value upper than `max` (on getting, `value` would be normalized to its default value) and then update the `max` (on getting, value could now return the value you previously set, because it wasn't actually rewritten on setting). Actually, these are not _technically_ reflected then as they have specific rules, but at least they're consistent with _actual_ reflected properties; for the purpose of this article, I'll consider them as reflected properties though.
 
-Just like with WebIDL coercion rules, some HTML reflection rules clearly exist only for backwards compatibility (e.g. the [_limited to only positive numbers with fallback_](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-non-negative-numbers-greater-than-zero-with-fallback) option for reflecting `unsigned long` properties). Also note that HTML only defines reflection for a limited set of types (if looking only at primitive/simple types, only non-nullable and nullable strings and enumerations, `long`, `unsigned long`, and `double` are covered, and none of the narrower integer types, big integers, or the `unrestricted double` that allows `NaN` and infinity).
+This is at least how it _theoretically_ works; in practice, the parsed value can be _cached_ to avoid parsing every time the property is read; but note that there can be several properties reflecting the same attribute (the most known one probably being `className` and `classList` both reflecting the `class` attribute). Reflected properties can also have additional options, depending on their type, that will change the behavior of the getter and setter, not unlike WebIDL extended attributes.
+
+Also note that HTML only defines reflection for a limited set of types (if looking only at primitive/simple types, only non-nullable and nullable strings and enumerations, `long`, `unsigned long`, and `double` are covered, and none of the narrower integer types, big integers, or the `unrestricted double` that allows `NaN` and infinity).
 
 You can see how Mozilla tests the compliance of their built-in elements
 [in the Gecko repository](https://github.com/mozilla/gecko-dev/blob/master/dom/html/test/reflect.js) (the `ok` and `is` assertions are defined in their [`SimpleTest`](https://github.com/mozilla/gecko-dev/blob/master/testing/mochitest/tests/SimpleTest/SimpleTest.js) testing framework). And here's the Web Platform Tests' [reflection harness](https://github.com/web-platform-tests/wpt/blob/master/html/dom/reflection.js), with data for each built-in element in sibling files, that [almost every browser pass](https://wpt.fyi/results/html/dom).
-
-It's still not clear to me whether the rules that will pass an invalid value to the attribute, to be corrected by the property getter is something worth emulating, or if it's part of those backwards-compatibility rules. I'll assuming they're worth it for now.
 
 ### Events
 
@@ -55,7 +56,9 @@ For example, all the following design systems can be used without tooling (some 
 
 Now that we've seen [what](#what) we'd want to implement, and [why](#why) we'd want to implement it, let's see _how_ to do it. First without, and then [with](#libraries) libraries.
 
-### Vanilla implementation
+I started collecting implementations that _strictly_ follow (as an exercise, not as a goal) the above rules in [a GitHub repository](https://github.com/tbroyer/custom-elements-reflection-tests) (strictly because it directly reuses the above-mentioned Gecko and Web Platform Tests harnesses).
+
+### Vanilla implementation {#vanilla}
 
 In a _vanilla_ custom element, things are rather straightforward:
 
@@ -125,7 +128,7 @@ class MyElement extends HTMLElement {
 
 I actually started building such a library, mostly as an exercise (and I already learned a lot, most of the above details actually). Depending on how things go, I'll probably publish it (if not on NPM, at least on GitHub).
 
-### With a library
+### With a library {#libraries}
 
 Surprisingly, web component libraries don't really help us here.
 
@@ -141,7 +144,7 @@ Now let's dive into the _how-to_ with Lit, [FAST](#fast), and then [Stencil](#st
 
 By default, [Lit reactive properties](https://lit.dev/docs/components/properties/) (annotated with `@property()`) observe the attribute of the same (or configured) name, using a converter to parse the value if needed (by default only handling numbers through a plain JavaScript number coercion, booleans, strings, or possibly objects or arrays through `JSON.parse()`; but a custom converter can be given). If your property is not associated to any attribute (but needs to be reactive to trigger a render when changed), then you can annotate it with `@property({ attribute: false })` or `@state()` (the latter is meant for internal state though, i.e. private properties).
 
-To make a reactive property [reflect an attribute](https://lit.dev/docs/components/properties/#reflected-attributes), you'll add `reflect: true` to the `@property()` options, and Lit will use the converter to stringify the value too. This won't be done immediately though, but only as part of Lit's reactive update cycle. This timing is a slight deviation compared to built-in elements that's probably acceptable, but it makes it harder to implement some reflection rules (those that set the attribute to a different value than the one returned by the getter) as the converter will always be called with the property value (returned by the getter, so after normalization).
+To make a reactive property [reflect an attribute](https://lit.dev/docs/components/properties/#reflected-attributes), you'll add `reflect: true` to the `@property()` options, and Lit will use the converter to stringify the value too. This won't be done immediately though, but only as part of Lit's reactive update cycle. This timing is a slight deviation compared to built-in elements that's probably acceptable, but it makes it harder to implement some reflection rules (those that set the attribute to a different value than the one returned by the getter) as the converter will always be called with the property value (returned by the getter, so after normalization). For a component similar to `progress` or `meter` with dependent properties, Lit recommends correcting the values in a `willUpdate` callback (this is where you'd check whether the `value` is valid with respect to the `max` for instance, and possibly overwrite its value to bring it in-range); this means that attributes will have the corrected value, and this requires users to update all properties in the same _event loop_ (which will most likely be the case anyway).
 
 It should be noted that, surprisingly, Lit _actively_ discourages reflecting attributes:
 
@@ -166,7 +169,7 @@ class MyElement extends LitElement {
 }
 ```
 
-Implementing an enumerated attribute for instance (where the attribute value could be different from the property value) would thus mean using a non-reactive property wrapping a private reactive property (this assumes Lit won't flag them as errors in future versions), and parsing the value in its getter:
+For those cases where you'd want the attribute to possibly have an _invalid_ value (to be corrected by the property getter), it would mean using a non-reactive property wrapping a private reactive property (this assumes Lit won't flag them as errors in future versions), and parsing the value in its getter:
 
 ```js
 class MyElement extends LitElement {
@@ -209,7 +212,31 @@ class MyElement extends LitElement {
 }
 ```
 
-It might actually be easier to directly set the attribute from the setter and only rely on an _observed property_ from Lit's point of view:
+It might actually be easier to directly set the attribute from the setter (and as a bonus behaving closer to built-in elements) and only rely on an _observed property_ from Lit's point of view (setting the attribute will trigger `attributeChangedCallback` and thus Lit's _observation_ code that will use the converter and then set the property):
+
+```js
+class MyElement extends LitElement {
+  @property({
+    attribute: "reflected",
+    converter: (value) => parseValue(value),
+  })
+  accessor #reflected = "";
+
+  get reflected() {
+    return this.#reflected;
+  }
+  set reflected(value) {
+    const newValue = coerceType(value);
+    // …there might be additional validations here…
+    this.setAttribute("reflected", stringifyValue(newValue));
+  }
+}
+```
+
+Note that this is actually very similar to the approach in the vanilla implementation above but using Lit's own lifecycle hooks. It should also be noted that for a `USVString` that contains a URL (where the attribute value is resolved to a URL relative to the document base URI) the value needs to be processed in the getter (as it depends on an external state –the document base URI– that could change independently from the element).
+
+<details>
+<summary>A previous version of this article contained a different implementation that happened to be broken.</summary>
 
 ```js
 class MyElement extends LitElement {
@@ -234,9 +261,11 @@ class MyElement extends LitElement {
 }
 ```
 
-Note that at no point we made use of converters, the observed or reflected attributes always being of type string.
+This implementation would for instance have the setter called with `null` when the attribute is removed, which actually needs to behave differently than user code calling the setter with `null`: in the former case the property should revert to its default value, in the latter case that `null` would be coerced to the string `"null"` or the numeric value `0` and the attribute would be added back with that value.
 
-If we're OK reflecting only valid values to attributes, then things are simpler as we can use converters (we still need the custom setter for type coercion and validation):
+</details>
+
+If we're OK only reflecting valid values to attributes, then we can fully use converters but things aren't necessarily simpler (we still need the custom setter for type coercion and validation, and marking the internal property as reactive to avoid triggering the custom setter when the attribute changes; we don't directly deal with the attribute but we now have to _normalize_ the value in the setter in the same way as stringifying it to the attribute and parsing it back, to have the getter return the appropriate value):
 
 ```js
 const customConverter = {
@@ -249,11 +278,11 @@ const customConverter = {
 };
 
 class MyElement extends LitElement {
-  #reflected = "";
+  @property({ reflect: true, converter: customConverter })
+  accessor #reflected = "";
   get reflected() {
     return this.#reflected;
   }
-  @property({ reflect: true, converter: customConverter })
   set reflected(value) {
     const newValue = coerceType(value);
     // …there might be additional validations here…
@@ -267,35 +296,35 @@ class MyElement extends LitElement {
 
 I know [FAST](https://www.fast.design/) is not used that much but I wanted to cover it as it seems to be the only library that [reflects attributes by default](https://www.fast.design/docs/fast-element/defining-elements#customizing-attributes "FAST Documentation: Building Components: Customizing Attributes"). By default it won't do any type coercion unless you use the `mode: "boolean"`, which works _almost_ like an HTML boolean attribute, except an attribute present but with the value `"false"` will coerce to a property value of `false`!
 
-Otherwise, it works more or less like Lit, with one big difference: the converter's `fromView` is _also_ called when setting the property (this means that `fromView` receives any _external_ value, not just string values from the attribute). But unfortunately this doesn't really help us as most coercion rules need to throw at one point and we want to do it only in the property setters, never when parsing attribute values; and those rules that don't throw will have possibly different values between the attribute and the property getter (push invalid value to the attribute, sanitize it on the property getter).
+Otherwise, it works more or less like Lit, with one big difference: the converter's `fromView` is _also_ called when setting the property (this means that `fromView` receives any _external_ value, not just string values from the attribute). But unfortunately this doesn't really help us as most coercion rules need to throw at one point and we want to do it only in the property setters, never when parsing attribute values; and those rules that don't throw will have possibly different values between the attribute and the property getter (push invalid value to the attribute, sanitize it on the property getter), or just behave differently between the property (e.g. turning a `null` into `0` or `"null"`) and the attribute (where `null` means the attribute is not set, and the property should then have its default value which could be different from `0`, and will likely be different from `"null"`).
 
-This means that in the end the solutions are almost identical to the Lit ones (here using TypeScript's _legacy_ decorators though; and applying the annotation on the _private_ property, that cannot for some reason be declared `private`):
+This means that in the end the solutions are almost identical to the Lit ones (here using TypeScript's _legacy_ decorators though; and applying the annotation on the _private_ property to avoid triggering the custom setter on attribute change):
 
 ```ts
-class Element extends FASTElement {
+class MyElement extends FASTElement {
   @attr({ attribute: "reflected" })
-  __reflected = "";
+  private _reflected = "";
 
   get reflected() {
-    return parseValue(this.#reflected);
+    return parseValue(this._reflected);
   }
   set reflected(value) {
     const newValue = coerceType(value);
     // …there might be additional validations here…
-    this.__reflected = stringifyValue(newValue);
+    this._reflected = stringifyValue(newValue);
   }
 }
 ```
 
 or with intermediate caching (note that the setter is identical):
 
-```js
+```ts
 class MyElement extends FASTElement {
   @attr({ attribute: "reflected" })
-  __reflected = "";
+  private _reflected = "";
 
-  private __reflectedChanged(oldValue, newValue) {
-    this._parsedReflected = newValue;
+  private _reflectedChanged(oldValue, newValue) {
+    this._parsedReflected = parseValue(newValue);
   }
 
   private _parsedReflected;
@@ -310,9 +339,39 @@ class MyElement extends FASTElement {
 }
 ```
 
-Relying on an _observed attribute_ only (`mode: "fromView"`) and explicitly setting the attribute from the property setter does not seem to work though.
+Or if you want immediate reflection to the attribute (the internal property can now be used to store the parsed value):
 
-If we're OK only reflecting valid values to attributes, then things are simpler as we can use converters (we still need the custom setter for type coercion and validation, and thus a separate _reactive_ property):
+```ts
+class MyElement extends FASTElement {
+  @attr({
+    attribute: "reflected",
+    mode: "fromView",
+    converter: {
+      fromView(value) {
+        return parseValue(value);
+      },
+      toView(value) {
+        // mandatory in the converter type
+        throw new Error("should never be called");
+      }
+    }
+  })
+  private _reflected;
+
+  get reflected() {
+    return this._reflected ?? "";
+  }
+  set reflected(value) {
+    const newValue = coerceType(value);
+    // …there might be additional validations here…
+    this.setAttribute("reflected", stringifyValue(newValue));
+  }
+}
+```
+
+Note that the internal property is not initialized, to avoid calling the converter's `fromView`, and handled in the getter instead (our `fromView` expects a string or null coming from the attribute, so we'd have to initialize the property with such a string value which would hurt readability of the code as that could be a value different from the one actually stored in the property and returned by the pblic property getter).
+
+If we're OK only reflecting valid values to attributes, then we can fully use converters but things aren't necessarily simpler (we still need the custom setter for type coercion and validation, and marking the internal property as reactive to avoid triggering the custom setter when the attribute changes; we don't directly deal with the attribute but we still need to call `stringifyValue` as we know the converter's `fromView` will receive the new value):
 
 ```ts
 const customConverter = {
@@ -326,15 +385,15 @@ const customConverter = {
 
 class MyElement extends FASTElement {
   @attr({ attribute: "reflected ", converter: customConverter })
-  __reflected = "";
+  private _reflected;
 
   get reflected() {
-    return this.__reflected;
+    return this._reflected ?? "";
   }
   set reflected(value) {
     const newValue = coerceType(value);
     // …there might be additional validations here…
-    this.__reflected = newValue;
+    this._reflected = stringifyValue(newValue);
   }
 }
 ```
