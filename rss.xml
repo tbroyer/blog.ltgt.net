@@ -24,7 +24,7 @@ Copyright © {{ "today" | date: "%Y" }} Thomas Broyer. Except as noted, {{ site.
   <title type="html">{{ post.data.title | escape }}</title>
   <link href="{{ post.page.url }}" />
   <published>{{ post.page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}</published>
-  <updated>{{ post.page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}</updated>
+  <updated>{{ post.data.last_modified | default: post.page.date | date: "%Y-%m-%dT%H:%M:%S%z" }}</updated>
   <id>{{ site.github.url | replace_first: "https://", "http://" }}{{ post.page.url }}</id>
   {% for category in post.data.categories %}
     <category term="{{ category }}" />
