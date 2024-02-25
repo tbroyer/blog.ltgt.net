@@ -2,7 +2,7 @@
 layout: post
 title: Making Web Component properties behave closer to the platform
 discuss_url: https://dev.to/tbroyer/making-web-component-properties-behave-closer-to-the-platform-c1n/comments
-last_modified: 2024-02-05
+last_modified: 2024-02-25
 ---
 
 Built-in HTML elements' properties all share similar behaviors, that don't come _for free_ when you write your own custom elements. Let's see [what](#what) those behaviors are, [why](#why) you'd want to implement them in your web components, and [how](#how) to do it, including how some web component libraries actually don't allow you to mimic those behaviors.
@@ -126,7 +126,7 @@ class MyElement extends HTMLElement {
 }
 ```
 
-I actually started building such a library, mostly as an exercise (and I already learned a lot, most of the above details actually). Depending on how things go, I'll probably publish it (if not on NPM, at least on GitHub).
+I actually built such a library, mostly as an exercise (and I already learned a lot, most of the above details actually). It's currently not published on NPM but you can find it [on Github](https://github.com/tbroyer/platformer "The Platformer library on GitHub")
 
 ### With a library {#libraries}
 
