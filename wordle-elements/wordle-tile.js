@@ -97,9 +97,8 @@ class Tile extends HTMLElement {
     }
 
     #unshadowProperties(...props) {/* playground-fold */
-        let hasOwnProperty = Object.prototype.hasOwnProperty.bind(this);
         for (let prop of props) {
-            if (hasOwnProperty(prop)) {
+            if (Object.hasOwn(this, prop)) {
                 let value = this[prop];
                 delete this[prop];
                 this[prop] = value;

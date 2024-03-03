@@ -166,7 +166,7 @@ class MyElement extends HTMLElement {
         super();
         // "upgrade" properties
         for (const propName of ['reflectedConverted', 'reflected', 'nonReflected', 'bool']) {
-            if (this.hasOwnProperty(propName)) {
+            if (Object.hasOwn(this, propName)) {
                 let value = this[propName];
                 delete this[propName];
                 this[propName] = value;
