@@ -106,13 +106,7 @@ header .pubdate {
 
 code {
   font-family: 'DejaVu Sans Mono', 'Source Code Pro', 'Droid Sans Mono', 'Ubuntu Mono', monospace;
-}
-/* pre[class*=language-] sets a font-size already, so set size as needed. */
-:not(pre) > code {
   font-size: .8125em;
-}
-pre > code {
-  font-size: .8125rem;
 }
 
 pre {
