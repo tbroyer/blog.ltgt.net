@@ -19,23 +19,21 @@ permalink: "style.css"
   }
 }
 
-/* https://andy-bell.co.uk/a-modern-css-reset/ */
+/* https://piccalil.li/blog/a-more-modern-css-reset/ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-html:focus-within {
-  scroll-behavior: smooth;
-}
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 body {
   min-height: 100vh;
-  text-rendering: optimizeSpeed;
+}
+:target {
+  scroll-margin-block: 5ex;
 }
 
 html, body {
