@@ -20,10 +20,12 @@
 {%- endif %}
 </nav>
 <h1>{{ title }}</h1>
+<span class=pubdate>
 <time datetime="{{ page.date | date: "%Y-%m-%d" }}" pubdate>{{ page.date | date: "%d %B %Y" }}</time>
 {% if last_modified -%}
 — updated on <time datetime="{{ last_modified | date: "%Y-%m-%d" }}">{{ last_modified | date: "%d %B %Y" }}</time>
 {%- endif %}
+</span>
 </header>
 {%- if translations %}
 <p class=translations>

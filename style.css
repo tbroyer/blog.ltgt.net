@@ -87,6 +87,10 @@ footer {
   margin-block-start: 3em;
 }
 
+header .pubdate {
+  color: var(--dimtext);
+}
+
 .discuss {
   color: var(--dimtext);
   text-align: center;
