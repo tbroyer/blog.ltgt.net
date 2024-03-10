@@ -16,7 +16,7 @@ eleventyImport:
 <link rel="license" type="application/rdf+xml"
       href="http://creativecommons.org/licenses/by/3.0/rdf" />
 <rights type="html"><![CDATA[
-Copyright © {{ "today" | date: "%Y" }} Thomas Broyer. Except as noted, {{ site.title }} by <a href="https://github.com/tbroyer">Thomas Broyer</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+Copyright © Thomas Broyer, blog.ltgt.net
 ]]></rights>
 
 {% for post in collections.posts limit: 10 %}
