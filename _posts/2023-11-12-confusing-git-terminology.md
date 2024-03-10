@@ -100,13 +100,13 @@ This is another message you can see in the output of `git status` related to the
 We've seen that when they both point to the same commit you'll get an “is up-to-date” message; this one is another situation when the branches have not diverged, but they're not identical either.
 This happens when the current branch is “behind” its “upstream”: it points to a commit that's part of the “upstream”, but “upstream” actually has more commits.
 
-```
+```text
 A - B (main)
      \
       C - D (origin/main)
 ```
 or if you prefer
-```
+```text
 A - B (main) - C - D (origin/main)
 ```
 
@@ -118,7 +118,7 @@ There's hardly any situation safer than a “fast-forward merge”.
 
 Note that such a “fast-forward merge” can actually bring in merge commits (here, `main` can be fast-forwarded to `origin/main`, and bring in commits C, D, E, F, and G):
 
-```
+```text
 A - B (main) - C - D (origin/main)
  \            /
   E -- F --- G (origin/newfeature)

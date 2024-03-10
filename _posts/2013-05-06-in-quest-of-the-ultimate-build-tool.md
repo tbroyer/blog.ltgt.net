@@ -82,7 +82,7 @@ everything).
 i.e. 1.25 per CPU core, building the Gerrit WAR and skipping tests (I ran the
 build twice, so all dependencies were downloaded already for the second build):
 
-```
+```shell-session
 $ time mvn package -DskipTests -pl gerrit-war/ -am -T 1.25C
 …
 real    3m0.004s
@@ -93,7 +93,7 @@ sys     0m28.340s
 Then I ran Buck; in two steps: first downloading all dependencies, and then
 building the Gerrit WAR:
 
-```
+```shell-session
 $ buck build `buck targets |grep '^//lib/' |grep -v LICENSE`
 $ time buck build :gerrit
 BUILDING //:gerrit
@@ -115,7 +115,7 @@ meaningful, but that would to the overall complexity of the `pom.xml`; the Maven
 build could also possibly be made faster by using the latest versions of plugins,
 e.g. `maven-compiler-plugin` 3.1 rather than 2.3.2):
 
-```
+```shell-session
 $ time mvn package -DskipTests -pl gerrit-war/ -am -T 1.25C
 …
 real    0m55.824s
