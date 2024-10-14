@@ -33,6 +33,7 @@ export default (eleventyConfig) => {
   eleventyConfig.ignores.add("wordle-elements");
   eleventyConfig.addExtension("css", { key: "liquid" });
   eleventyConfig.addExtension("xml", { key: "liquid" });
+  eleventyConfig.addTemplateFormats("css,xml");
   eleventyConfig.addLiquidTag("post_url", function () {
     return {
       parse(tagToken) {

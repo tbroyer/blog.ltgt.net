@@ -183,9 +183,4 @@ main.posts a {
 /*
  * Syntax highlighting
  */
-@media (prefers-color-scheme: light) {
-{% include "./node_modules/a11y-syntax-highlighting/dist/prism/a11y-light.min.css" %}
-}
-@media (prefers-color-scheme: dark) {
-{% include "./node_modules/a11y-syntax-highlighting/dist/prism/a11y-dark.min.css" %}
-}
+{% include "./node_modules/a11y-syntax-highlighting/dist/prism/a11y-light-on-light-dark-on-dark.css" %}
