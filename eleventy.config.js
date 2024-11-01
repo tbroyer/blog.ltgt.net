@@ -45,6 +45,10 @@ export default (eleventyConfig) => {
       },
     };
   });
+  eleventyConfig.addPairedShortcode("pullquote", function (content, ...additionalRoles) {
+    return `<aside role="${["doc-pullquote", ...additionalRoles].join(" ")}"${additionalRoles.includes("presentation") ? " aria-hidden=true" : ""}>${content}</aside>`;
+  });
+  eleventyConfig.setLiquidParameterParsing("builtin");
   return {
     dir: {
       layouts: "_layouts",

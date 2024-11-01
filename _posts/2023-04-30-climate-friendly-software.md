@@ -128,7 +128,7 @@ Fairphone measured that extending the lifespan of their phones from 3 to 5 years
 <figcaption>Fairphone 4: comparative of yearly emissions per baseline scenario (<a href="https://www.fairphone.com/wp-content/uploads/2022/07/Fairphone-4-Life-Cycle-Assessment-22.pdf" title="Life Cycle Assessment of the Fairphone 4">source</a>, PDF, 1.1 MB)</figcaption>
 </figure>
 
-<aside role="doc-pullquote presentation" aria-hidden=true>Extending the lifespan of a smartphone from 3 to 5 years can reduce its yearly global warming impacts by almost a third.</aside>
+{% pullquote "presentation" %}Extending the lifespan of a smartphone from 3 to 5 years can reduce its yearly global warming impacts by almost a third.{% endpullquote %}
 
 Things are different for servers though, where the use phase's share varies much more depending on use location: from 4% up to 85%!
 As noted in the ReadME Project Q&A linked above, big companies' datacenters are for the most part net-neutral in carbon emissions, so not only the geographic regions of your servers matter, but also the actual datacenters in those regions.
@@ -175,7 +175,7 @@ if you can, rent servers in energy efficient datacenters, and/or countries with 
 in addition, or otherwise, then of course optimize your server-side architecture and code.
 If you manage your own servers, avoid buying machines to let them sit idle: maximize their utilization.
 
-<aside role="doc-pullquote presentation" aria-hidden=true>Pick servers in carbon-neutral or low-carbon datacenters first, then optimize your architecture and code.</aside>
+{% pullquote "presentation" %}Pick servers in carbon-neutral or low-carbon datacenters first, then optimize your architecture and code.{% endpullquote %}
 
 For the networks, our actions are probably limited to reducing data usage, <q>not because it reduces immediate emissions (it doesn't), but to avoid the need for rapid expansion of the network infrastructure</q> (I'm quoting [Wim Vanderbauwhede][] here, from a private conversation).
 
@@ -184,18 +184,18 @@ we want users to keep their devices as long as possible so, put differently, we 
 There will always be people changing devices "for the hype" or on some scheduled basis (or just because the vendor stopped pushing security updates, [some form of planned obsolescence](https://en.wikipedia.org/wiki/Planned_obsolescence#Software_degradation_and_lock-out "Wikipedia: Planned Obsolescence: Software degradation and lock-out"), or can't be repaired; two things laws could alleviate), but there are also many people who keep them as long as possible (because they're eco-conscious or can't afford purchasing a new device, or simply because they don't feel the need for changing something that's still fully functioning.)
 For those people, don't be the one to make them change their mind and cross the line.
 
-<aside role="doc-pullquote presentation" aria-hidden=true>Don't be the one that will make your users change their device.</aside>
+{% pullquote "presentation" %}Don't be the one that will make your users change their device.{% endpullquote %}
 
 This is something we won't ever be able to measure, as it depends on how people perceive the overall experience on their device, but it boils down to perceived performance.
 So by all means, optimize your mobile apps and web frontends, test on old devices and slow networks (even if only emulated), and monitor their real-user performance (e.g. through [Web Vitals](https://web.dev/vitals/)).
 As part of performance testing, have a look at electricity use, as it will both be directly associated with emissions to produce that electricity, and be perceptible by the user (battery drain).
 And don't forget to account for the app downloads as part of the overall perceived performance: light mobile apps that don't need to be updated every other day, frontend JS and CSS that can be cached and won't update several times a day either (defeating the cache).
 
-<aside role="doc-pullquote">Optimize for the perceived performance and battery life.</aside>
+{% pullquote %}Optimize for the perceived performance and battery life.{% endpullquote %}
 
 Don't forget about the space taken by your app on the user's device too: users shouldn't have to make a choice between apps due to _no space left on device_, so when possible prefer a website or progressive web app (PWA) to a native application (you can still publish them to application stores if required, through tiny wrapper native apps).
 
-<aside role="doc-pullquote">When possible, prefer a website or PWA to a native application.</aside>
+{% pullquote %}When possible, prefer a website or PWA to a native application.{% endpullquote %}
 
 ## A note to product managers
 
@@ -206,14 +206,14 @@ This will undoubtedly avoid bloat and help you make things leaner and faster.
 
 Avoid [feature creep](https://en.wikipedia.org/wiki/Feature_creep "Wikipedia: Feature creep") and beware of [Wirth's law](https://en.wikipedia.org/wiki/Wirth%27s_law "Wikipedia: Wirth's law").
 
-<aside role="doc-pullquote">Refrain from adding features, reduce software complexity.</aside>
+{% pullquote %}Refrain from adding features, reduce software complexity.{% endpullquote %}
 
 Last, but not least, make sure you really need software!
 Sometimes you should embrace [low-tech](https://en.wikipedia.org/wiki/Low_technology "Wikipedia: Low technology").
 For example, instead of developing a mobile app with accounts to identify the user so you can notify them, then maybe you could simply use SMS (assuming you have some out-of-band means of knowing their phone number, and the latency of distribution is acceptable).
 And sometimes what you're trying to address with software just isn't worth it, particularly if it involves IoT (remember that we should strive for fewer devices that we keep longer, not more).
 
-<aside role="doc-pullquote">Sometimes, ideas aren't even worth their impacts.</aside>
+{% pullquote %}Sometimes, ideas aren't even worth their impacts.{% endpullquote %}
 
 Conversely, as we'll need to electrify parts of our economy to reduce their carbon footprint, <q>software is one of the few sectors to start with a head-starts: we get greener at the same rate as the grid without other work needed</q> (I'm quoting [Alex Russell][] here, from a private conversation), so please do use software to digitalize and replace more carbon-intensive activities.
 

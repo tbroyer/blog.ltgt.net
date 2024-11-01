@@ -21,7 +21,7 @@ This is the exact same thing as _client-side navigation_ and requires some form 
 
 Conversely, a _multi-page_ application means that each navigation involves loading a new page.
 
-<aside role="doc-pullquote presentation" aria-hidden=true>SPA means you load a page once then navigate by manipulating the DOM and history. MPA means that each navigation involves loading a new page.</aside>
+{% pullquote "presentation" %}SPA means you load a page once then navigate by manipulating the DOM and history. MPA means that each navigation involves loading a new page.{% endpullquote %}
 
 This by itself is a controversial topic: despite SPAs having lots of problems (user experience –aborting navigation, focus management, timing of when to update the URL bar–, [accessibility](https://nolanlawson.com/2019/11/05/what-ive-learned-about-accessibility-in-spas/ "Nolan Lawson: What I’ve learned about accessibility in SPAs"), performance even by not being able to leverage streaming) due to taking responsibility and having to reimplement [many things](https://dev.to/tigt/routing-im-not-smart-enough-for-a-spa-5hki "Taylor Hunt: Routing: I’m not smart enough for a SPA") from the browser (loading feedback, error handling, focus management, scrolling), some people strongly believe this is [“one of the first interesting optimizations”](https://twitter.com/dan_abramov/status/1621949445540659201) and they [“can’t really seriously consider websites that reload page on every click good UX”](https://twitter.com/dan_abramov/status/1617963492908335104)
 (I've only quoted Dan Abramov from the React team here, but I don't want to single him out: he's far from being alone with this view; others are [in denial](https://andy-bell.co.uk/the-extremely-loud-minority/ "Andy Bell: The (extremely) loud minority") thinking that [“this is the strategy used by most of the industry today”](https://www.epicweb.dev/the-webs-next-transition#:~:text=This%20is%20the%20strategy%20used%20by%20most%20of%20the%20industry%20today. "Kent C. Dodds: The Web’s Next Transition; this quote in the section about SPAs")).
@@ -43,7 +43,7 @@ My definition of _rendering_ is applying some form of _templating_ to some _data
 This means that getting some HTML fragment from the network and putting it into the page with some form of `innerHTML` is **not** rendering.
 Conversely, getting some _virtual DOM_ as JSON for example and reconstructing the equivalent DOM from it **would** qualify as rendering.
 
-<aside role="doc-pullquote presentation" aria-hidden=true>Rendering is applying some form of templating to some data.</aside>
+{% pullquote "presentation" %}Rendering is applying some form of templating to some data.{% endpullquote %}
 
 Now that we've defined _what_ rendering is, let's see _where_ it can be done: basically at each and any stage of delivery: the origin server (SSR), edge (ESR), service-worker (SWSR), or client (CSR).
 
@@ -65,7 +65,7 @@ Eleventy (and possibly others) also allows [rendering a given page at different 
 
 My main point is that rendering is almost orthogonal to single-page vs multi-page: an SPA doesn't imply CSR.
 
-<aside role="doc-pullquote presentation" aria-hidden=true>SPA doesn't necessarily imply CSR.</aside>
+{% pullquote "presentation" %}SPA doesn't necessarily imply CSR.{% endpullquote %}
 
 * [Most web sites are MPAs](https://chromestatus.com/metrics/feature/timeline/popularity/2617 "Chrome Platform Status: usage metrics of the history.pushState API") with SSR, sometimes ESR.
 * Most React/Vue/Angular applications are SPAs with CSR: the HTML page is mostly empty, generally the same for every URL, and the page loads data on _boot_ and renders it (at the time of writing, the [Angular website](https://angular.io) is such an SPA+CSR).
