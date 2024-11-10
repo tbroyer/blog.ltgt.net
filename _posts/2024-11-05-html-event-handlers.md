@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How do HTML event handlers work?
+last_modified: 2024-11-10
 ---
 
 [HTML event handlers](https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler) are those `onxxx` attributes and properties many of us are used to, but do you know how they actually work?
@@ -148,6 +149,8 @@ Hash sources will be a problem though, because you'll have to evaluate not just 
 And you'd have to actually evaluate both to make sure the attribute value doesn't mess with your evaluated script (think SQL injection but on JavaScript syntax).
 This would mean that each event handler attribute would have to have two hash sources allowed in the `script-src` CSP directive, one of them being dependent on the custom element's implementation of the event handler.
 
+An alternative would be to use a native event handler for parsing, but then the function would have that native event handler as its [function name](#function-source-text), and you'd have to make sure to use an element associated with the same form (if not using the custom element directly because e.g. you don't want to trigger mutation observers) to get the appropriate variables [in scope](#scope).
+
 ## Recap: What does it mean for custom event handlers? {#recap}
 
 As seen above, it's not possible to fully implement event handlers for a custom event in a way that would make it indistinguishable from _native_ event handlers:
@@ -157,7 +160,7 @@ As seen above, it's not possible to fully implement event handlers for a custom 
 * errors emitted by the scripts used as event handler attribute values won't point to the source of the attribute value
 * an `import()` with a relative URL, inside an event handler attribute value, won't behave the same as in a _native_ event handler
 
-The first two points alone might make one reevaluate the need for adding such event handlers at all.
+The first point alone (or the first two) might make one reevaluate the need for adding such event handlers at all.
 And if you're thinking about only implementing the property, think about what it brings compared to _just_ having users call `addEventListener()`.
 
 That being said, [I did the work](https://github.com/tbroyer/platformer "The Platformer library on GitHub") (more as an exercise than anything else), so feel free to go ahead a implement event handlers for your custom elements.
