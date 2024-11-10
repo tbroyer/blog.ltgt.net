@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How do HTML event handlers work?
+discuss_url: https://dev.to/tbroyer/how-do-html-event-handlers-work-nok/comments
 last_modified: 2024-11-10
 ---
 
