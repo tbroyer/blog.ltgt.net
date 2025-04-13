@@ -8,7 +8,7 @@ last_modified: 2024-11-10
 [HTML event handlers](https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler) are those `onxxx` attributes and properties many of us are used to, but do you know how they actually work?
 If you're writing custom elements and would like them to have such event handlers, what would you have to do? And what would you possibly be unable to implement? What differences would there be from _native_ event handlers?
 
-Before diving in: if you just want something usable, I wrote [a library](https://github.com/tbroyer/platformer "The Platformer library on GitHub") that implements all this ([and more]({% post_url 2024-01-21-web-component-properties %})) but first [jump to the conclusion](#recap) for the limitations; otherwise, read on.
+Before diving in: if you just want something usable, I wrote [a library](https://github.com/tbroyer/webfeet "The Webfeet library on GitHub") that implements all this ([and more]({% post_url 2024-01-21-web-component-properties %})) but first [jump to the conclusion](#recap) for the limitations; otherwise, read on.
 
 ## High-level overview
 
@@ -164,4 +164,4 @@ As seen above, it's not possible to fully implement event handlers for a custom 
 The first point alone (or the first two) might make one reevaluate the need for adding such event handlers at all.
 And if you're thinking about only implementing the property, think about what it brings compared to _just_ having users call `addEventListener()`.
 
-That being said, [I did the work](https://github.com/tbroyer/platformer "The Platformer library on GitHub") (more as an exercise than anything else), so feel free to go ahead a implement event handlers for your custom elements.
+That being said, [I did the work](https://github.com/tbroyer/webfeet "The Webfeet library on GitHub") (more as an exercise than anything else), so feel free to go ahead a implement event handlers for your custom elements.

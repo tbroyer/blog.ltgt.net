@@ -126,7 +126,7 @@ class MyElement extends HTMLElement {
 }
 ```
 
-I actually built such a library, mostly as an exercise (and I already learned a lot, most of the above details actually). It's currently not published on NPM but you can find it [on Github](https://github.com/tbroyer/platformer "The Platformer library on GitHub")
+I actually built such a library, mostly as an exercise (and I already learned a lot, most of the above details actually). It's currently not published on NPM but you can find it [on Github](https://github.com/tbroyer/webfeet "The Webfeet library on GitHub")
 
 ### With a library {#libraries}
 
