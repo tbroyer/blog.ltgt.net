@@ -47,7 +47,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.3.1",
-    "rollup": "^4.49.0",
+    "rollup": "^4.50.0",
     "rollup-plugin-minify-html-template-literals": "^1.2.0",
     "wireit": "^0.14.12"
   },
