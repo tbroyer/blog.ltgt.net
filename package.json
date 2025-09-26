@@ -47,12 +47,12 @@
     "@rollup/plugin-terser": "^0.4.4",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.3.1",
-    "rollup": "^4.50.2",
+    "rollup": "^4.52.2",
     "rollup-plugin-minify-html-template-literals": "^1.2.0",
     "wireit": "^0.14.12"
   },
   "dependencies": {
     "a11y-syntax-highlighting": "^1.1.0",
-    "playground-elements": "^0.20.0"
+    "playground-elements": "^0.21.1"
   }
 }
