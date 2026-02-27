@@ -8,22 +8,36 @@
   },
   "wireit": {
     "build:playground-elements": {
-      "command": "npx rollup -p @rollup/plugin-node-resolve -p rollup-plugin-minify-html-template-literals -p @rollup/plugin-terser -f es -o js/playground-elements.js node_modules/playground-elements/index.js",
+      "command": "npx rollup -p @rollup/plugin-node-resolve -p @lit-labs/rollup-plugin-minify-html-literals -p @rollup/plugin-terser -f es -o js/playground-elements.js node_modules/playground-elements/index.js",
       "files": [],
-      "output": [ "js/playground-elements.js" ]
+      "output": [
+        "js/playground-elements.js"
+      ]
     },
     "build:playground-typescript-worker": {
       "command": "mkdir -p js/internal/ && cp node_modules/playground-elements/playground-typescript-worker.js js/ && cp node_modules/playground-elements/internal/typescript.js js/internal/",
       "files": [],
-      "output": [ "js/playground-typescript-worker.js", "js/internal/typescript.js" ]
+      "output": [
+        "js/playground-typescript-worker.js",
+        "js/internal/typescript.js"
+      ]
     },
     "build": {
       "command": "npx @11ty/eleventy",
-      "files": [ ".", "!_site" ],
-      "output": [ "_site" ],
+      "files": [
+        ".",
+        "!_site"
+      ],
+      "output": [
+        "_site"
+      ],
       "env": {
-        "DRAFTS": { "external": true },
-        "PAGES_BASE_URL": { "external": true }
+        "DRAFTS": {
+          "external": true
+        },
+        "PAGES_BASE_URL": {
+          "external": true
+        }
       },
       "dependencies": [
         "build:playground-elements",
@@ -33,22 +47,30 @@
     "serve": {
       "command": "npx @11ty/eleventy --serve --incremental",
       "service": true,
-      "files": [ "*" ],
+      "files": [
+        "*"
+      ],
       "dependencies": [
-        { "script": "build:playground-elements", "cascade": false },
-        { "script": "build:playground-typescript-worker", "cascade": false }
+        {
+          "script": "build:playground-elements",
+          "cascade": false
+        },
+        {
+          "script": "build:playground-typescript-worker",
+          "cascade": false
+        }
       ]
     }
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@lit-labs/rollup-plugin-minify-html-literals": "^0.1.1",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.3.1",
     "rollup": "^4.59.0",
-    "rollup-plugin-minify-html-template-literals": "^1.2.0",
     "wireit": "^0.14.12"
   },
   "dependencies": {
