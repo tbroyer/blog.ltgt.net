@@ -54,5 +54,8 @@
   "dependencies": {
     "a11y-syntax-highlighting": "^1.1.0",
     "playground-elements": "^0.21.2"
+  },
+  "overrides": {
+    "lit": "^3.3.2"
   }
 }
