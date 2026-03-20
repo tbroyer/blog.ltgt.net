@@ -63,7 +63,7 @@
     }
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.2",
+    "@11ty/eleventy": "3.1.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@lit-labs/rollup-plugin-minify-html-literals": "^0.1.1",
     "@rollup/plugin-node-resolve": "^16.0.3",
