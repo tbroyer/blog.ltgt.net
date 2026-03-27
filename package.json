@@ -70,7 +70,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^4.3.1",
-    "rollup": "^4.59.0",
+    "rollup": "^4.60.0",
     "wireit": "^0.14.12"
   },
   "dependencies": {
