@@ -63,14 +63,14 @@
     }
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.5",
+    "@11ty/eleventy": "3.1.6",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@lit-labs/rollup-plugin-minify-html-literals": "^0.2.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-attrs": "^5.0.0",
-    "rollup": "^4.60.4",
+    "rollup": "^4.61.1",
     "wireit": "^0.14.12"
   },
   "dependencies": {
