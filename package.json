@@ -69,8 +69,8 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
     "markdown-it-anchor": "^9.2.1",
-    "markdown-it-attrs": "^5.0.0",
-    "rollup": "^4.62.2",
+    "markdown-it-attrs": "^5.0.1",
+    "rollup": "^4.62.3",
     "wireit": "^0.14.13"
   },
   "dependencies": {
