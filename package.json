@@ -70,12 +70,12 @@
     "@rollup/plugin-terser": "^1.0.2",
     "markdown-it-anchor": "^9.2.1",
     "markdown-it-attrs": "^5.0.1",
-    "rollup": "^4.68.4",
+    "rollup": "^4.68.8",
     "wireit": "^0.15.0"
   },
   "dependencies": {
     "a11y-syntax-highlighting": "^1.1.0",
-    "playground-elements": "^0.21.2"
+    "playground-elements": "^0.21.3"
   },
   "overrides": {
     "lit": "^3.3.2"
